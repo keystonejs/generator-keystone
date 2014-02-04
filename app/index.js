@@ -18,7 +18,7 @@ var KeystoneGenerator = module.exports = function KeystoneGenerator(args, option
 	console.log('\nWelcome to KeystoneJS.\n');
 
 	var done = function done() {
-		console.log('\n------------------------------------------------\n\nYour KeystoneJS project has been set up.\n' +
+		console.log('\n------------------------------------------------\n\nYour KeystoneJS project is ready to go!\n' +
 			'For help getting started, visit http://keystonejs.com/guide\n\n' +
 			'To start your new website, run "node keystone".\n');
 	}
