@@ -1,0 +1,19 @@
+{
+  "name": "<%= _.slugify(projectName) %>",
+  "version": "0.0.0",
+  "private": true,
+  "dependencies": {
+    "keystone": "~0.2.1",
+    "async": "~0.2.9",
+    "underscore": "~1.5.2",
+    "csv": "0.3.6",
+    "dotenv": "0.0.3"
+  },
+  "engines": {
+    "node": "0.10.x",
+    "npm": "1.2.x"
+  },
+  "scripts": {
+    "start": "keystone.js"
+  }
+}
