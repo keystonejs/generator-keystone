@@ -240,9 +240,3 @@ KeystoneGenerator.prototype.files = function files() {
 	this.directory('public');
 
 };
-
-KeystoneGenerator.prototype.install = function install() {
-
-	this.directory('public');
-
-};
