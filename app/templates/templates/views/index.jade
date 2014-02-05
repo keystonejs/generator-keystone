@@ -2,6 +2,7 @@ extends ../layouts/default
 
 block content
 	.container: .jumbotron
+		img(src='/images/logo.svg', width='160')
 		h1 Welcome
 		p This is your new <a href='http://keystonejs.com', target='_blank'>KeystoneJS</a> website.
 		p It includes the latest versions of
@@ -13,9 +14,9 @@ block content
 			p
 				a(href='/keystone/signin').btn.btn-lg.btn-primary Open the Admin UI
 		else
-			p We have created a default Admin user for you with the email address <strong>user@keystonejs.com</strong> and the password <strong>admin</strong>.
+			p We have created a default Admin user for you with the email <strong>user@keystonejs.com</strong> and the password <strong>admin</strong>.
 			p
-				a(href='/keystone/signin').btn.btn-lg.btn-primary Sign in
+				a(href='/keystone/signin', style='margin-right: 10px').btn.btn-lg.btn-primary Sign in
 				|  to use the Admin UI.
 		hr
 		p Remember to <a href='https://github.com/JedWatson/keystone' target='_blank'>Star KeystoneJS on GitHub</a> and
