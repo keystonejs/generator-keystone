@@ -152,7 +152,7 @@ KeystoneGenerator.prototype.prompts = function prompts() {
 
 KeystoneGenerator.prototype.keys = function keys() {
 
-	var cookieSecretChars = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXTZabcdefghiklmnopqrstuvwxyz!@#$%^&*()-=_+[]\\{}|;:",./<>?`~';
+	var cookieSecretChars = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXTZabcdefghiklmnopqrstuvwxyz!@#$%^&*()-=_+[]{}|;:",./<>?`~';
 
 	this.cookieSecret = utils.randomString(64, cookieSecretChars);
 
