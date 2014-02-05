@@ -30,7 +30,7 @@ block content
 	.container: .row
 		.col-sm-8.col-md-9
 			if filters.category && !data.category
-				h3 Invalid Category.
+				h3.text-muted Invalid Category.
 			else
 				if data.posts.results.length
 					if data.posts.totalPages > 1
@@ -62,9 +62,9 @@ block content
 								li.disabled: a(href='?page=' + data.posts.totalPages): span.entypo.entypo-chevron-thin-right
 				else
 					if data.category
-						h3 No posts in the category #{data.category.name}.
+						h3.text-muted There are no posts in the category #{data.category.name}.
 					else
-						h3 There are no posts yet.
+						h3.text-muted There are no posts yet.
 		
 		if data.categories.length
 			.col-sm-4.col-md-3
