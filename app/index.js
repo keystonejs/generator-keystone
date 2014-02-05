@@ -193,8 +193,11 @@ KeystoneGenerator.prototype.models = function models() {
 		this.copy('models/' + i + '.js');
 		modelIndex += 'require(\'./' + i + '\');\n';
 	}, this);
-
-	this.write('models/index.js', modelIndex);
+	
+	// we're now using keystone.import() for loading models, so an index.js
+	// file is no longer required. leaving for reference.
+	
+	// this.write('models/index.js', modelIndex);
 
 };
 

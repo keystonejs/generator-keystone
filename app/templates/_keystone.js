@@ -12,6 +12,7 @@ var keystone = require('keystone');
 keystone.init({
 
 	'name': '<%= projectName %>',
+	'brand': '<%= projectName %>',
 
 	'less': 'public',
 	'static': 'public',
@@ -31,7 +32,7 @@ keystone.init({
 
 // Load your project's Models
 
-require('./models');
+keystone.import('models');
 
 // Setup common locals for your templates. The following are required for the
 // bundled templates and layouts. Any runtime locals (that should be set uniquely
