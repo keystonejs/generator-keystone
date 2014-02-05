@@ -10,23 +10,23 @@ var keystone = require('keystone');
 // and documentation.
 
 keystone.init({
-	
+
 	'name': '<%= projectName %>',
-	
+
 	'less': 'public',
 	'static': 'public',
 	'favicon': 'public/favicon.ico',
-	
+
 	'views': 'templates/views',
 	'view engine': 'jade',
-	
+
 	'auto update': true,
-	
+
 	'session': true,
 	'auth': true,
 	'user model': 'User',
 	'cookie secret': '<%= cookieSecret %>'
-	
+
 });
 
 // Load your project's Models
@@ -51,10 +51,10 @@ keystone.set('routes', require('./routes'));
 // Configure the navigation bar in Keystone's Admin UI
 
 keystone.set('nav', {
-	<% if (includeBlog) { %>'posts': ['posts', 'post-categories'],<% } %>
-	<% if (includeGallery) { %>'galleries': 'galleries',<% } %>
-	<% if (includeEnquiries) { %>'enquiries': 'enquiries',<% } %>
-	'users': 'users'
+	<% if (includeBlog) { %>'posts': ['posts', 'post-categories'],
+	<% } if (includeGallery) { %>'galleries': 'galleries',
+	<% } if (includeEnquiries) { %>'enquiries': 'enquiries',
+	<% } %>'users': 'users'
 });
 
 // Start Keystone to connect to your database and initialise the web server
