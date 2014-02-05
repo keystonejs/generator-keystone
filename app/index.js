@@ -10,6 +10,8 @@ var KeystoneGenerator = module.exports = function KeystoneGenerator(args, option
 	// Initialise default values
 	this.cloudinaryURL = false;
 	this.mandrillAPI = false;
+	
+	this.messages = [];
 
 	// Apply the Base Generator
 	yeoman.generators.Base.apply(this, arguments);
@@ -86,40 +88,58 @@ KeystoneGenerator.prototype.prompts = function prompts() {
 		}, this);
 
 		if (this.includeBlog || this.includeGallery || this.includeEnquiries) {
-
+			
 			if (this.includeBlog || this.includeGallery) {
+				
+				var blog_gallery = 'blog and gallery templates';
+				
+				if (!this.includeBlog) {
+					blog_gallery = 'gallery template';
+				} else if (!this.includeGallery) {
+					blog_gallery = 'blog template';
+				}
+				
 				prompts.config.push({
 					name: 'cloudinaryURL',
-					message: 'Please enter your Cloudinary URL\n(Required for blog / gallery, See http://keystonejs.com/guide/config/#cloudinary for explanation)\n'
+					message: '------------------------------------------------' +
+						'\n    A Cloudinary account is required for image hosting, which is used by the ' + blog_gallery + '.' +
+						'\n    See http://keystonejs.com/guide/config/#cloudinary for more information.' +
+						'\n    You can skip this step, but the ' + blog_gallery + ' will be left out.' +
+						'\n\n    Please enter your Cloudinary URL:'
 				});
+				
 			}
-
+			
 			if (this.includeEnquiries) {
+				
 				prompts.config.push({
 					name: 'mandrillAPI',
-					message: 'Please enter your Mandrill API\n(Required for enquiries, See http://keystonejs.com/guide/config/#mandrill for explanation)\n'
+					message: '------------------------------------------------' +
+						'\n    A Mandrill account is required for email sending.' +
+						'\n    See http://keystonejs.com/guide/config/#mandrill for more information.' +
+						'\n    You can skip this, but you won\'t be able to use Keystone\'s email features until you set one up.' +
+						'\n\n    Please enter your Mandrill API Key:'
 				});
+				
 			}
 
 		}
-
+		
 		if (!prompts.config.length) {
 			return cb();
 		}
-
+		
 		this.prompt(prompts.config, function(props) {
-
+			
 			_.each(props, function(val, key) {
 				this[key] = val;
 			}, this);
-
+			
 			if (!this.cloudinaryURL && (this.includeBlog || this.includeGallery)) {
+				
 				this.includeBlog = false;
 				this.includeGallery = false;
-			}
-
-			if (!this.cloudinaryURL && (this.includeEnquiries)) {
-				this.includeEnquiries = false;
+				
 			}
 
 			cb();
@@ -132,9 +152,9 @@ KeystoneGenerator.prototype.prompts = function prompts() {
 
 KeystoneGenerator.prototype.keys = function keys() {
 
-	var cookieSecretChars = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXTZabcdefghiklmnopqrstuvwxyz!@#$%^&*()-=_+[]\\{}|;\':",./<>?`~';
+	var cookieSecretChars = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXTZabcdefghiklmnopqrstuvwxyz!@#$%^&*()-=_+[]\\{}|;:",./<>?`~';
 
-	this.cookieSecret = utils.randomString(64);
+	this.cookieSecret = utils.randomString(64, cookieSecretChars);
 
 };
 
