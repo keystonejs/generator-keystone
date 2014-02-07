@@ -68,9 +68,7 @@ Download and install the node.js binaries for your platform from the [Node.js do
 
 ### Install MongoDB
 
-If you're on a mac, the easiest way to install MongoDB is to use the [homebrew package manager for OS X](http://brew.sh/). Follow the instructions at the bottom of their homepage to install it.
-
-*HINT: Install homebrew by running this in your terminal:*
+If you're on a mac, the easiest way to install MongoDB is to use the [homebrew package manager for OS X](http://brew.sh/). To install it, run this in your terminal:
 
 ````
 ruby -e "$(curl -fsSL https://raw.github.com/Homebrew/homebrew/go/install)"
