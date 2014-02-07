@@ -1,8 +1,8 @@
-# generator-keystone 
+# Keystone Generator
 
 A [Yeoman](http://yeoman.io) generator for [KeystoneJS](http://keystonejs.com), the model-driven cms for node.js built on Express and MongoDB.
 
-Yo Keystone will scaffold a new KeystoneJS project for you, and offer to set up blog, gallery and enquiry models + views.
+`yo keystone` will scaffold a new KeystoneJS project for you, and offer to set up blog, gallery and enquiry models + views.
 
 ## Getting Started
 
