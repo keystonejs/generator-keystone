@@ -22,7 +22,7 @@ $ yo keystone
 
 The generator will ask you a few questions about which features to include, then prompt you for Cloudinary and Mandrill account details.
 
-These accounts are optional, but Cloudinary is required to host the images for the blog and gallery templates. You can get a free account for each at
+**These accounts are optional**, but Cloudinary is used to host the images for the blog and gallery templates. You can get a free account for each at
 
 * [Cloudinary](https://cloudinary.com/users/register/free) - Image serving and management in the cloud
 * [Mandrill](https://mandrill.com/signup/) - Transactional email service by [Mailchimp](http://mailchimp.com)
