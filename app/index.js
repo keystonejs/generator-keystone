@@ -86,6 +86,9 @@ KeystoneGenerator.prototype.prompts = function prompts() {
 		_.each(props, function(val, key) {
 			this[key] = val;
 		}, this);
+		
+		// Escape the project name for use in strings
+		this.projectName = utils.escapeString(this.projectName);
 
 		if (this.includeBlog || this.includeGallery || this.includeEnquiries) {
 			
