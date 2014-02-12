@@ -22,14 +22,14 @@ User.schema.virtual('canAccessKeystone').get(function() {
 	return this.isAdmin;
 });
 
-
+<% if (includeBlog) { %>
 /**
  * Relationships
  */
 
 User.relationship({ ref: 'Post', path: 'author' });
 
-
+<% } %>
 /**
  * Registration
  */
