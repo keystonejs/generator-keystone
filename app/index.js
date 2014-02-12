@@ -140,8 +140,7 @@ KeystoneGenerator.prototype.prompts = function prompts() {
 			
 			if (!this.cloudinaryURL && (this.includeBlog || this.includeGallery)) {
 				
-				this.includeBlog = false;
-				this.includeGallery = false;
+				this.cloudinaryURL = 'cloudinary://333779167276662:_8jbSi9FB3sWYrfimcl8VKh34rI@keystone-demo';
 				
 			}
 
@@ -193,7 +192,7 @@ KeystoneGenerator.prototype.models = function models() {
 	this.mkdir('models');
 
 	modelFiles.forEach(function(i) {
-		this.copy('models/' + i + '.js');
+		this.template('models/' + i + '.js');
 		modelIndex += 'require(\'./' + i + '\');\n';
 	}, this);
 	
