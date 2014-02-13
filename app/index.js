@@ -138,10 +138,12 @@ KeystoneGenerator.prototype.prompts = function prompts() {
 				this[key] = val;
 			}, this);
 			
+			if (!this.mandrillAPI) {
+				this.mandrillAPI = 'NY8RRKyv1Bure9bdP8-TOQ';
+			}
+			
 			if (!this.cloudinaryURL && (this.includeBlog || this.includeGallery)) {
-				
 				this.cloudinaryURL = 'cloudinary://333779167276662:_8jbSi9FB3sWYrfimcl8VKh34rI@keystone-demo';
-				
 			}
 
 			cb();
