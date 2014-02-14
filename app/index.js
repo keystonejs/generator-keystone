@@ -19,11 +19,32 @@ var KeystoneGenerator = module.exports = function KeystoneGenerator(args, option
 	// Init Messages
 	console.log('\nWelcome to KeystoneJS.\n');
 
-	var done = function done() {
-		console.log('\n------------------------------------------------\n\nYour KeystoneJS project is ready to go!\n' +
-			'For help getting started, visit http://keystonejs.com/guide\n\n' +
-			'To start your new website, run "node keystone".\n');
-	}
+	var done = _.bind(function done() {
+		console.log(
+			'\n------------------------------------------------' +
+			'\n' +
+			'\nYour KeystoneJS project is ready to go!' +
+			'\n' +
+			'\nFor help getting started, visit http://keystonejs.com/guide' +
+			
+			((this.usingTestMandrillAPI) ?
+				'\n' +
+				'\nWe\'ve included a test Mandrill API Key, which will simulate email' + 
+				'\nsending but not actually send emails. Please replace it with your own' +
+				'\nwhen you are ready.'
+				: '') +
+			
+			((this.usingDemoCloudinaryAccount) ?
+				'\n' +
+				'\nWe\'ve included a demo Cloudinary Account, which is reset daily.' +
+				'\nPlease configure your own account or use the LocalImage field instead' +
+				'\nbefore sending your site live.'
+				: '') +
+			
+			'\n\nTo start your new website, run "node keystone".' +
+			'\n');
+		
+	}, this);
 
 	// Install Dependencies when done
 	this.on('end', function () {
@@ -56,23 +77,28 @@ KeystoneGenerator.prototype.prompts = function prompts() {
 				name: 'projectName',
 				message: 'What is the name of your project?',
 				default: 'My Site'
-			},
-			{
+			}, {
 				type: 'confirm',
 				name: 'includeBlog',
 				message: 'Would you like to include a Blog?',
 				default: true
-			},
-			{
+			}, {
 				type: 'confirm',
 				name: 'includeGallery',
 				message: 'Would you like to include an Image Gallery?',
 				default: true
-			},
-			{
+			}, {
 				type: 'confirm',
 				name: 'includeEnquiries',
 				message: 'Would you like to include a Contact Form?',
+				default: true
+			}, {
+				type: 'confirm',
+				name: 'includeEmail',
+				message: '------------------------------------------------' +
+					'\n    KeystoneJS integrates with Mandrill (from Mailchimp) for email sending.' +
+					'\n    Mandrill accounts are free for up to 12k emails per month.' +
+					'\n    Would you like to include Email configuration in your project?',
 				default: true
 			}
 		],
@@ -90,7 +116,19 @@ KeystoneGenerator.prototype.prompts = function prompts() {
 		// Escape the project name for use in strings
 		this.projectName = utils.escapeString(this.projectName);
 
-		if (this.includeBlog || this.includeGallery || this.includeEnquiries) {
+		if (this.includeBlog || this.includeGallery || this.includeEmail) {
+			
+			if (this.includeEmail) {
+				prompts.config.push({
+					name: 'mandrillAPI',
+					message: '------------------------------------------------' +
+						'\n    Please enter your Mandrill API Key (optional).' +
+						'\n    See http://keystonejs.com/guide/config/#mandrill for more info.' +
+						'\n    You can skip this for now (we\'ll include a test key instead)' +
+						'\n    ' +
+						'\n    Your Mandrill API Key:'
+				});
+			}
 			
 			if (this.includeBlog || this.includeGallery) {
 				
@@ -105,23 +143,14 @@ KeystoneGenerator.prototype.prompts = function prompts() {
 				prompts.config.push({
 					name: 'cloudinaryURL',
 					message: '------------------------------------------------' +
-						'\n    A Cloudinary account is required for image hosting, which is used by the ' + blog_gallery + '.' +
-						'\n    See http://keystonejs.com/guide/config/#cloudinary for more information.' +
-						'\n    You can skip this step, but the ' + blog_gallery + ' will be left out.' +
-						'\n\n    Please enter your Cloudinary URL:'
-				});
-				
-			}
-			
-			if (this.includeEnquiries) {
-				
-				prompts.config.push({
-					name: 'mandrillAPI',
-					message: '------------------------------------------------' +
-						'\n    A Mandrill account is required for email sending.' +
-						'\n    See http://keystonejs.com/guide/config/#mandrill for more information.' +
-						'\n    You can skip this, but you won\'t be able to use Keystone\'s email features until you set one up.' +
-						'\n\n    Please enter your Mandrill API Key:'
+						'\n    KeystoneJS integrates with Cloudinary for image upload, resizing and' +
+						'\n    hosting. See http://keystonejs.com/guide/config/#cloudinary for more info.' +
+						'\n    ' +
+						'\n    CloudinaryImage fields are used by the ' + blog_gallery + '.' +
+						'\n    ' +
+						'\n    You can skip this for now (we\'ll include demo account details)' +
+						'\n    ' +
+						'\n    Please enter your Cloudinary URL:'
 				});
 				
 			}
@@ -138,11 +167,15 @@ KeystoneGenerator.prototype.prompts = function prompts() {
 				this[key] = val;
 			}, this);
 			
-			if (!this.mandrillAPI) {
+			if (this.includeEmail && !this.mandrillAPI) {
+				this.usingTestMandrillAPI = true;
+				console.log("this.usingTestMandrillAPI: " + this.usingTestMandrillAPI);
 				this.mandrillAPI = 'NY8RRKyv1Bure9bdP8-TOQ';
 			}
 			
 			if (!this.cloudinaryURL && (this.includeBlog || this.includeGallery)) {
+				this.usingDemoCloudinaryAccount = true;
+				console.log("this.usingDemoCloudinaryAccount: " + this.usingDemoCloudinaryAccount);
 				this.cloudinaryURL = 'cloudinary://333779167276662:_8jbSi9FB3sWYrfimcl8VKh34rI@keystone-demo';
 			}
 
