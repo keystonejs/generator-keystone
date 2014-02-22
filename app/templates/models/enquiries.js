@@ -2,7 +2,8 @@ var keystone = require('keystone'),
 	Types = keystone.Field.Types;
 
 var Enquiry = new keystone.List('Enquiry', {
-	nocreate: true
+	nocreate: true,
+	noedit: true
 });
 
 Enquiry.add({
@@ -14,8 +15,8 @@ Enquiry.add({
 		{ value: 'question', label: "I've got a question" },
 		{ value: 'other', label: "Something else..." }
 	], required: true },
-	message: { type: Types.Textarea, required: true },
-	createdAt: { type: Date, default: Date.now, noedit: true }
+	message: { type: Types.Markdown, required: true },
+	createdAt: { type: Date, default: Date.now }
 });
 
 Enquiry.addPattern('standard meta');
