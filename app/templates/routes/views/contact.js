@@ -6,12 +6,14 @@ exports = module.exports = function(req, res) {
 	var view = new keystone.View(req, res),
 		locals = res.locals;
 	
+	// Set locals
 	locals.section = 'contact';
 	locals.enquiryTypes = Enquiry.fields.enquiryType.ops;
 	locals.formData = req.body || {};
 	locals.validationErrors = {};
 	locals.enquirySubmitted = false;
 	
+	// On POST requests, add the Enquiry item to the database
 	view.on('post', { action: 'contact' }, function(next) {
 		
 		var application = new Enquiry.model(),
@@ -30,9 +32,6 @@ exports = module.exports = function(req, res) {
 		
 	});
 	
-	view.render('contact', {
-		section: 'contact',
-		
-	});
+	view.render('contact');
 	
 }
