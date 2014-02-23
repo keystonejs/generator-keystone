@@ -258,6 +258,7 @@ KeystoneGenerator.prototype.routes = function routes() {
 	}
 
 	if (this.includeEnquiries) {
+		this.copy('routes/emails.js');
 		this.copy('routes/views/contact.js');
 	}
 
