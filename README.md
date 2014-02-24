@@ -2,31 +2,31 @@
 
 A [Yeoman](http://yeoman.io) generator for [KeystoneJS](http://keystonejs.com), the model-driven cms for node.js built on Express and MongoDB.
 
-`yo keystone` will scaffold a new KeystoneJS project for you, and offer to set up blog, gallery and enquiry models + views.
+`yo keystone` will scaffold a new KeystoneJS project for you, and offer to set up blog, gallery, and enquiry (contact form) models + views.
 
 ## Getting Started
 
-First up, you'll need Node.js <= 0.10.x and MongoDB <= 2.4.x installed. If you don't have them, follow the instructions at the bottom.
+First up, you'll need Node.js >= 0.10.x and MongoDB >= 2.4.x installed. If you don't have them, follow the **Dependencies** instructions below.
 
-Then, install the generator like this:
+Then, install the Keystone generator:
 
 ````
 $ npm install -g generator-keystone
 ````
 
-If you see errors, check the [problems](#err-please-try-running-this-command-again-as-rootadministrator) section at the bottom.
+If you see errors, check the [problems](#err-please-try-running-this-command-again-as-rootadministrator) section below.
 
-With the generator installed, create an empty directory for your new KeystoneJS Project, and run `yo keystone` in it like this:
+With the generator installed, create an empty directory for your new KeystoneJS Project, and run `yo keystone` in it:
 
 ````
-$ mkdir my-project
-$ cd my project
+$ mkdir myproject
+$ cd myproject
 $ yo keystone
 ````
 
 The generator will ask you a few questions about which features to include, then prompt you for Cloudinary and Mandrill account details.
 
-**These accounts are optional**, but Cloudinary is used to host the images for the blog and gallery templates. You can get a free account for each at
+**These accounts are optional**, but Cloudinary is used to host the images for the blog and gallery templates. You can get a free account for each at:
 
 * [Cloudinary](https://cloudinary.com/users/register/free) - Image serving and management in the cloud
 * [Mandrill](https://mandrill.com/signup/) - Transactional email service by [Mailchimp](http://mailchimp.com)
@@ -39,25 +39,32 @@ When you've got your new project, check out the [KeystoneJS Getting Started Guid
 
 ### ERR! Please try running this command again as root/Administrator.
 
-When running `npm install -g generator-keystone`, you may get an **EACCES** error asking you to run the command again as root/Administrator.
+When running `npm install -g generator-keystone`, you may get an **EACCES** error asking you to run the command again as root/Administrator. This indicates that there is a permissions issue.
 
-This means that there's a permissions issue, which you're better off fixing than re-running the command with the `sudo` prefix.
-
-The typical fix for this is to run the following command:
+On your development system you can change directory ownership to the current $USER so you do not have to run `sudo` while installing untrusted code:
 
 ````
 sudo chown -R $USER /usr/local
+
+# Other directories may be required depending on your O/S
+sudo chown -R $USER /usr/lib/node_modules/
 ````
 
-For more information, see [this section](http://foohack.com/2010/08/intro-to-npm/#what_no_sudo) of the Intro to npm by Isaac Schulueter.
+For a production/shared environment you may wish to re-run the `npm` command with the `sudo` prefix:
+
+````
+sudo npm install -g generator-keystone
+````
+
+For more information, see the ["What, no sudo?"](http://foohack.com/2010/08/intro-to-npm/#what_no_sudo) of the Intro to npm by Isaac Schulueter.
 
 ### What do you mean it couldn't find my Database?
 
-By default, KeystoneJS will look for a mongod server running on `localhost` on the default port, and connect to it. If you're getting errors related to the MongoDB connection, make sure your MongoDB server is running.
+By default, KeystoneJS will look for a MongoDB server running on `localhost` on the default port, and connect to it. If you're getting errors related to the MongoDB connection, make sure your MongoDB server is running.
 
 If you haven't installed MongoDB yet, follow the instructions below.
 
-To connect to a server **other** than `localhost`, add a line like this to your `.env` file to tell Keystone where to find it:
+To connect to a server **other** than `localhost`, add a `MONGO_URI` setting to the `.env` file in your Keystone project directory:
 
 ````
 MONGO_URI=mongodb://your-server/database-name
@@ -84,7 +91,7 @@ With Homebrew installed, run this in your terminal to download and install Mongo
 brew mongo
 ````
 
-For other platforms, see the [MongoDB downloads page](http://www.mongodb.org/downloads).
+For other platforms, see the [MongoDB installation guides](http://docs.mongodb.org/manual/installation/).
 
 
 ## License
