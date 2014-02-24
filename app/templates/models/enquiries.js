@@ -19,7 +19,6 @@ Enquiry.add({
 	createdAt: { type: Date, default: Date.now }
 });
 
-Enquiry.addPattern('standard meta');
 Enquiry.defaultSort = '-createdAt';
 Enquiry.defaultColumns = 'name, email, enquiryType, createdAt';
 Enquiry.register();
