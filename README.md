@@ -14,9 +14,13 @@ Then, install the generator like this:
 $ npm install -g generator-keystone
 ````
 
-With the generator installed, create an empty directory for your new KeystoneJS Project, and run the following command in it:
+If you see errors, check the [problems](#err-please-try-running-this-command-again-as-rootadministrator) section at the bottom.
+
+With the generator installed, create an empty directory for your new KeystoneJS Project, and run `yo keystone` in it like this:
 
 ````
+$ mkdir my-project
+$ cd my project
 $ yo keystone
 ````
 
