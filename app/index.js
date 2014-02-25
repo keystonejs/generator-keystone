@@ -187,6 +187,28 @@ KeystoneGenerator.prototype.prompts = function prompts() {
 
 };
 
+KeystoneGenerator.prototype.guideComments = function() {
+	
+	var cb = this.async();
+	
+	this.prompt([
+		{
+			type: 'confirm',
+			name: 'includeGuideComments',
+			message: '------------------------------------------------' +
+				'\n    Finally, would you like to include the extended comments in' +
+				'\n    your project? If you\'re new to Keystone, these may be helpful.'
+			default: true
+		}
+	], function(props) {
+		
+		this.includeGuideComments = props.includeGuideComments;
+		cb();
+		
+	}.bind(this));
+	
+};
+
 KeystoneGenerator.prototype.keys = function keys() {
 
 	var cookieSecretChars = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXTZabcdefghiklmnopqrstuvwxyz!@#$%^&*()-=_+[]{}|;:",./<>?`~';
@@ -201,8 +223,9 @@ KeystoneGenerator.prototype.project = function project() {
 	this.template('_env', '.env');
 	this.template('_keystone.js', 'keystone.js');
 
-	this.copy('Procfile');
 	this.copy('editorconfig', '.editorconfig');
+	this.copy('gitignore', '.gitignore');
+	this.copy('Procfile');
 
 };
 
@@ -257,8 +280,11 @@ KeystoneGenerator.prototype.routes = function routes() {
 		this.copy('routes/views/gallery.js');
 	}
 
-	if (this.includeEnquiries) {
+	if (this.includeEmail) {
 		this.copy('routes/emails.js');
+	}
+	
+	if (this.includeEnquiries) {
 		this.copy('routes/views/contact.js');
 	}
 
@@ -286,6 +312,9 @@ KeystoneGenerator.prototype.templates = function templates() {
 
 	if (this.includeEnquiries) {
 		this.copy('templates/views/contact.jade');
+		if (this.includeEmails) {
+			this.copy('templates/emails/enquiry-notification.jade');
+		}
 	}
 
 };

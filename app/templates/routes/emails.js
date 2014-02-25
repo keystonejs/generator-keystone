@@ -1,4 +1,4 @@
-/**
+<% if (includeGuideComments) { %>/**
  * This file defines the email tests for your project.
  * 
  * Each email test should provide the locals used to render the
@@ -11,17 +11,17 @@
  * can be previewed at /keystone/test-email/{key}
  */
 
-var keystone = require('Keystone');
+<% } %>var keystone = require('Keystone');
 
 module.exports = {
-	
+	<% if (includeEnquiries) %>
 	/** New Enquiry Notifications */
 	
 	'enquiry-notification': function(req, res, callback) {
-		
+		<% if (includeGuideComments) { %>
 		// To test enquiry notifications we create a dummy enquiry that
 		// is not saved to the database, but passed to the template.
-		
+		<% } %>
 		var Enquiry = keystone.list('Enquiry');
 		
 		var newEnquiry = new Enquiry.model({
@@ -39,5 +39,5 @@ module.exports = {
 		});
 		
 	}
-	
+	<% } %>
 };
