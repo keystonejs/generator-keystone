@@ -1,7 +1,7 @@
 extends /layouts/default
 
 block body-contents
-	h1 Hi #{admin},
+	h1 Hi *|first_name|*,
 	p.text-larger An enquiry was just submitted to #{brand}:
 	if enquiry.name.full || enquiry.email
 		p.text-larger From 
@@ -21,4 +21,4 @@ block body-contents
 		.text-larger !{enquiry.message.html}
 	p.text-muted Sent #{enquiry._.createdAt.format()}
 	p &nbsp;
-	+button({ url: server_url + enquiry_url, label: 'Open Keystone' })
+	+button({ url: '/keystone/enquiries/' + enquiry.id, label: 'Open Keystone' })
