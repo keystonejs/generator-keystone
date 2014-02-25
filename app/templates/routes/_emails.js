@@ -11,7 +11,7 @@
  * can be previewed at /keystone/test-email/{key}
  */
 
-<% } %>var keystone = require('Keystone');
+<% } %>var keystone = require('keystone');
 
 module.exports = {
 	<% if (includeEnquiries) { %>
