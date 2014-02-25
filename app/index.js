@@ -169,13 +169,11 @@ KeystoneGenerator.prototype.prompts = function prompts() {
 			
 			if (this.includeEmail && !this.mandrillAPI) {
 				this.usingTestMandrillAPI = true;
-				console.log("this.usingTestMandrillAPI: " + this.usingTestMandrillAPI);
 				this.mandrillAPI = 'NY8RRKyv1Bure9bdP8-TOQ';
 			}
 			
 			if (!this.cloudinaryURL && (this.includeBlog || this.includeGallery)) {
 				this.usingDemoCloudinaryAccount = true;
-				console.log("this.usingDemoCloudinaryAccount: " + this.usingDemoCloudinaryAccount);
 				this.cloudinaryURL = 'cloudinary://333779167276662:_8jbSi9FB3sWYrfimcl8VKh34rI@keystone-demo';
 			}
 
@@ -197,7 +195,7 @@ KeystoneGenerator.prototype.guideComments = function() {
 			name: 'includeGuideComments',
 			message: '------------------------------------------------' +
 				'\n    Finally, would you like to include the extended comments in' +
-				'\n    your project? If you\'re new to Keystone, these may be helpful.'
+				'\n    your project? If you\'re new to Keystone, these may be helpful.',
 			default: true
 		}
 	], function(props) {
@@ -269,6 +267,10 @@ KeystoneGenerator.prototype.routes = function routes() {
 	this.template('routes/_index.js', 'routes/index.js');
 	this.template('routes/_middleware.js', 'routes/middleware.js');
 
+	if (this.includeEmail) {
+		this.template('routes/_emails.js', 'routes/emails.js');
+	}
+
 	this.copy('routes/views/index.js');
 
 	if (this.includeBlog) {
@@ -278,10 +280,6 @@ KeystoneGenerator.prototype.routes = function routes() {
 
 	if (this.includeGallery) {
 		this.copy('routes/views/gallery.js');
-	}
-
-	if (this.includeEmail) {
-		this.copy('routes/emails.js');
 	}
 	
 	if (this.includeEnquiries) {
@@ -312,7 +310,7 @@ KeystoneGenerator.prototype.templates = function templates() {
 
 	if (this.includeEnquiries) {
 		this.copy('templates/views/contact.jade');
-		if (this.includeEmails) {
+		if (this.includeEmail) {
 			this.copy('templates/emails/enquiry-notification.jade');
 		}
 	}

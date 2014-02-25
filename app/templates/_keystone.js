@@ -10,24 +10,26 @@ var keystone = require('keystone');
 // and documentation.
 <% } %>
 keystone.init({
-
+	
 	'name': '<%= projectName %>',
 	'brand': '<%= projectName %>',
-
+	
 	'less': 'public',
 	'static': 'public',
 	'favicon': 'public/favicon.ico',
-
+	
 	'views': 'templates/views',
 	'view engine': 'jade',
-
+	<% if (includeEmail) { %>
+	'emails': 'templates/emails',
+	<% } %>
 	'auto update': true,
-
+	
 	'session': true,
 	'auth': true,
 	'user model': 'User',
 	'cookie secret': '<%= cookieSecret %>'
-
+	
 });
 <% if (includeGuideComments) { %>
 // Load your project's Models

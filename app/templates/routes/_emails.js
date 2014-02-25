@@ -14,7 +14,7 @@
 <% } %>var keystone = require('Keystone');
 
 module.exports = {
-	<% if (includeEnquiries) %>
+	<% if (includeEnquiries) { %>
 	/** New Enquiry Notifications */
 	
 	'enquiry-notification': function(req, res, callback) {
@@ -26,7 +26,7 @@ module.exports = {
 		
 		var newEnquiry = new Enquiry.model({
 			name: { first: 'Test', last: 'User' },
-			email: 'enquiries@keystonejs.com',
+			email: 'contact@<%= _.slugify(projectName) %>.com',
 			phone: '+61 2 1234 5678',
 			enquiryType: 'message',
 			message: { md: 'Nice enquiry notification.' }
