@@ -33,7 +33,7 @@ The generator will ask you a few questions about which features to include, then
 
 ### What next?
 
-When you've got your new project, check out the [KeystoneJS Getting Started Guide](http://keystonejs.com/guide) to learn more about how to get started with KeystoneJS.
+When you've got your new project, check out the [KeystoneJS Documentation](http://keystonejs.com/docs) to learn more about how to get started with KeystoneJS.
 
 ## Problems?
 
