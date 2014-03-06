@@ -113,7 +113,9 @@ KeystoneGenerator.prototype.prompts = function prompts() {
 			this[key] = val;
 		}, this);
 		
-		// Escape the project name for use in strings
+		// Keep an unescaped version of the project name
+		this._projectName = this.projectName;
+		// ... then escape it for use in strings (most cases)
 		this.projectName = utils.escapeString(this.projectName);
 
 		if (this.includeBlog || this.includeGallery || this.includeEmail) {
