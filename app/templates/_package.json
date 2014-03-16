@@ -3,16 +3,16 @@
   "version": "0.0.0",
   "private": true,
   "dependencies": {
-    "keystone": "~0.2.6",
-    "async": "~0.2.9",
-    "underscore": "~1.5.2",
-    "dotenv": "0.0.3"
+	"keystone": "~0.2.8",
+	"async": "~0.2.9",
+	"underscore": "~1.5.2",
+	"dotenv": "0.0.3"
   },
   "engines": {
-    "node": ">=0.10.22",
-    "npm": ">=1.3.14"
+	"node": ">=0.10.22",
+	"npm": ">=1.3.14"
   },
   "scripts": {
-    "start": "keystone.js"
+	"start": "keystone.js"
   }
 }
