@@ -1,47 +1,47 @@
 {
   "name": "generator-keystone",
-  "version": "0.1.8",
+  "version": "0.1.9",
   "description": "A KeystoneJS Project Generator for Yeoman",
   "keywords": [
-    "yeoman-generator",
-    "keystonejs",
-    "keystone",
-    "express",
-    "cms",
-    "mongoose"
+	"yeoman-generator",
+	"keystonejs",
+	"keystone",
+	"express",
+	"cms",
+	"mongoose"
   ],
   "homepage": "https://github.com/JedWatson/generator-keystone",
   "bugs": "https://github.com/JedWatson/generator-keystone/issues",
   "author": {
-    "name": "Jed Watson",
-    "url": "https://github.com/JedWatson"
+	"name": "Jed Watson",
+	"url": "https://github.com/JedWatson"
   },
   "main": "app/index.js",
   "repository": {
-    "type": "git",
-    "url": "git://github.com/JedWatson/generator-keystone.git"
+	"type": "git",
+	"url": "git://github.com/JedWatson/generator-keystone.git"
   },
   "scripts": {
-    "test": "mocha"
+	"test": "mocha"
   },
   "dependencies": {
-    "yeoman-generator": "~0.16.0",
-    "keystone-utils": "0.1.6",
-    "lodash": "~2.4.1"
+	"yeoman-generator": "~0.16.0",
+	"keystone-utils": "0.1.7",
+	"lodash": "~2.4.1"
   },
   "devDependencies": {
-    "mocha": "~1.17.1"
+	"mocha": "~1.17.1"
   },
   "peerDependencies": {
-    "yo": ">=1.0.0"
+	"yo": "~1.1.2"
   },
   "engines": {
-    "node": ">=0.8.0",
-    "npm": ">=1.2.10"
+	"node": ">=0.10.0",
+	"npm": ">=1.2.10"
   },
   "licenses": [
-    {
-      "type": "MIT"
-    }
+	{
+	  "type": "MIT"
+	}
   ]
 }
