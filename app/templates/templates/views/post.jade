@@ -11,7 +11,7 @@ block content
 				header
 					h1= data.post.title
 					h5 Posted 
-						if data.post.publishDate
+						if data.post.publishedDate
 							| on #{data.post._.publishedDate.format('MMMM Do, YYYY')} 
 						if data.post.categories && data.post.categories.length
 							| in 

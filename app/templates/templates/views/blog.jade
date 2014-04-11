@@ -4,7 +4,7 @@ mixin post(post)
 	.post(data-ks-editable=editable(user, { list: 'Post', id: post.id }))
 		h2: a(href='/blog/post/' + post.slug)= post.title
 		p.lead.text-muted Posted 
-			if post.publishDate
+			if post.publishedDate
 				| on #{post._.publishedDate.format('MMMM Do, YYYY')} 
 			if post.categories && post.categories.length
 				| in 
