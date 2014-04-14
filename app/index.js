@@ -196,7 +196,7 @@ KeystoneGenerator.prototype.guideComments = function() {
 			type: 'confirm',
 			name: 'includeGuideComments',
 			message: '------------------------------------------------' +
-				'\n    Finally, would you like to include the extended comments in' +
+				'\n    Finally, would you like to include extra code comments in' +
 				'\n    your project? If you\'re new to Keystone, these may be helpful.',
 			default: true
 		}
