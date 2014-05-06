@@ -100,6 +100,10 @@ KeystoneGenerator.prototype.prompts = function prompts() {
 					'\n    Mandrill accounts are free for up to 12k emails per month.' +
 					'\n    Would you like to include Email configuration in your project?',
 				default: true
+			}, {
+				name: 'includeGrunt',
+				message: 'Would you like to include Gruntfile.js?',
+				default: false
 			}
 		],
 
@@ -226,6 +230,10 @@ KeystoneGenerator.prototype.project = function project() {
 	this.copy('editorconfig', '.editorconfig');
 	this.copy('gitignore', '.gitignore');
 	this.copy('Procfile');
+
+	if(this.includeGrunt) {
+		this.copy('Gruntfile.js');
+	}
 
 };
 
