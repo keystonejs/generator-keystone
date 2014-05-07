@@ -98,13 +98,6 @@ module.exports = function(grunt) {
 		}
 	});
 
-	// only watch templates files
-	grunt.registerTask('watch', function(target) {
-		grunt.task.run([
-			'watch:livereload'
-		]);
-	});
-
 	// load jshint
 	grunt.registerTask('lint', function(target) {
 		grunt.task.run([
