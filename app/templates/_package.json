@@ -3,10 +3,10 @@
   "version": "0.0.0",
   "private": true,
   "dependencies": {
-	"keystone": "~0.2.10",
-	"async": "~0.2.9",
+	"keystone": "~0.2.14",
+	"async": "~0.8.0",
 	"underscore": "~1.6.0",
-	"dotenv": "0.2.5"
+	"dotenv": "0.2.8"
   },
   "engines": {
 	"node": ">=0.10.22",
