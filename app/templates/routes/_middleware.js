@@ -24,18 +24,11 @@
 exports.initLocals = function(req, res, next) {
 	
 	var locals = res.locals;
-	
-	locals.navLinks = [
-		{ label: 'Home',		key: 'home',		href: '/' }<% if (includeBlog) { %>,
-		{ label: 'Blog',		key: 'blog',		href: '/blog' }<% } %><% if (includeGallery) { %>,
-		{ label: 'Gallery',		key: 'gallery',		href: '/gallery' }<% } %><% if (includeEnquiries) { %>,
-		{ label: 'Contact',		key: 'contact',		href: '/contact' }<% } %>
-	];
-	
-	locals.user = req.user;
-	
-	next();
-	
+	keystone.list( 'MenuItem' ).model.find().where( 'enabled', true ).sort( 'weight' ).exec(function( err, results){
+		locals.navLinks = results;
+		locals.user = req.user;
+		next();
+	});	
 };
 
 

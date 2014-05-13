@@ -239,7 +239,7 @@ KeystoneGenerator.prototype.project = function project() {
 
 KeystoneGenerator.prototype.models = function models() {
 
-	var modelFiles = ['users'],
+	var modelFiles = ['users', 'menuItems'],
 		modelIndex = '';
 
 	if (this.includeBlog) {
@@ -327,9 +327,10 @@ KeystoneGenerator.prototype.templates = function templates() {
 
 };
 
-KeystoneGenerator.prototype.udpates = function routes() {
+KeystoneGenerator.prototype.updates = function routes() {
 
-	this.directory('updates');
+	this.copy('updates/0.0.1-admins.js');
+	this.template('updates/_0.0.2-menuitems.js', 'updates/0.0.2-menuitems.js');
 
 };
 

@@ -93,7 +93,8 @@ keystone.set('nav', {
 	<% if (includeBlog) { %>'posts': ['posts', 'post-categories'],
 	<% } if (includeGallery) { %>'galleries': 'galleries',
 	<% } if (includeEnquiries) { %>'enquiries': 'enquiries',
-	<% } %>'users': 'users'
+	<% } %>'menu' : 'menu-items',
+	'users': 'users'
 });
 <% if (includeGuideComments) { %>
 // Start Keystone to connect to your database and initialise the web server
