@@ -6,7 +6,7 @@ var util = require('util'),
 
 
 var KeystoneGenerator = module.exports = function KeystoneGenerator(args, options, config) {
-
+	
 	// Initialise default values
 	this.cloudinaryURL = false;
 	this.mandrillAPI = false;
@@ -93,6 +93,10 @@ KeystoneGenerator.prototype.prompts = function prompts() {
 				message: 'Would you like to include a Contact Form?',
 				default: true
 			}, {
+				name: 'includeGrunt',
+				message: 'Would you like to include the default Gruntfile.js?',
+				default: false
+			}, {
 				type: 'confirm',
 				name: 'includeEmail',
 				message: '------------------------------------------------' +
@@ -100,10 +104,6 @@ KeystoneGenerator.prototype.prompts = function prompts() {
 					'\n    Mandrill accounts are free for up to 12k emails per month.' +
 					'\n    Would you like to include Email configuration in your project?',
 				default: true
-			}, {
-				name: 'includeGrunt',
-				message: 'Would you like to include Gruntfile.js?',
-				default: false
 			}
 		],
 
