@@ -239,20 +239,20 @@ KeystoneGenerator.prototype.project = function project() {
 
 KeystoneGenerator.prototype.models = function models() {
 
-	var modelFiles = ['users'],
+	var modelFiles = ['User'],
 		modelIndex = '';
 
 	if (this.includeBlog) {
-		modelFiles.push('posts');
-		modelFiles.push('postCategories');
+		modelFiles.push('Post');
+		modelFiles.push('PostCategory');
 	}
 
 	if (this.includeGallery) {
-		modelFiles.push('galleries');
+		modelFiles.push('Gallery');
 	}
 
 	if (this.includeEnquiries) {
-		modelFiles.push('enquiries');
+		modelFiles.push('Enquiry');
 	}
 
 	this.mkdir('models');
