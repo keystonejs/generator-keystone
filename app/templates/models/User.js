@@ -2,8 +2,8 @@ var keystone = require('keystone'),
 	Types = keystone.Field.Types;
 
 /**
- * Users
- * =====
+ * User Model
+ * ==========
  */
 
 var User = new keystone.List('User');
