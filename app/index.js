@@ -6,11 +6,11 @@ var util = require('util'),
 
 
 var KeystoneGenerator = module.exports = function KeystoneGenerator(args, options, config) {
-	
+
 	// Initialise default values
 	this.cloudinaryURL = false;
 	this.mandrillAPI = false;
-	
+
 	this.messages = [];
 
 	// Apply the Base Generator
@@ -26,24 +26,24 @@ var KeystoneGenerator = module.exports = function KeystoneGenerator(args, option
 			'\nYour KeystoneJS project is ready to go!' +
 			'\n' +
 			'\nFor help getting started, visit http://keystonejs.com/guide' +
-			
+
 			((this.usingTestMandrillAPI) ?
 				'\n' +
-				'\nWe\'ve included a test Mandrill API Key, which will simulate email' + 
+				'\nWe\'ve included a test Mandrill API Key, which will simulate email' +
 				'\nsending but not actually send emails. Please replace it with your own' +
 				'\nwhen you are ready.'
 				: '') +
-			
+
 			((this.usingDemoCloudinaryAccount) ?
 				'\n' +
 				'\nWe\'ve included a demo Cloudinary Account, which is reset daily.' +
 				'\nPlease configure your own account or use the LocalImage field instead' +
 				'\nbefore sending your site live.'
 				: '') +
-			
+
 			'\n\nTo start your new website, run "node keystone".' +
 			'\n');
-		
+
 	}, this);
 
 	// Install Dependencies when done
@@ -93,9 +93,9 @@ KeystoneGenerator.prototype.prompts = function prompts() {
 				message: 'Would you like to include a Contact Form?',
 				default: true
 			}, {
-				name: 'includeGrunt',
-				message: 'Would you like to include the default Gruntfile.js?',
-				default: false
+				name: 'selectTaskRunner',
+				message: 'Would you like to include gulp or grunt? (enter: gulp / grunt / default: none)',
+				default: ''
 			}, {
 				type: 'confirm',
 				name: 'includeEmail',
@@ -116,14 +116,14 @@ KeystoneGenerator.prototype.prompts = function prompts() {
 		_.each(props, function(val, key) {
 			this[key] = val;
 		}, this);
-		
+
 		// Keep an unescaped version of the project name
 		this._projectName = this.projectName;
 		// ... then escape it for use in strings (most cases)
 		this.projectName = utils.escapeString(this.projectName);
 
 		if (this.includeBlog || this.includeGallery || this.includeEmail) {
-			
+
 			if (this.includeEmail) {
 				prompts.config.push({
 					name: 'mandrillAPI',
@@ -135,17 +135,17 @@ KeystoneGenerator.prototype.prompts = function prompts() {
 						'\n    Your Mandrill API Key:'
 				});
 			}
-			
+
 			if (this.includeBlog || this.includeGallery) {
-				
+
 				var blog_gallery = 'blog and gallery templates';
-				
+
 				if (!this.includeBlog) {
 					blog_gallery = 'gallery template';
 				} else if (!this.includeGallery) {
 					blog_gallery = 'blog template';
 				}
-				
+
 				prompts.config.push({
 					name: 'cloudinaryURL',
 					message: '------------------------------------------------' +
@@ -158,26 +158,26 @@ KeystoneGenerator.prototype.prompts = function prompts() {
 						'\n    ' +
 						'\n    Please enter your Cloudinary URL:'
 				});
-				
+
 			}
 
 		}
-		
+
 		if (!prompts.config.length) {
 			return cb();
 		}
-		
+
 		this.prompt(prompts.config, function(props) {
-			
+
 			_.each(props, function(val, key) {
 				this[key] = val;
 			}, this);
-			
+
 			if (this.includeEmail && !this.mandrillAPI) {
 				this.usingTestMandrillAPI = true;
 				this.mandrillAPI = 'NY8RRKyv1Bure9bdP8-TOQ';
 			}
-			
+
 			if (!this.cloudinaryURL && (this.includeBlog || this.includeGallery)) {
 				this.usingDemoCloudinaryAccount = true;
 				this.cloudinaryURL = 'cloudinary://333779167276662:_8jbSi9FB3sWYrfimcl8VKh34rI@keystone-demo';
@@ -192,9 +192,9 @@ KeystoneGenerator.prototype.prompts = function prompts() {
 };
 
 KeystoneGenerator.prototype.guideComments = function() {
-	
+
 	var cb = this.async();
-	
+
 	this.prompt([
 		{
 			type: 'confirm',
@@ -205,12 +205,12 @@ KeystoneGenerator.prototype.guideComments = function() {
 			default: true
 		}
 	], function(props) {
-		
+
 		this.includeGuideComments = props.includeGuideComments;
 		cb();
-		
+
 	}.bind(this));
-	
+
 };
 
 KeystoneGenerator.prototype.keys = function keys() {
@@ -225,15 +225,22 @@ KeystoneGenerator.prototype.project = function project() {
 
 	this.template('_package.json', 'package.json');
 	this.template('_env', '.env');
+	this.template('_jshintrc', '.jshintrc');
+
 	this.template('_keystone.js', 'keystone.js');
 
 	this.copy('editorconfig', '.editorconfig');
 	this.copy('gitignore', '.gitignore');
 	this.copy('Procfile');
 
-	if(this.includeGrunt) {
+	if(this.selectTaskRunner === 'grunt') {
 		this.copy('Gruntfile.js');
 	}
+
+	if(this.selectTaskRunner === 'gulp'){
+		this.copy('gulpfile.js');
+	}
+
 
 };
 
@@ -261,10 +268,10 @@ KeystoneGenerator.prototype.models = function models() {
 		this.template('models/' + i + '.js');
 		modelIndex += 'require(\'./' + i + '\');\n';
 	}, this);
-	
+
 	// we're now using keystone.import() for loading models, so an index.js
 	// file is no longer required. leaving for reference.
-	
+
 	// this.write('models/index.js', modelIndex);
 
 };
@@ -291,7 +298,7 @@ KeystoneGenerator.prototype.routes = function routes() {
 	if (this.includeGallery) {
 		this.copy('routes/views/gallery.js');
 	}
-	
+
 	if (this.includeEnquiries) {
 		this.copy('routes/views/contact.js');
 	}
