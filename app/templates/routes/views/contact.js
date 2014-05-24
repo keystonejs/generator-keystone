@@ -16,8 +16,8 @@ exports = module.exports = function(req, res) {
 	// On POST requests, add the Enquiry item to the database
 	view.on('post', { action: 'contact' }, function(next) {
 		
-		var application = new Enquiry.model(),
-			updater = application.getUpdateHandler(req);
+		var newEnquiry = new Enquiry.model(),
+			updater = newEnquiry.getUpdateHandler(req);
 		
 		updater.process(req.body, {
 			flashErrors: true,
