@@ -27,7 +27,8 @@
   "dependencies": {
     "yeoman-generator": "~0.16.0",
     "keystone-utils": "~0.1.9",
-    "lodash": "~2.4.1"
+    "lodash": "~2.4.1",
+    "colors": "^0.6.2"
   },
   "devDependencies": {
     "mocha": "~1.18.2"

@@ -2,6 +2,7 @@ var util = require('util'),
 	path = require('path'),
 	_ = require('lodash'),
 	utils = require('keystone-utils'),
+	colors = require('colors'),
 	yeoman = require('yeoman-generator');
 
 
@@ -78,6 +79,10 @@ KeystoneGenerator.prototype.prompts = function prompts() {
 				message: 'What is the name of your project?',
 				default: 'My Site'
 			}, {
+				name: 'selectViewEngine',
+				message: 'Select a View Engine? '+(('[hbs || jade]').yellow),
+			default: 'hbs'
+			}, {
 				type: 'confirm',
 				name: 'includeBlog',
 				message: 'Would you like to include a Blog?',
@@ -94,7 +99,7 @@ KeystoneGenerator.prototype.prompts = function prompts() {
 				default: true
 			}, {
 				name: 'selectTaskRunner',
-				message: 'Would you like to include gulp or grunt? (enter: gulp / grunt / default: none)',
+				message: 'Would you like to include gulp or grunt? '+(('[gulp || grunt]').yellow),
 				default: ''
 			}, {
 				type: 'confirm',
@@ -121,6 +126,14 @@ KeystoneGenerator.prototype.prompts = function prompts() {
 		this._projectName = this.projectName;
 		// ... then escape it for use in strings (most cases)
 		this.projectName = utils.escapeString(this.projectName);
+		if (this.selectViewEngine === 'hbs' || this.selectViewEngine === ''){
+			this.isViewEngineHbs = true;
+			this.isViewEngineJade = false;
+		}
+		if (this.selectViewEngine === 'jade'){
+			this.isViewEngineJade = true;
+			this.isViewEngineHbs = false;
+		}
 
 		if (this.includeBlog || this.includeGallery || this.includeEmail) {
 
@@ -307,28 +320,59 @@ KeystoneGenerator.prototype.routes = function routes() {
 
 KeystoneGenerator.prototype.templates = function templates() {
 
-	this.mkdir('templates');
-	this.mkdir('templates/views');
+	if(this.isViewEngineHbs){
+		this.mkdir('templates');
+		this.mkdir('templates/views');
 
-	this.directory('templates/layouts');
-	this.directory('templates/mixins');
-	this.directory('templates/views/errors');
+		this.directory('templates/default-hbs/views/layouts', 'templates/views/layouts');
+		this.directory('templates/default-hbs/views/helpers', 'templates/views/helpers');
+		this.directory('templates/default-hbs/views/partials', 'templates/views/partials');
 
-	this.copy('templates/views/index.jade');
 
-	if (this.includeBlog) {
-		this.copy('templates/views/blog.jade');
-		this.copy('templates/views/post.jade');
+		this.copy('templates/default-hbs/views/index.hbs', 'templates/views/index.hbs');
+
+		if (this.includeBlog) {
+			this.copy('templates/default-hbs/views/blog.hbs', 'templates/views/blog.hbs');
+			this.copy('templates/default-hbs/views/post.hbs', 'templates/views/post.hbs');
+		}
+
+		if (this.includeGallery) {
+			this.copy('templates/default-hbs/views/gallery.hbs', 'templates/views/gallery.hbs');
+		}
+
+		if (this.includeEnquiries) {
+			this.copy('templates/default-hbs/views/contact.hbs', 'templates/views/contact.hbs');
+			if (this.includeEmail) {
+				this.copy('templates/default-hbs/emails/enquiry-notification.hbs', 'templates/emails/enquiry-notification.hbs');
+			}
+		}
 	}
 
-	if (this.includeGallery) {
-		this.copy('templates/views/gallery.jade');
-	}
+	if(this.isViewEngineJade){
 
-	if (this.includeEnquiries) {
-		this.copy('templates/views/contact.jade');
-		if (this.includeEmail) {
-			this.copy('templates/emails/enquiry-notification.jade');
+		this.mkdir('templates');
+		this.mkdir('templates/views');
+
+		this.directory('templates/default-jade/layouts', 'templates/layouts');
+		this.directory('templates/default-jade/mixins', 'templates/mixins');
+		this.directory('templates/default-jade/views/errors', 'templates/views/errors');
+
+		this.copy('templates/default-jade/views/index.jade', 'templates/views/index.jade');
+
+		if (this.includeBlog) {
+			this.copy('templates/default-jade/views/blog.jade', 'templates/views/blog.jade');
+			this.copy('templates/default-jade/views/post.jade', 'templates/views/post.jade');
+		}
+
+		if (this.includeGallery) {
+			this.copy('templates/default-jade/views/gallery.jade', 'templates/views/gallery.jade');
+		}
+
+		if (this.includeEnquiries) {
+			this.copy('templates/default-jade/views/contact.jade', 'templates/views/contact.jade');
+			if (this.includeEmail) {
+				this.copy('templates/default-jade/emails/enquiry-notification.jade', 'templates/emails/enquiry-notification.jade');
+			}
 		}
 	}
 
