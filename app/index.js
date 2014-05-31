@@ -81,7 +81,7 @@ KeystoneGenerator.prototype.prompts = function prompts() {
 			}, {
 				name: 'selectViewEngine',
 				message: 'Select a View Engine? '+(('[hbs || jade]').yellow),
-			default: 'hbs'
+				default: 'jade'
 			}, {
 				type: 'confirm',
 				name: 'includeBlog',
