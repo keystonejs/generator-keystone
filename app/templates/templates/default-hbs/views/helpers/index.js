@@ -1,12 +1,15 @@
 var moment = require('moment');
 var _ = require('underscore');
 var hbs = require('handlebars');
+var keystone = require('keystone');
 
 // Declare Constants
 var CLOUDINARY_HOST = 'http://res.cloudinary.com';
 
 // Collection of templates to interpolate
 var linkTemplate = _.template('<a href="<%= url %>"><%= text %></a>');
+var scriptTemplate = _.template('<script src="<%= src %>"></script>');
+var cssLinkTemplate = _.template('<link href="<%= href %>" rel="stylesheet">');
 var cloudinaryUrlLimit = _.template(CLOUDINARY_HOST+'/<%= cloudinaryUser %>/image/upload/c_limit,f_auto,h_<%= height %>,w_<%= width %>/<%= publicId %>.jpg');
 
 
@@ -135,6 +138,32 @@ module.exports = function(){
 ///////////
 //   KeystoneJS specific helpers
 ///////////
+		// block rendering for keystone admin css
+		_helpers.isAdminEditorCSS = function(user, options){
+			var output = '';
+			if(typeof(user) !== 'undefined' && user.isAdmin){
+				output = cssLinkTemplate({href:"/keystone/styles/content/editor.min.css"});
+			}
+			return new hbs.SafeString(output);
+		};
+		// block rendering for keystone admin js
+		_helpers.isAdminEditorJS = function(user, options){
+			var output = '';
+			if(typeof(user) !== 'undefined' && user.isAdmin){
+				output = scriptTemplate({src:'/keystone/js/content/editor.js'});
+			}
+			return new hbs.SafeString(output);
+		};
+
+		// Used to generate the link for the admin edit post button
+		_helpers.adminEditableUrl = function(user, options){
+			var rtn = keystone.app.locals.editable(user, {
+				'list':'Post',
+				'id':options
+			});
+			return rtn;
+		};
+
 
 		//
 		// ### CloudinaryUrl Helper
@@ -151,6 +180,7 @@ module.exports = function(){
 		//
 		// Returns an src-string for a cloudinary image
 		//
+
 		_helpers.cloudinaryUrl = function(context, options){
 				// if we dont pass in a context and just kwargs
 				// then `this` refers to our default scope block and kwargs

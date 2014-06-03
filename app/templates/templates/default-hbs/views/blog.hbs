@@ -7,7 +7,7 @@
 			<h4 class="text-weight-normal">Showing {{ data.posts.results.length}} post.</h4>
 			<div class="blog">
 				{{# each data.posts.results}}
-				<div data-ks-editable="" class="post">
+				<div data-ks-editable="{{#if ../user}}{{adminEditableUrl ../../user _id}}{{/if}}" class="post">
 						<h2><a href="{{postUrl slug}}">{{{title}}}</a></h2>
 						<p class="lead text-muted">{{{categoryList categories prefix="Posted in "}}}
 								{{#if author.name.first}}by {{author.name.first}}{{/if}}
