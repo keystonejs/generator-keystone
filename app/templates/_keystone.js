@@ -22,7 +22,6 @@ keystone.init({
 	'less': 'public',
 	'static': 'public',
 	'favicon': 'public/favicon.ico',
-
 	<% if (isViewEngineHbs) { %>
 	'views': 'templates/views',
 	'view engine': '<%= selectViewEngine %>',
@@ -33,16 +32,12 @@ keystone.init({
 		helpers:new require('./templates/views/helpers')(),
 		extname:'.<%= selectViewEngine %>'
 	}).engine,
-	<% } %>
-	<% if (isViewEngineJade) { %>
+	<% } %><% if (isViewEngineJade) { %>
 	'views': 'templates/views',
 	'view engine': 'jade',
-	<% } %>
-
-	<% if (includeEmail) { %>
+	<% } %><% if (includeEmail) { %>
 	'emails': 'templates/emails',
 	<% } %>
-
 	'auto update': true,
 	'session': true,
 	'auth': true,
