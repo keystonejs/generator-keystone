@@ -6,7 +6,7 @@
 
 exports.create = {
 	User: [
-		{ email: 'user@keystonejs.com', password: 'admin', name: { first: 'Admin', last: 'User' }, isAdmin: true }
+		{ email: '<%= adminLogin %>', password: '<%= adminPassword %>', name: { first: 'Admin', last: 'User' }, isAdmin: true }
 	]
 };
 
