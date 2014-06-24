@@ -140,6 +140,7 @@ KeystoneGenerator.prototype.prompts = function prompts() {
 		this.projectName = utils.escapeString(this.projectName);
 		this.adminLogin = utils.escapeString(this.adminLogin);
 		this.adminPassword = utils.escapeString(this.adminPassword);
+		this.userModelPath = utils.keyToPath(this.userModel, true);
 		if (this.selectViewEngine === 'hbs' || this.selectViewEngine === ''){
 			this.isViewEngineHbs = true;
 			this.isViewEngineJade = false;

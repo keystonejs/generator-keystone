@@ -112,7 +112,7 @@ keystone.set('nav', {
 	<% if (includeBlog) { %>'posts': ['posts', 'post-categories'],
 	<% } if (includeGallery) { %>'galleries': 'galleries',
 	<% } if (includeEnquiries) { %>'enquiries': 'enquiries',
-	<% } %>'<%= userModel.toLowerCase() %>s': '<%= userModel.toLowerCase() %>s'
+	<% } %>'<%= userModelPath %>': '<%= userModelPath %>'
 });
 <% if (includeGuideComments) { %>
 // Start Keystone to connect to your database and initialise the web server
