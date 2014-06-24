@@ -83,6 +83,14 @@ KeystoneGenerator.prototype.prompts = function prompts() {
 				message: 'Select a View Engine? '+(('[hbs || jade]').yellow),
 				default: 'jade'
 			}, {
+				name: 'adminLogin',
+				message: 'What\'s the login of first administrator?',
+				default: 'user@keystonejs.com'
+			}, {
+				name: 'adminPassword',
+				message: 'What\'s his password?',
+				default: 'admin'
+			}, {
 				type: 'confirm',
 				name: 'includeBlog',
 				message: 'Would you like to include a Blog?',
@@ -126,6 +134,8 @@ KeystoneGenerator.prototype.prompts = function prompts() {
 		this._projectName = this.projectName;
 		// ... then escape it for use in strings (most cases)
 		this.projectName = utils.escapeString(this.projectName);
+		this.adminLogin = utils.escapeString(this.adminLogin);
+		this.adminPassword = utils.escapeString(this.adminPassword);
 		if (this.selectViewEngine === 'hbs' || this.selectViewEngine === ''){
 			this.isViewEngineHbs = true;
 			this.isViewEngineJade = false;
