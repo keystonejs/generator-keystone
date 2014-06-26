@@ -88,7 +88,7 @@ KeystoneGenerator.prototype.prompts = function prompts() {
 				default: 'user@keystonejs.com'
 			}, {
 				name: 'adminPassword',
-				message: 'What\'s his password?',
+				message: 'What\'s their password?',
 				default: 'admin'
 			}, {
 				type: 'confirm',
