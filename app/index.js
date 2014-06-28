@@ -91,6 +91,10 @@ KeystoneGenerator.prototype.prompts = function prompts() {
 				message: 'What\'s their password?',
 				default: 'admin'
 			}, {
+				name: 'userModel',
+				message: 'What is the name of user model?',
+				default: 'User'
+			}, {
 				type: 'confirm',
 				name: 'includeBlog',
 				message: 'Would you like to include a Blog?',
@@ -136,6 +140,7 @@ KeystoneGenerator.prototype.prompts = function prompts() {
 		this.projectName = utils.escapeString(this.projectName);
 		this.adminLogin = utils.escapeString(this.adminLogin);
 		this.adminPassword = utils.escapeString(this.adminPassword);
+		this.userModelPath = utils.keyToPath(this.userModel, true);
 		if (this.selectViewEngine === 'hbs' || this.selectViewEngine === ''){
 			this.isViewEngineHbs = true;
 			this.isViewEngineJade = false;
@@ -269,7 +274,7 @@ KeystoneGenerator.prototype.project = function project() {
 
 KeystoneGenerator.prototype.models = function models() {
 
-	var modelFiles = ['User'],
+	var modelFiles = [],
 		modelIndex = '';
 
 	if (this.includeBlog) {
@@ -286,6 +291,8 @@ KeystoneGenerator.prototype.models = function models() {
 	}
 
 	this.mkdir('models');
+
+	this.template('models/_user.js', 'models/'+this.userModel+'.js');
 
 	modelFiles.forEach(function(i) {
 		this.template('models/' + i + '.js');

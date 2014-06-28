@@ -5,7 +5,7 @@
  */
 
 exports.create = {
-	User: [
+	<%= userModel %>: [
 		{ email: '<%= adminLogin %>', password: '<%= adminPassword %>', name: { first: 'Admin', last: 'User' }, isAdmin: true }
 	]
 };
