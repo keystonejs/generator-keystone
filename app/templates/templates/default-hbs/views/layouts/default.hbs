@@ -7,19 +7,18 @@
 		<title>my site</title>
 		<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
 		<link href="/styles/site.min.css" rel="stylesheet">
-
+		
 		{{!-- This file provides the default styling for the KeystoneJS Content Editor 
 			- only renders when user is logged in and admin--}}
 		{{{isAdminEditorCSS user}}}
-
-
+		
 		{{!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries
 		//- Safely remove this block if you are not targeting IE8 --}}
 		<!--[if lt IE 9]>
 			<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js" />
 			<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js" />
 		<![endif]-->
-
+		
 	</head>
 	<body>
 		<div id="header">
@@ -28,7 +27,10 @@
 					<div class="container-fluid">
 						<div class="navbar-header">
 							<button type="button" data-toggle="collapse" data-target=".navbar-collapse" class="navbar-toggle">
-									<span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button><a href="/" class="navbar-brand">my site</a>
+								<span class="sr-only">Toggle navigation</span>
+								<span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
+							</button>
+							<a href="/" class="navbar-brand"><%= _projectName %></a>
 						</div>
 						<div class="collapse navbar-collapse">
 							<ul class="nav navbar-nav navbar-left">
@@ -51,46 +53,36 @@
 			</div>
 		</div>
 		<div id="body">
-
-
-		<!-- Flash messages allow you to display once-off status messages to users, e.g. form
-								validation errors, success messages, etc-->
-				{{#if messages}}
-				<div id="flash-messages" class="container">
-
-						{{#if messages.info}}
-						<div class="alert alert-info">
-								{{{flashMessages messages.info}}}
-						</div>
-						{{/if}}
-
-
-						{{#if messages.success}}
-						<div class="alert alert-success">
-								{{{flashMessages messages.success}}}
-						</div>
-						{{/if}}
-
-						{{#if messages.warning}}
-						<div class="alert alert-warning">
-								{{{flashMessages messages.warning}}}
-						</div>
-						{{/if}}
-
-
-						{{#if messages.error}}
-						<div class="alert alert-danger">
-								{{{flashMessages messages.error}}}
-						</div>
-						{{/if}}
-
-
+			<!--
+				Flash messages allow you to display once-off status messages to users, e.g. form
+				validation errors, success messages, etc
+			-->
+			{{#if messages}}
+			<div id="flash-messages" class="container">
+				{{#if messages.info}}
+				<div class="alert alert-info">
+						{{{flashMessages messages.info}}}
 				</div>
 				{{/if}}
-
-				<!-- The content block should contain the body of your template's content-->
-				{{{body}}}
-
+				{{#if messages.success}}
+				<div class="alert alert-success">
+						{{{flashMessages messages.success}}}
+				</div>
+				{{/if}}
+				{{#if messages.warning}}
+				<div class="alert alert-warning">
+						{{{flashMessages messages.warning}}}
+				</div>
+				{{/if}}
+				{{#if messages.error}}
+				<div class="alert alert-danger">
+						{{{flashMessages messages.error}}}
+				</div>
+				{{/if}}
+			</div>
+			{{/if}}
+			<!-- The content block should contain the body of your template's content-->
+			{{{body}}}
 		</div>
 		<div class="container">
 			<div id="footer">
