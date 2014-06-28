@@ -3,13 +3,13 @@
   "version": "0.0.0",
   "private": true,
   "dependencies": {
-    "keystone": "~0.2.19",
+    "keystone": "~0.2.21",
     "async": "~0.9.0",
     "underscore": "~1.6.0",<% if (viewEngine === 'hbs') { %>
-    "express3-handlebars": "^0.5.0",
-    "moment": "^2.6.0",
+    "express3-handlebars": "~0.5.0",
+    "moment": "~2.7.0",
     "handlebars": "^2.0.0-alpha.2",<% } %>
-    "dotenv": "0.2.8"
+    "dotenv": "0.4.0"
   },<% if (taskRunner === 'grunt') { %>
   "devDependencies": {
     "grunt": "~0.4.4",
