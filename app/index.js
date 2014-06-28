@@ -83,14 +83,6 @@ KeystoneGenerator.prototype.prompts = function prompts() {
 				message: 'Would you like to use Jade or Handlebars for templates?' + (('[jade || hbs]').blue),
 				default: 'jade'
 			}, {
-				name: 'adminLogin',
-				message: 'What\'s the login of first administrator?',
-				default: 'user@keystonejs.com'
-			}, {
-				name: 'adminPassword',
-				message: 'What\'s their password?',
-				default: 'admin'
-			}, {
 				type: 'confirm',
 				name: 'includeBlog',
 				message: 'Would you like to include a Blog?',
@@ -105,6 +97,14 @@ KeystoneGenerator.prototype.prompts = function prompts() {
 				name: 'includeEnquiries',
 				message: 'Would you like to include a Contact Form?',
 				default: true
+			}, {
+				name: 'adminLogin',
+				message: 'What\'s the login of first administrator?',
+				default: 'user@keystonejs.com'
+			}, {
+				name: 'adminPassword',
+				message: 'What\'s their password?',
+				default: 'admin'
 			}, {
 				name: 'taskRunner',
 				message: 'Would you like to include gulp or grunt? ' + (('[gulp || grunt]').blue),
