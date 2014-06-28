@@ -99,11 +99,11 @@ KeystoneGenerator.prototype.prompts = function prompts() {
 				default: true
 			}, {
 				name: 'adminLogin',
-				message: 'What\'s the login of first administrator?',
+				message: 'Enter an email address for the first Admin user:',
 				default: 'user@keystonejs.com'
 			}, {
 				name: 'adminPassword',
-				message: 'What\'s their password?',
+				message: 'Enter a password for the first Admin user:',
 				default: 'admin'
 			}, {
 				name: 'taskRunner',
