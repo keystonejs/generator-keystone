@@ -14,10 +14,10 @@ block content
 					input(type='hidden', name='action', value='contact')
 					.form-group(class=validationErrors.name ? 'has-error' : null)
 						label Name
-						input(type='text', name='name.full', value=formData['name.full'], required).form-control
+						input(type='text', name='name.full', value=formData['name.full']).form-control
 					.form-group(class=validationErrors.email ? 'has-error' : null)
 						label Email
-						input(type='email', name='email', value=formData.email, required).form-control
+						input(type='email', name='email', value=formData.email).form-control
 					.form-group
 						label Phone
 						input(type='text', name='phone', value=formData.phone, placeholder='(optional)').form-control
