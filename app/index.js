@@ -80,7 +80,7 @@ KeystoneGenerator.prototype.prompts = function prompts() {
 				default: 'My Site'
 			}, {
 				name: 'viewEngine',
-				message: 'Would you like to use Jade or Handlebars for templates?' + (('[jade || hbs]').blue),
+				message: 'Would you like to use Jade or Handlebars for templates? ' + (('[jade | hbs]').grey),
 				default: 'jade'
 			}, {
 				type: 'confirm',
@@ -107,8 +107,7 @@ KeystoneGenerator.prototype.prompts = function prompts() {
 				default: 'admin'
 			}, {
 				name: 'taskRunner',
-				message: 'Would you like to include gulp or grunt? ' + (('[gulp || grunt]').blue),
-				default: ''
+				message: 'Would you like to include gulp or grunt? ' + (('[gulp | grunt]').grey),
 			}, {
 				type: 'confirm',
 				name: 'includeEmail',
@@ -138,13 +137,13 @@ KeystoneGenerator.prototype.prompts = function prompts() {
 		this.adminPassword = utils.escapeString(this.adminPassword);
 		
 		
-		if (_.contains(['handlebars', 'hbs'], this.viewEngine.toLowerCase().trim()) {
+		if (_.contains(['handlebars', 'hbs'], this.viewEngine.toLowerCase().trim())) {
 			this.viewEngine = 'hbs';
 		} else {
 			this.viewEngine = 'jade';
 		}
 		
-		this.taskRunner = this.taskRunner.toLowerCase().trim();
+		this.taskRunner = (this.taskRunner || '').toLowerCase().trim();
 
 		if (this.includeBlog || this.includeGallery || this.includeEmail) {
 
@@ -154,6 +153,7 @@ KeystoneGenerator.prototype.prompts = function prompts() {
 					message: '------------------------------------------------' +
 						'\n    Please enter your Mandrill API Key (optional).' +
 						'\n    See http://keystonejs.com/guide/config/#mandrill for more info.' +
+						'\n    ' +
 						'\n    You can skip this for now (we\'ll include a test key instead)' +
 						'\n    ' +
 						'\n    Your Mandrill API Key:'
