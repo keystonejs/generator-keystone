@@ -25,13 +25,13 @@
     "test": "mocha"
   },
   "dependencies": {
-    "yeoman-generator": "~0.16.0",
+    "yeoman-generator": "~0.17.0",
     "keystone-utils": "~0.1.9",
     "lodash": "~2.4.1",
     "colors": "^0.6.2"
   },
   "devDependencies": {
-    "mocha": "~1.18.2"
+    "mocha": "~1.20.1"
   },
   "peerDependencies": {
     "yo": "~1.2.0"
