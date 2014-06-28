@@ -79,8 +79,8 @@ KeystoneGenerator.prototype.prompts = function prompts() {
 				message: 'What is the name of your project?',
 				default: 'My Site'
 			}, {
-				name: 'selectViewEngine',
-				message: 'Select a View Engine? '+(('[hbs || jade]').yellow),
+				name: 'viewEngine',
+				message: 'Would you like to use Jade or Handlebars for templates?' + (('[jade || hbs]').blue),
 				default: 'jade'
 			}, {
 				name: 'adminLogin',
@@ -107,7 +107,7 @@ KeystoneGenerator.prototype.prompts = function prompts() {
 				default: true
 			}, {
 				name: 'selectTaskRunner',
-				message: 'Would you like to include gulp or grunt? '+(('[gulp || grunt]').yellow),
+				message: 'Would you like to include gulp or grunt? ' + (('[gulp || grunt]').blue),
 				default: ''
 			}, {
 				type: 'confirm',
@@ -136,13 +136,12 @@ KeystoneGenerator.prototype.prompts = function prompts() {
 		this.projectName = utils.escapeString(this.projectName);
 		this.adminLogin = utils.escapeString(this.adminLogin);
 		this.adminPassword = utils.escapeString(this.adminPassword);
-		if (this.selectViewEngine === 'hbs' || this.selectViewEngine === ''){
-			this.isViewEngineHbs = true;
-			this.isViewEngineJade = false;
-		}
-		if (this.selectViewEngine === 'jade'){
-			this.isViewEngineJade = true;
-			this.isViewEngineHbs = false;
+		
+		
+		if (_.contains(['handlebars', 'hbs'], this.viewEngine.toLowerCase().trim()) {
+			this.viewEngine = 'hbs';
+		} else {
+			this.viewEngine = 'jade';
 		}
 
 		if (this.includeBlog || this.includeGallery || this.includeEmail) {
@@ -330,7 +329,10 @@ KeystoneGenerator.prototype.routes = function routes() {
 
 KeystoneGenerator.prototype.templates = function templates() {
 
-	if(this.isViewEngineHbs){
+	if (this.viewEngine === 'hbs') {
+		
+		// Copy Handlebars Templates
+		
 		this.mkdir('templates');
 		this.mkdir('templates/views');
 
@@ -356,10 +358,11 @@ KeystoneGenerator.prototype.templates = function templates() {
 				this.copy('templates/default-hbs/emails/enquiry-notification.hbs', 'templates/emails/enquiry-notification.hbs');
 			}
 		}
-	}
-
-	if(this.isViewEngineJade){
-
+		
+	} else {
+		
+		// Copy Jade Templates
+		
 		this.mkdir('templates');
 		this.mkdir('templates/views');
 
