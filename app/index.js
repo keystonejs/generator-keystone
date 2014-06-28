@@ -399,7 +399,7 @@ KeystoneGenerator.prototype.templates = function templates() {
 
 };
 
-KeystoneGenerator.prototype.udpates = function routes() {
+KeystoneGenerator.prototype.updates = function routes() {
 
 	this.directory('updates');
 
