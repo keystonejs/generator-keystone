@@ -98,6 +98,10 @@ KeystoneGenerator.prototype.prompts = function prompts() {
 				message: 'Would you like to include a Contact Form?',
 				default: true
 			}, {
+				name: 'userModel',
+				message: 'What would you like to call the User model?',
+				default: 'User'
+			}, {
 				name: 'adminLogin',
 				message: 'Enter an email address for the first Admin user:',
 				default: 'user@keystonejs.com'
@@ -136,13 +140,13 @@ KeystoneGenerator.prototype.prompts = function prompts() {
 		this.adminLogin = utils.escapeString(this.adminLogin);
 		this.adminPassword = utils.escapeString(this.adminPassword);
 		
-		
-		if (_.contains(['handlebars', 'hbs'], this.viewEngine.toLowerCase().trim())) {
+		if (_.contains(['handlebars', 'hbs', 'h'], this.viewEngine.toLowerCase().trim())) {
 			this.viewEngine = 'hbs';
 		} else {
 			this.viewEngine = 'jade';
 		}
 		
+		this.userModelPath = utils.keyToPath(this.userModel, true);
 		this.taskRunner = (this.taskRunner || '').toLowerCase().trim();
 
 		if (this.includeBlog || this.includeGallery || this.includeEmail) {
@@ -270,7 +274,7 @@ KeystoneGenerator.prototype.project = function project() {
 
 KeystoneGenerator.prototype.models = function models() {
 
-	var modelFiles = ['User'],
+	var modelFiles = [],
 		modelIndex = '';
 
 	if (this.includeBlog) {
@@ -287,6 +291,8 @@ KeystoneGenerator.prototype.models = function models() {
 	}
 
 	this.mkdir('models');
+
+	this.template('models/_user.js', 'models/'+this.userModel+'.js');
 
 	modelFiles.forEach(function(i) {
 		this.template('models/' + i + '.js');
