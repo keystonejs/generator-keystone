@@ -5,7 +5,6 @@ require('dotenv').load();
 // Require keystone
 var keystone = require('keystone')<% if (viewEngine == 'hbs') { %>,
 	handlebars = require('express3-handlebars')<% } %>;
-
 <% if (includeGuideComments) { %>
 // Initialise Keystone with your project's configuration.
 // See http://keystonejs.com/guide/config for available options
