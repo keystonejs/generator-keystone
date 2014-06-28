@@ -1,3 +1,2 @@
 <% if (cloudinaryURL) { %>CLOUDINARY_URL=<%= cloudinaryURL %>
-<% } if (mandrillAPI) { %>MANDRILL_API_KEY=<%= mandrillAPI %>
-<% } %>
+<% } if (mandrillAPI) { %>MANDRILL_API_KEY=<%= mandrillAPI %><% } %>
