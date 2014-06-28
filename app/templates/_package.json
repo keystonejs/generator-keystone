@@ -10,7 +10,7 @@
     "moment": "^2.6.0",
     "handlebars": "^2.0.0-alpha.2",<% } %>
     "dotenv": "0.2.8"
-  },<% if (selectTaskRunner === 'grunt') { %>
+  },<% if (taskRunner === 'grunt') { %>
   "devDependencies": {
     "grunt": "~0.4.4",
     "grunt-express-server": "~0.4.17",
@@ -23,7 +23,7 @@
     "grunt-concurrent": "~0.5.0",
     "grunt-nodemon": "~0.2.1",
     "open": "0.0.5"
-  },<% } else if (selectTaskRunner === 'gulp') { %>
+  },<% } else if (taskRunner === 'gulp') { %>
   "devDependencies": {
     "gulp": "~3.6.2",
     "gulp-jshint": "~1.6.1",

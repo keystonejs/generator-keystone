@@ -106,7 +106,7 @@ KeystoneGenerator.prototype.prompts = function prompts() {
 				message: 'Would you like to include a Contact Form?',
 				default: true
 			}, {
-				name: 'selectTaskRunner',
+				name: 'taskRunner',
 				message: 'Would you like to include gulp or grunt? ' + (('[gulp || grunt]').blue),
 				default: ''
 			}, {
@@ -255,11 +255,11 @@ KeystoneGenerator.prototype.project = function project() {
 	this.copy('gitignore', '.gitignore');
 	this.copy('Procfile');
 
-	if(this.selectTaskRunner === 'grunt') {
+	if(this.taskRunner === 'grunt') {
 		this.copy('Gruntfile.js');
 	}
 
-	if(this.selectTaskRunner === 'gulp'){
+	if(this.taskRunner === 'gulp'){
 		this.copy('gulpfile.js');
 	}
 
