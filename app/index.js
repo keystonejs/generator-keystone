@@ -143,6 +143,8 @@ KeystoneGenerator.prototype.prompts = function prompts() {
 		} else {
 			this.viewEngine = 'jade';
 		}
+		
+		this.taskRunner = this.taskRunner.toLowerCase().trim();
 
 		if (this.includeBlog || this.includeGallery || this.includeEmail) {
 
