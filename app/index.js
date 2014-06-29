@@ -291,7 +291,7 @@ KeystoneGenerator.prototype.models = function models() {
 	
 	this.mkdir('models');
 	
-	this.template('models/_user.js', 'models/'+this.userModel+'.js');
+	this.template('models/_User.js', 'models/'+this.userModel+'.js');
 	
 	modelFiles.forEach(function(i) {
 		this.template('models/' + i + '.js');
