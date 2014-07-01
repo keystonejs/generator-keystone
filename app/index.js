@@ -140,15 +140,21 @@ KeystoneGenerator.prototype.prompts = function prompts() {
 		this.adminLogin = utils.escapeString(this.adminLogin);
 		this.adminPassword = utils.escapeString(this.adminPassword);
 		
+		// Clean the viewEngine selection
 		if (_.contains(['handlebars', 'hbs', 'h'], this.viewEngine.toLowerCase().trim())) {
 			this.viewEngine = 'hbs';
 		} else {
 			this.viewEngine = 'jade';
 		}
 		
+		// Clean the userModel name
+		this.userModel = utils.camelcase(this.userModel, false);
 		this.userModelPath = utils.keyToPath(this.userModel, true);
+		
+		// Clean the taskRunner selection
 		this.taskRunner = (this.taskRunner || '').toLowerCase().trim();
 		
+		// Additional prompts may be required, based on selections
 		if (this.includeBlog || this.includeGallery || this.includeEmail) {
 			
 			if (this.includeEmail) {
