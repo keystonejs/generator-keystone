@@ -4,7 +4,7 @@ require('dotenv').load();
 
 // Require keystone
 var keystone = require('keystone')<% if (viewEngine == 'hbs') { %>,
-	handlebars = require('express3-handlebars')<% else if (viewEngine == 'swig') { %>,
+	handlebars = require('express3-handlebars')<% } else if (viewEngine == 'swig') { %>,
 	swig = require('swig')
 	<% } %>;
 <% if (includeGuideComments) { %>
