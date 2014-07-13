@@ -376,30 +376,30 @@ KeystoneGenerator.prototype.templates = function templates() {
 		
 	} else {
 		
-		// Copy Jade Templates
+		// Copy Jade/Swig Templates
 		
 		this.mkdir('templates');
 		this.mkdir('templates/views');
 		
-		this.directory('templates/default-jade/layouts', 'templates/layouts');
-		this.directory('templates/default-jade/mixins', 'templates/mixins');
-		this.directory('templates/default-jade/views/errors', 'templates/views/errors');
+		this.directory('templates/default-' + this.viewEngine + '/layouts', 'templates/layouts');
+		this.directory('templates/default-' + this.viewEngine + '/mixins', 'templates/mixins');
+		this.directory('templates/default-' + this.viewEngine + '/views/errors', 'templates/views/errors');
 		
-		this.copy('templates/default-jade/views/index.jade', 'templates/views/index.jade');
+		this.copy('templates/default-' + this.viewEngine + '/views/index.' + this.viewEngine, 'templates/views/index.' + this.viewEngine);
 		
 		if (this.includeBlog) {
-			this.copy('templates/default-jade/views/blog.jade', 'templates/views/blog.jade');
-			this.copy('templates/default-jade/views/post.jade', 'templates/views/post.jade');
+			this.copy('templates/default-' + this.viewEngine + '/views/blog.' + this.viewEngine, 'templates/views/blog.' + this.viewEngine);
+			this.copy('templates/default-' + this.viewEngine + '/views/post.' + this.viewEngine, 'templates/views/post.' + this.viewEngine);
 		}
 		
 		if (this.includeGallery) {
-			this.copy('templates/default-jade/views/gallery.jade', 'templates/views/gallery.jade');
+			this.copy('templates/default-' + this.viewEngine + '/views/gallery.' + this.viewEngine, 'templates/views/gallery.' + this.viewEngine);
 		}
 		
 		if (this.includeEnquiries) {
-			this.copy('templates/default-jade/views/contact.jade', 'templates/views/contact.jade');
+			this.copy('templates/default-' + this.viewEngine + '/views/contact.' + this.viewEngine, 'templates/views/contact.' + this.viewEngine);
 			if (this.includeEmail) {
-				this.copy('templates/default-jade/emails/enquiry-notification.jade', 'templates/emails/enquiry-notification.jade');
+				this.copy('templates/default-' + this.viewEngine + '/emails/enquiry-notification.' + this.viewEngine, 'templates/emails/enquiry-notification.' + this.viewEngine);
 			}
 		}
 	}
