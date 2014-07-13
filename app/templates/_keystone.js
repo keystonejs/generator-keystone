@@ -4,7 +4,9 @@ require('dotenv').load();
 
 // Require keystone
 var keystone = require('keystone')<% if (viewEngine == 'hbs') { %>,
-	handlebars = require('express3-handlebars')<% } %>;
+	handlebars = require('express3-handlebars')<% else if (viewEngine == 'swig') { %>,
+	swig = require('swig')
+	<% } %>;
 <% if (includeGuideComments) { %>
 // Initialise Keystone with your project's configuration.
 // See http://keystonejs.com/guide/config for available options
@@ -28,7 +30,10 @@ keystone.init({
 		helpers: new require('./templates/views/helpers')(),
 		extname: '.<%= viewEngine %>'
 	}).engine,
-	<% } %><% if (includeEmail) { %>
+	<% } else if ( viewEngine === 'swig' ) { %>
+	'custom engine': swig.renderFile
+	<% } %>
+	<% if (includeEmail) { %>
 	'emails': 'templates/emails',
 	<% } %>
 	'auto update': true,

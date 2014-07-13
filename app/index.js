@@ -80,7 +80,7 @@ KeystoneGenerator.prototype.prompts = function prompts() {
 				default: 'My Site'
 			}, {
 				name: 'viewEngine',
-				message: 'Would you like to use Jade or Handlebars for templates? ' + (('[jade | hbs]').grey),
+				message: 'Would you like to use Jade or Handlebars for templates? ' + (('[jade | hbs | swig]').grey),
 				default: 'jade'
 			}, {
 				type: 'confirm',
@@ -143,7 +143,9 @@ KeystoneGenerator.prototype.prompts = function prompts() {
 		// Clean the viewEngine selection
 		if (_.contains(['handlebars', 'hbs', 'h'], this.viewEngine.toLowerCase().trim())) {
 			this.viewEngine = 'hbs';
-		} else {
+		} else if (_.contains(['swig', 's'], this.viewEngine.toLowerCase().trim())) {
+            this.viewEngine = 'swig';
+        } else {
 			this.viewEngine = 'jade';
 		}
 		
