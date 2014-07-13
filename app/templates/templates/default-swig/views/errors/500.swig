@@ -1,4 +1,4 @@
-{% extends '../../layouts/default.swig' %}
+{% extends "../../layouts/default.swig" %}
 
 {% block content %}
     <div class="container">

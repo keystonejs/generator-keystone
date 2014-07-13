@@ -1,4 +1,4 @@
-{% import '../mixins/flash-messages.swig' as FM %}
+{% import "../mixins/flash-messages.swig" as FM %}
 
 <!doctype html>
 <html>
@@ -37,23 +37,23 @@
 		{# HEADER #}
 		<div id="header" class="container">
 
-			{# Customise your site's navigation by changing the navLinks Array in ./routes/middleware.js
+			{# Customise your site"s navigation by changing the navLinks Array in ./routes/middleware.js
 	           ... or completely change this header to suit your design. #}
 			<div role="navigation" class="navbar.navbar-default">
 				<div class="container-fluid">
 					<div class="navbar-header">
-						<button class="navbar-toggle" type='button' data-toggle='collapse' data-target='.navbar-collapse'>
+						<button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".navbar-collapse">
 							<span class="sr-only">Toggle navigation</span>
 							<span class="icon-bar"></span>
 							<span class="icon-bar"></span>
 							<span class="icon-bar"></span>
                         </button>
-						<a class="navbar-brand" href='/'>{{ _projectName }}</a>
+						<a class="navbar-brand" href="/">{{ _projectName }}</a>
                     </div>
 					<div class="collapse navbar-collapse">
 						<ul class="nav navbar-nav navbar-left">
 							{% for link in navLinks %}
-                                {% set section = ( link.key ? 'active' : '' ) %}
+                                {% set section = ( link.key ? "active" : "" ) %}
 								<li class="{{ section }}">
                                     <a href="{{ link.href }}">{{ link.label }}</a>
                                 </li>
@@ -62,11 +62,11 @@
 						<ul class="nav navbar-nav navbar-right">
 							{% if user %}
 								{% if user.canAccessKeystone %}
-								<li><a href='/keystone'>Open Keystone</a></li>
+								<li><a href="/keystone">Open Keystone</a></li>
                                 {% endif %}
-								<li><a href='/keystone/signout'>Sign Out</a></li>
+								<li><a href="/keystone/signout">Sign Out</a></li>
 							{% else %}
-								<li><a href='/keystone/signin'>Sign In</a></li>
+								<li><a href="/keystone/signin">Sign In</a></li>
                             {% endif %}
                         </ul>
                     </div>
@@ -87,14 +87,14 @@
 	           validation errors, success messages, etc. #}
 			{{ FM.flashMessages(messages) }}
 
-			{# The content block should contain the body of your template's content #}
+			{# The content block should contain the body of your template"s content #}
 			{% block content %}{% endblock %}
         </div>
 
 
 		{# FOOTER #}
 		<div id="footer" class="container">
-			{# You don't _have_ to include a link saying your site is powered by KeystoneJS, but we appreciate it! #}
+			{# You don"t _have_ to include a link saying your site is powered by KeystoneJS, but we appreciate it! #}
 			<p>Powered by <a href="http://keystonejs.com" target="_blank">KeystoneJS</a>.</p>
         </div>
 
@@ -104,16 +104,16 @@
 		{# jQuery 1.11.1 is included by default, and required by both Bootstrap
             and the KeystoneJS Content Editor. If you are not targeting IE8,
             you can upgrade to 2.1.1 (also bundled) for better performance. #}
-		<script src='/js/lib/jquery/jquery-1.11.1.min.js'></script>
+		<script src="/js/lib/jquery/jquery-1.11.1.min.js"></script>
 
 		{# Customise which Bootstrap javascript files are served by including
             them specifically here, instead of bootstrap-3.2.0.min.js #}
-        <script src='/js/lib/bootstrap/bootstrap-3.2.0.min.js'></script>
+        <script src="/js/lib/bootstrap/bootstrap-3.2.0.min.js"></script>
 
 		{# The KeystoneJS Content Editor provides support for ks-editable data attributes,
             which generate links to edit content for users who can access Keystone #}
 		{% if user and user.canAccessKeystone %}
-			<script src='/keystone/js/content/editor.js'></script>
+			<script src="/keystone/js/content/editor.js"></script>
         {% endif %}
 
 		{# Add scripts that are globally required by your site here. #}

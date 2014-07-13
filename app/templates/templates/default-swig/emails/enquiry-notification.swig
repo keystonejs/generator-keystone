@@ -1,4 +1,4 @@
-{% extends '../layouts/default.swig' %}
+{% extends "../layouts/default.swig" %}
 
 {% block body-contents %}
     <h1>Hi {{ first_name }}</h1>,
@@ -6,10 +6,10 @@
 	{% if enquiry.name.full or enquiry.email %}
 	<p class="text-larger">From
 		{% if enquiry.name.full %}
-			<br><strong>{{ enquiry.name.full }}</strong>
+			<strong>{{ enquiry.name.full }}</strong>
         {% endif %}
 		{% if enquiry.name.full and enquiry.email %}
-			<br>({% if enquiry.email %}<a href="mailto:{{ enquiry.email }}">{{ enquiry.email }}</a>{% endif %})
+			({% if enquiry.email %}<a href="mailto:{{ enquiry.email }}">{{ enquiry.email }}</a>{% endif %})
         {% endif %}
     </p>
     {% endif %}
