@@ -80,7 +80,7 @@ KeystoneGenerator.prototype.prompts = function prompts() {
 				default: 'My Site'
 			}, {
 				name: 'viewEngine',
-				message: 'Would you like to use Jade or Handlebars for templates? ' + (('[jade | hbs | swig]').grey),
+				message: 'Would you like to use Jade, Swig or Handlebars for templates? ' + (('[jade | swig | hbs]').grey),
 				default: 'jade'
 			}, {
 				type: 'confirm',
