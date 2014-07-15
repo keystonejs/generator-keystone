@@ -18,7 +18,7 @@
                 			{% if data.post.publishedDate %}
                 				on {{ data.post._.publishedDate.format("MMMM Do, YYYY") }}
                             {% endif %}
-                			{% if data.post.categories && data.post.categories.length %}
+                			{% if data.post.categories and data.post.categories.length %}
                 				in
                 				{% for cat in data.post.categories %}
                 					<a href="/blog/{{ cat.key }}">{{ cat.name }}</a>
