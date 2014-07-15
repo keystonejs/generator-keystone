@@ -31,7 +31,7 @@ keystone.init({
 		extname: '.<%= viewEngine %>'
 	}).engine,
 	<% } else if ( viewEngine === 'swig' ) { %>
-	'custom engine': swig.renderFile
+	'custom engine': swig.renderFile,
 	<% } %>
 	<% if (includeEmail) { %>
 	'emails': 'templates/emails',

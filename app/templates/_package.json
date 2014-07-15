@@ -6,10 +6,10 @@
     "keystone": "~0.2.22",
     "async": "~0.9.0",
     "underscore": "~1.6.0",<% if (viewEngine === 'hbs') { %>
-    "express3-handlebars": "~0.5.0",
     "moment": "~2.7.0",
-    "handlebars": "^2.0.0-alpha.2",<% } else if (viewEngine === 'hbs') %>
-    "swig" : "1.4.*" <% } %>
+    "express3-handlebars": "~0.5.0",
+    "handlebars": "^2.0.0-alpha.2",<% } else if (viewEngine === 'swig') { %>
+    "swig": "~1.4.1", <% } %>
     "dotenv": "0.4.0"
   },<% if (taskRunner === 'grunt') { %>
   "devDependencies": {
