@@ -4,6 +4,9 @@
 <div class="container">
 	<div class="row">
 		<div class="col-sm-8 col-md-6">
+			{{#if enquirySubmitted}}
+			<h3>Thanks for getting in touch.</h3>
+			{{else}}
 			<form method="post">
 				<input type="hidden" name="action" value="contact">
 				<div class="form-group {{#if validationErrors.name}}has-error{{/if}}">
@@ -35,6 +38,7 @@
 					<button type="submit" class="btn btn-primary">Send</button>
 				</div>
 			</form>
+			{{/if}}
 		</div>
 	</div>
 </div>
