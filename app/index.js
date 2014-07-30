@@ -377,7 +377,7 @@ KeystoneGenerator.prototype.templates = function templates() {
 		}
 
 	} else if (this.viewEngine === 'nunjucks') {
-
+		
 		// Copy Nunjucks Templates
 
 		this.mkdir('templates');
