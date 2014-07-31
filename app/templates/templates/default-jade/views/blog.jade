@@ -50,16 +50,16 @@ block content
 					if data.posts.totalPages > 1
 						ul.pagination
 							if data.posts.previous
-								li: a(href='?page=' + data.posts.previous): span.entypo.entypo-chevron-thin-left
+								li: a(href='?page=' + data.posts.previous): span.glyphicon.glyphicon-chevron-left
 							else
-								li.disabled: a(href='?page=' + 1): span.entypo.entypo-chevron-thin-left
+								li.disabled: a(href='?page=' + 1): span.glyphicon.glyphicon-chevron-left
 							each p, i in data.posts.pages
 								li(class=data.posts.currentPage == p ? 'active' : null)
 									a(href='?page=' + (p == '...' ? (i ? data.posts.totalPages : 1) : p ))= p
 							if data.posts.next
-								li: a(href='?page=' + data.posts.next): span.entypo.entypo-chevron-thin-right
+								li: a(href='?page=' + data.posts.next): span.glyphicon.glyphicon-chevron-right
 							else
-								li.disabled: a(href='?page=' + data.posts.totalPages): span.entypo.entypo-chevron-thin-right
+								li.disabled: a(href='?page=' + data.posts.totalPages): span.entypo.glyphicon.glyphicon-chevron-right
 				else
 					if data.category
 						h3.text-muted There are no posts in the category #{data.category.name}.

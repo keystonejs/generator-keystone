@@ -68,13 +68,13 @@
     							{% if data.posts.previous %}
     								<li>
                                         <a href="?page={{ data.posts.previous }}">
-                                            <span class="entypo entypo-chevron-thin-left"></span>
+                                            <span class="glyphicon glyphicon-chevron-left"></span>
                                         </a>
                                     </li>
     							{% else %}
     								<li class="disabled">
                                         <a href="?page=1">
-                                            <span class="entypo entypo-chevron-thin-left"></span>
+                                            <span class="glyphicon glyphicon-chevron-left"></span>
                                         </a>
                                     </li>
         							{% for p in data.posts.pages %}
@@ -87,13 +87,13 @@
     							{% if data.posts.next %}
     								<li>
                                         <a href="?page={{ data.posts.next }}">
-                                            <span class="entypo entypo-chevron-thin-right"></span>
+                                            <span class="glyphicon glyphicon-chevron-right"></span>
                                         </a>
                                     </li>
     							{% else %}
     								<li class="disabled">
                                         <a href="?page={{ data.posts.totalPages }}">
-                                            <span class="entypo entypo-chevron-thin-right"></span>
+                                            <span class="glyphicon glyphicon-chevron-right"></span>
                                         </a>
                                     </li>
                                 {% endif %}
