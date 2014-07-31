@@ -201,6 +201,11 @@ module.exports = function() {
 		// safe guard to ensure context is never null
 		context = context === null ? undefined : context;
 		
+		// If no image is set don't try to process it 
+		// (e.g. no hero image)
+		if (context === undefined || !context.url)
+			return null;
+		
 		var publicId = context.public_id,
 			width = ((options.width) ? options.width : '300'),
 			height = ((options.height) ? options.height : '300');
