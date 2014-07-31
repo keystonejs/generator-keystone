@@ -80,7 +80,7 @@ KeystoneGenerator.prototype.prompts = function prompts() {
 				default: 'My Site'
 			}, {
 				name: 'viewEngine',
-				message: 'Would you like to use Jade, Swig or Handlebars for templates? ' + (('[jade | swig | hbs]').grey),
+				message: 'Would you like to use Jade, Swig, Nunjucks or Handlebars for templates? ' + (('[jade | swig | nunjucks | hbs]').grey),
 				default: 'jade'
 			}, {
 				type: 'confirm',
@@ -144,8 +144,10 @@ KeystoneGenerator.prototype.prompts = function prompts() {
 		if (_.contains(['handlebars', 'hbs', 'h'], this.viewEngine.toLowerCase().trim())) {
 			this.viewEngine = 'hbs';
 		} else if (_.contains(['swig', 's'], this.viewEngine.toLowerCase().trim())) {
-            this.viewEngine = 'swig';
-        } else {
+			this.viewEngine = 'swig';
+		} else if (_.contains(['nunjucks', 'nun', 'n'], this.viewEngine.toLowerCase().trim())) {
+			this.viewEngine = 'nunjucks';
+		} else {
 			this.viewEngine = 'jade';
 		}
 		
@@ -371,6 +373,35 @@ KeystoneGenerator.prototype.templates = function templates() {
 			this.copy('templates/default-hbs/views/contact.hbs', 'templates/views/contact.hbs');
 			if (this.includeEmail) {
 				this.copy('templates/default-hbs/emails/enquiry-notification.hbs', 'templates/emails/enquiry-notification.hbs');
+			}
+		}
+		
+	} else if (this.viewEngine === 'nunjucks') {
+		
+		// Copy Nunjucks Templates
+		
+		this.mkdir('templates');
+		this.mkdir('templates/views');
+		
+		this.directory('templates/default-' + this.viewEngine + '/layouts', 'templates/layouts');
+		this.directory('templates/default-' + this.viewEngine + '/mixins', 'templates/mixins');
+		this.directory('templates/default-' + this.viewEngine + '/views/errors', 'templates/views/errors');
+		
+		this.copy('templates/default-' + this.viewEngine + '/views/index.html', 'templates/views/index.html');
+		
+		if (this.includeBlog) {
+			this.copy('templates/default-' + this.viewEngine + '/views/blog.html', 'templates/views/blog.html');
+			this.copy('templates/default-' + this.viewEngine + '/views/post.html', 'templates/views/post.html');
+		}
+		
+		if (this.includeGallery) {
+			this.copy('templates/default-' + this.viewEngine + '/views/gallery.html', 'templates/views/gallery.html');
+		}
+		
+		if (this.includeEnquiries) {
+			this.copy('templates/default-' + this.viewEngine + '/views/contact.html', 'templates/views/contact.html');
+			if (this.includeEmail) {
+				this.copy('templates/default-' + this.viewEngine + '/emails/enquiry-notification.html', 'templates/emails/enquiry-notification.html');
 			}
 		}
 		
