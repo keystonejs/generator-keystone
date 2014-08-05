@@ -53,7 +53,11 @@
 					<div class="collapse navbar-collapse">
 						<ul class="nav navbar-nav navbar-left">
 							{% for link in navLinks %}
-                                {% set section = ( link.key ? "active" : "" ) %}
+								{% if link.key %}
+									{% set section = "active" %}
+								{% else %}
+									{% set section = "" %}
+								{% endif %}
 								<li class="{{ section }}">
                                     <a href="{{ link.href }}">{{ link.label }}</a>
                                 </li>
