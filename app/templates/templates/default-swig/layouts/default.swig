@@ -39,7 +39,7 @@
 
 			{# Customise your site"s navigation by changing the navLinks Array in ./routes/middleware.js
 			   ... or completely change this header to suit your design. #}
-			<div role="navigation" class="navbar.navbar-default">
+			<div role="navigation" class="navbar navbar-default">
 				<div class="container-fluid">
 					<div class="navbar-header">
 						<button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".navbar-collapse">
@@ -48,17 +48,16 @@
 							<span class="icon-bar"></span>
 							<span class="icon-bar"></span>
 						</button>
-						<a class="navbar-brand" href="/">{{ _projectName }}</a>
+						<a class="navbar-brand" href="/">Project Name</a>
 					</div>
 					<div class="collapse navbar-collapse">
 						<ul class="nav navbar-nav navbar-left">
 							{% for link in navLinks %}
-								{% if link.key %}
-									{% set section = "active" %}
-								{% else %}
-									{% set section = "" %}
+								{% set linkClass = '' %}
+								{% if link.key === section %}
+									{% set linkClass = ' class="active"' %}
 								{% endif %}
-								<li class="{{ section }}">
+								<li{{ linkClass }}>
 									<a href="{{ link.href }}">{{ link.label }}</a>
 								</li>
 							{% endfor %}
