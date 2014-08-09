@@ -1,7 +1,7 @@
 {% extends "../layouts/default.swig" %}
 
 {% macro post(post) %}
-	<div class="post" data-ks-editable="editable(user, { list: "Post", id: post.id })">
+	<div class="post" data-ks-editable="editable(user, { list: 'Post', id: post.id })">
 		<h2>
 			<a href="/blog/post/{{ post.slug }}">{{ post.title }}</a>
 		</h2>
@@ -13,8 +13,9 @@
 				<br>in
 				{% for cat in post.categories %}
 					<a href="/blog/{{ cat.key }}">{{ cat.name }}</a>
-					<br>{% if loop.index < post.categories.length - 1 %},{% endif %}
-				{% endif %}
+					{% if loop.index < post.categories.length - 1 %}, {% endif %}
+				{% endfor %}
+			{% endif %}
 			{% if post.author %}
 				<br>by {{ post.author.name.first }}
 			{% endif %}
@@ -33,7 +34,10 @@
 
 {% block intro %}
 	<div class="container">
-		{% set title = ( data.category ? data.category.name : "Blog" ) %}
+		{% set title = "Blog" %}
+		{% if data.category %}
+			{% set title = data.category.name %}
+		{% endif %}
 		<h1>{{ title }}</h1>
 	</div>
 {% endblock %}
@@ -47,11 +51,11 @@
 				{% else %}
 					{% if data.posts.results.length %}
 						{% if data.posts.totalPages > 1 %}
-							<h4 class="text-weight-normal">Showing
+							<h4 class="text-weight-normal">Showing 
 								<strong>{{ data.posts.first }}</strong>
-								to
+								to 
 								<strong>{{ data.posts.last }}</strong>
-								of
+								of 
 								<strong>{{ data.posts.total }}</strong>
 								posts.
 							</h4>
@@ -120,6 +124,7 @@
 					{% endfor %}
 				</div>
 			</div>
+			{% endif }
 		</div>
 	</div>
 {% endblock %}
