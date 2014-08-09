@@ -15,9 +15,9 @@
 		<link href="/styles/site.min.css" rel="stylesheet">
 
 		{# This file provides the default styling for the KeystoneJS Content Editor #}
-		{% if user and user.canAccessKeystone %}
+		{%- if user and user.canAccessKeystone -%}
 			<link href="/keystone/styles/content/editor.min.css" rel="stylesheet">
-		{% endif %}
+		{%- endif -%}
 
 		{# HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries
 		   Safely remove this block if you are not targeting IE8 #}
@@ -27,10 +27,10 @@
 		<![endif]-->
 
 		{# Include template-specific stylesheets by extending the css block #}
-		{% block css %}{% endblock %}
+		{%- block css %}{% endblock -%}
 
 		{# Add any other template-specific HEAD tags by extending the head block #}
-		{% block head %}{% endblock %}
+		{%- block head %}{% endblock %}
 	</head>
 	<body>
 
@@ -52,25 +52,25 @@
 					</div>
 					<div class="collapse navbar-collapse">
 						<ul class="nav navbar-nav navbar-left">
-							{% for link in navLinks %}
-								{% set linkClass = '' %}
-								{% if link.key === section %}
-									{% set linkClass = ' class="active"' %}
-								{% endif %}
-								<li{{ linkClass }}>
+							{%- for link in navLinks -%}
+								{%- set linkClass = '' -%}
+								{%- if link.key == section -%}
+									{%- set linkClass = ' class="active"' -%}
+								{%- endif %}
+								<li{{ linkClass | safe }}>
 									<a href="{{ link.href }}">{{ link.label }}</a>
 								</li>
-							{% endfor %}
+							{%- endfor %}
 						</ul>
 						<ul class="nav navbar-nav navbar-right">
-							{% if user %}
-								{% if user.canAccessKeystone %}
+							{% if user -%}
+								{%- if user.canAccessKeystone -%}
 									<li><a href="/keystone">Open Keystone</a></li>
-								{% endif %}
+								{%- endif -%}
 								<li><a href="/keystone/signout">Sign Out</a></li>
-							{% else %}
+							{%- else -%}
 								<li><a href="/keystone/signin">Sign In</a></li>
-							{% endif %}
+							{%- endif %}
 						</ul>
 					</div>
 				</div>
@@ -84,23 +84,21 @@
 			   Remember to include it in your templates when you override the intro and content blocks! #}
 
 			{# The Intro block appears above flash messages (used for temporary information display) #}
-			{% block intro %}{% endblock %}
+			{%- block intro -%}{%- endblock -%}
 
 			{# Flash messages allow you to display once-off status messages to users, e.g. form
 			   validation errors, success messages, etc. #}
 			{{ FlashMessages.renderMessages(messages) }}
 
 			{# The content block should contain the body of your template"s content #}
-			{% block content %}{% endblock %}
+			{%- block content -%}{%- endblock -%}
 		</div>
-
 
 		{# FOOTER #}
 		<div id="footer" class="container">
 			{# You don"t _have_ to include a link saying your site is powered by KeystoneJS, but we appreciate it! #}
 			<p>Powered by <a href="http://keystonejs.com" target="_blank">KeystoneJS</a>.</p>
 		</div>
-
 
 		{# JAVASCRIPT #}
 
@@ -115,13 +113,13 @@
 
 		{# The KeystoneJS Content Editor provides support for ks-editable data attributes,
 			which generate links to edit content for users who can access Keystone #}
-		{% if user and user.canAccessKeystone %}
+		{% if user and user.canAccessKeystone -%}
 			<script src="/keystone/js/content/editor.js"></script>
-		{% endif %}
+		{%- endif -%}
 
 		{# Add scripts that are globally required by your site here. #}
 
 		{# Include template-specific javascript files by extending the js block #}
-		{% block js %}{% endblock %}
+		{%- block js -%}{%- endblock -%}
 	</body>
 </html>
