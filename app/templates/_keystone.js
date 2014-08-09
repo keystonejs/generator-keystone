@@ -8,7 +8,11 @@ var keystone = require('keystone')<% if (viewEngine == 'hbs') { %>,
 	swig = require('swig')<% } else if (viewEngine == 'nunjucks') { %>,
 	cons = require('consolidate'),
 	nunjucks = require('nunjucks')<% } %>;
-<% if (includeGuideComments) { %>
+	
+<% if (viewEngine == 'swig') { %>// Disable swig's bulit-in template caching, express handles it
+swig.setDefaults({ cache: false });
+
+<% } %><% if (includeGuideComments) { %>
 // Initialise Keystone with your project's configuration.
 // See http://keystonejs.com/guide/config for available options
 // and documentation.
@@ -22,14 +26,12 @@ keystone.init({
 	'less': 'public',
 	'static': 'public',
 	'favicon': 'public/favicon.ico',
-	'views': 'templates/views',
-	<% if (viewEngine === 'nunjucks') { %>
+	'views': 'templates/views',<% if (viewEngine === 'nunjucks') { %>
 	'view engine': 'html',
 	'custom engine': cons.nunjucks,
 	<% } else { %>
 	'view engine': '<%= viewEngine %>',
-	<% } %>
-	<% if (viewEngine === 'hbs') { %>
+	<% } %><% if (viewEngine === 'hbs') { %>
 	'custom engine': handlebars.create({
 		layoutsDir: 'templates/views/layouts',
 		partialsDir: 'templates/views/partials',
@@ -39,8 +41,7 @@ keystone.init({
 	}).engine,
 	<% } else if ( viewEngine === 'swig' ) { %>
 	'custom engine': swig.renderFile,
-	<% } %>
-	<% if (includeEmail) { %>
+	<% } %><% if (includeEmail) { %>
 	'emails': 'templates/emails',
 	<% } %>
 	'auto update': true,
