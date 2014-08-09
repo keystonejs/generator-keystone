@@ -1,4 +1,4 @@
-{% import "../mixins/flash-messages.swig" as FM %}
+{% import "../mixins/flash-messages.swig" as FlashMessages %}
 
 <!doctype html>
 <html>
@@ -66,7 +66,7 @@
 						<ul class="nav navbar-nav navbar-right">
 							{% if user %}
 								{% if user.canAccessKeystone %}
-								<li><a href="/keystone">Open Keystone</a></li>
+									<li><a href="/keystone">Open Keystone</a></li>
 								{% endif %}
 								<li><a href="/keystone/signout">Sign Out</a></li>
 							{% else %}
@@ -89,7 +89,7 @@
 
 			{# Flash messages allow you to display once-off status messages to users, e.g. form
 			   validation errors, success messages, etc. #}
-			{{ FM.flashMessages(messages) }}
+			{{ FlashMessages.renderMessages(messages) }}
 
 			{# The content block should contain the body of your template"s content #}
 			{% block content %}{% endblock %}

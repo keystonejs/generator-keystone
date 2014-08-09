@@ -1,23 +1,23 @@
-{% macro flashMessages(messages) %}
+{% macro renderMessages(messages) %}
 	{% if messages %}
 		<div id="flash-messages" class="container">
 			{% for message in messages.info %}
-				{{ flashMessage(message, "info") }}
+				{{ renderMessage(message, "info") }}
 			{% endfor %}
 			{% for message in messages.success %}
-				{{ flashMessage(message, "success") }}
+				{{ renderMessage(message, "success") }}
 			{% endfor %}
 			{% for message in messages.warning %}
-				{{ flashMessage(message, "warning") }}
+				{{ renderMessage(message, "warning") }}
 			{% endfor %}
 			{% for message in messages.error %}
-				{{ flashMessage(message, "danger") }}
+				{{ renderMessage(message, "danger") }}
 			{% endfor %}
 		</div>
 	{% endif %}
 {% endmacro %}
 
-{% macro flashMessage(message, type) %}
+{% macro renderMessage(message, type) %}
 	<div class="alert alert-{{ type }}">
 		{% if utils.isObject(message) %}
 			{% if message.title %}
