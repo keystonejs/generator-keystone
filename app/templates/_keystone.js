@@ -5,13 +5,15 @@ require('dotenv').load();
 // Require keystone
 var keystone = require('keystone')<% if (viewEngine == 'hbs') { %>,
 	handlebars = require('express3-handlebars')<% } else if (viewEngine == 'swig') { %>,
-	swig = require('swig')
-	<% } %>;
+	swig = require('swig')<% } else if (viewEngine == 'nunjucks') { %>,
+	cons = require('consolidate'),
+	nunjucks = require('nunjucks')<% } %>;
 <% if (includeGuideComments) { %>
 // Initialise Keystone with your project's configuration.
 // See http://keystonejs.com/guide/config for available options
 // and documentation.
 <% } %>
+
 keystone.init({
 
 	'name': '<%= projectName %>',
@@ -21,7 +23,12 @@ keystone.init({
 	'static': 'public',
 	'favicon': 'public/favicon.ico',
 	'views': 'templates/views',
+	<% if (viewEngine === 'nunjucks') { %>
+	'view engine': 'html',
+	'custom engine': cons.nunjucks,
+	<% } else { %>
 	'view engine': '<%= viewEngine %>',
+	<% } %>
 	<% if (viewEngine === 'hbs') { %>
 	'custom engine': handlebars.create({
 		layoutsDir: 'templates/views/layouts',

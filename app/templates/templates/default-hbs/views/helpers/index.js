@@ -201,6 +201,11 @@ module.exports = function() {
 		// safe guard to ensure context is never null
 		context = context === null ? undefined : context;
 		
+		// If no image is set don't try to process it 
+		// (e.g. no hero image)
+		if (context === undefined || !context.url)
+			return null;
+		
 		var publicId = context.public_id,
 			width = ((options.width) ? options.width : '300'),
 			height = ((options.height) ? options.height : '300');
@@ -247,12 +252,17 @@ module.exports = function() {
 	* expecting the data.posts context or an object literal that has `previous` and `next` properties
 	* ifBlock helpers in hbs - http://stackoverflow.com/questions/8554517/handlerbars-js-using-an-helper-function-in-a-if-statement
 	* */
- 	_helpers.ifHasPagination = function(postContext, options){
+	_helpers.ifHasPagination = function(postContext, options){
+		// if implementor fails to scope properly or has an empty data set
+		// better to display else block than throw an exception for undefined
+		if(_.isUndefined(postContext)){
+			return options.inverse(this);
+		}
 		if(postContext.next || postContext.previous){
 			return options.fn(this);
 		}
- 		return options.inverse(this);
-	}
+		return options.inverse(this);
+	};
 	
 	_helpers.paginationNavigation = function(pages, currentPage, totalPages, options){
 		var html = '';
