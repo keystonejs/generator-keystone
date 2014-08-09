@@ -22,7 +22,7 @@
 		<p class="text-larger">{{ enquiry._.enquiryType.format() }}</p>
 	{% endif %}
 	{% if enquiry.message %}
-		{{ enquiry.message.html|raw }}
+		{{ enquiry.message.html | safe }}
 	{% endif %}
 	<p class="text-muted">Sent {{ enquiry._.createdAt.format() }}</p>
 	<p><a href="/keystone/enquiries/{{ enquiry.id }}">Open Keystone</a></p>

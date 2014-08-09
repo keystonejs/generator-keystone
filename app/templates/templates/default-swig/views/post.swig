@@ -35,7 +35,7 @@
 									<img src="{{ data.post._.image.fit(750,450) }}" class="img-responsive">
 								</div>
 							{% endif %}
-							{{ data.post.content.full|raw }}
+							{{ data.post.content.full | raw }}
 						</div>
 					{% endif %}
 				</article>
