@@ -4,5 +4,5 @@
 	<div class="container">
 		<h1>404</h1>
 		<p class="lead">Sorry, the page you requested can"t be found.</p>
-    </div>
+	</div>
 {% endblock %}
