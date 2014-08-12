@@ -105,7 +105,7 @@ module.exports = function() {
 			if (autolink) {
 				return _.map(tags, function(tag) {
 					return linkTemplate({
-						url: ('blog/' + tag.key),
+						url: ('/blog/' + tag.key),
 						text: _.escape(tag.name)
 					});
 				}).join(separator);
