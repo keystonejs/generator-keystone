@@ -25,7 +25,7 @@
     "test": "mocha"
   },
   "dependencies": {
-    "yeoman-generator": "~0.17.3",
+    "yeoman-generator": "~0.17.6",
     "keystone-utils": "~0.1.12",
     "lodash": "~2.4.1",
     "colors": "^0.6.2"
