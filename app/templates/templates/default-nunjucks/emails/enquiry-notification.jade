@@ -1,0 +1,24 @@
+extends layouts/base
+
+block content
+	h1 Hi *|first_name|*,
+	p.text-larger An enquiry was just submitted to #{brand}:
+	if enquiry.name.full || enquiry.email
+		p.text-larger From:
+			if enquiry.name.full
+				| <strong> #{enquiry.name.full}</strong>
+			if enquiry.name.full && enquiry.email
+				|  (
+			if enquiry.email
+				| <a href="mailto:#{enquiry.email}">#{enquiry.email}</a>
+			if enquiry.name.full && enquiry.email
+				| )
+	if enquiry.phone
+		p.text-larger Phone: #{enquiry.phone}
+	if enquiry.enquiryType
+		p.text-larger #{enquiry._.enquiryType.format()}
+	if enquiry.message
+		.text-larger !{enquiry.message.html}
+	p.text-muted Sent #{enquiry._.createdAt.format()}
+	p &nbsp;
+	a(href='/keystone/enquiries/#{enquiry.id}') Open in Keystone
