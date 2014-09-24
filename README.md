@@ -82,14 +82,24 @@ Download and install the node.js binaries for your platform from the [Node.js do
 If you're on a mac, the easiest way to install MongoDB is to use the [homebrew package manager for OS X](http://brew.sh/). To install it, run this in your terminal:
 
 ````
-ruby -e "$(curl -fsSL https://raw.github.com/Homebrew/homebrew/go/install)"
+ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 ````
 
 With Homebrew installed, run this in your terminal to download and install MongoDB:
 
 ````
-brew mongo
+brew install mongodb
 ````
+
+This may generate a warning message
+
+'Warning: You have not agreed to the Xcode license.  Builds will fail! Agree to the license by opening Xcode.app or running: xcodebuild -license.'  If you see this message, run:
+
+````
+sudo xcodebuild -license
+````
+
+Hit 'enter' if prompted to view and agree to the licenses, navigate to the bottom using the 'space' key, then type 'agree' before attempting the install command again.
 
 For other platforms, see the [MongoDB installation guides](http://docs.mongodb.org/manual/installation/).
 
