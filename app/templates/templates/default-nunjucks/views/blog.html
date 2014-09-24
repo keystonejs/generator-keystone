@@ -10,8 +10,7 @@
     <br>on {{ post._.publishedDate.format("MMMM Do, YYYY") }}
 		{% endif %}
 		{% if post.categories and post.categories.length %}
-    <br>in {% for cat in post.categories %}<a href="/blog/{{ cat.key }}">{{ cat.name }}</a>{% endfor %}
-    <br>{% if loop.index < post.categories.length - 1 %},{% endif %}
+    <br>in {% for cat in post.categories %}<a href="/blog/{{ cat.key }}">{{ cat.name }}</a>{% if loop.index < post.categories.length %}, {% endif %}{% endfor %}
 		{% endif %}
 		{% if post.author %} <br>by {{ post.author.name.first }} {% endif %}
   </p>

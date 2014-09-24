@@ -19,9 +19,9 @@
 
 {% macro flashMessage(message, type) %}
 	<div class="alert alert-{{ type }}">
-		{% if utils.isObject(message) %}
+		{% if message %}
 			{% if message.title %}
-				<h4>{{ message.title }}</h4>
+				<h5>{{ message.title }}</h5>
 			{% endif %}
 			{% if message.detail %}
 				<p>{{ message.detail }}</p>

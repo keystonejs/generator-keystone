@@ -401,7 +401,7 @@ KeystoneGenerator.prototype.templates = function templates() {
 		if (this.includeEnquiries) {
 			this.copy('templates/default-' + this.viewEngine + '/views/contact.html', 'templates/views/contact.html');
 			if (this.includeEmail) {
-				this.copy('templates/default-' + this.viewEngine + '/emails/enquiry-notification.html', 'templates/emails/enquiry-notification.html');
+				this.directory('templates/default-' + this.viewEngine + '/emails', 'templates/emails');
 			}
 		}
 		
