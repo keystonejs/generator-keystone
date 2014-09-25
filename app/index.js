@@ -188,7 +188,7 @@ KeystoneGenerator.prototype.prompts = function prompts() {
 					name: 'cloudinaryURL',
 					message: '------------------------------------------------' +
 						'\n    KeystoneJS integrates with Cloudinary for image upload, resizing and' +
-						'\n    hosting. See http://keystonejs.com/guide/config/#cloudinary for more info.' +
+						'\n    hosting. See http://keystonejs.com/docs/configuration/#services-cloudinary for more info.' +
 						'\n    ' +
 						'\n    CloudinaryImage fields are used by the ' + blog_gallery + '.' +
 						'\n    ' +
