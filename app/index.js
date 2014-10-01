@@ -357,8 +357,7 @@ KeystoneGenerator.prototype.templates = function templates() {
 		this.directory('templates/default-hbs/views/helpers', 'templates/views/helpers');
 		this.directory('templates/default-hbs/views/partials', 'templates/views/partials');
 		
-		
-		this.copy('templates/default-hbs/views/index.hbs', 'templates/views/index.hbs');
+		this.template('templates/default-hbs/views/index.hbs', 'templates/views/index.hbs');
 		
 		if (this.includeBlog) {
 			this.copy('templates/default-hbs/views/blog.hbs', 'templates/views/blog.hbs');
@@ -387,7 +386,7 @@ KeystoneGenerator.prototype.templates = function templates() {
 		this.directory('templates/default-' + this.viewEngine + '/mixins', 'templates/mixins');
 		this.directory('templates/default-' + this.viewEngine + '/views/errors', 'templates/views/errors');
 		
-		this.copy('templates/default-' + this.viewEngine + '/views/index.html', 'templates/views/index.html');
+		this.template('templates/default-' + this.viewEngine + '/views/index.html', 'templates/views/index.html');
 		
 		if (this.includeBlog) {
 			this.copy('templates/default-' + this.viewEngine + '/views/blog.html', 'templates/views/blog.html');
