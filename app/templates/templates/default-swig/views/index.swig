@@ -1,8 +1,8 @@
 {% extends "../layouts/default.swig" %}
 
 {% block content %}
-	<div class="jumbotron">
-		<div class="container">
+	<div class="container">
+		<div class="jumbotron">
 			<img src="/images/logo.svg" width="160">
 			<h1>Welcome</h1>
 			<p>This is your new <a href="http://keystonejs.com", target="_blank">KeystoneJS</a> website.</p>
