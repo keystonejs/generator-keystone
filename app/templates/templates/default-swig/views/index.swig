@@ -18,7 +18,7 @@
 					<a href="/keystone/signin" class="btn btn-lg btn-primary">Open the Admin UI</a>
 				</p>
 			{% else %}
-				<p>We have created a default Admin user for you with the email <strong>user@keystonejs.com</strong> and the password <strong>admin</strong>.</p>
+				<p>We have created a default Admin user for you with the email <strong><%= adminLogin %></strong> and the password <strong><%= adminPassword %></strong>.</p>
 				<p>
 					<a href="/keystone/signin" style="margin-right: 10px" class="btn btn-lg btn-primary">Sign in</a>
 					to use the Admin UI.

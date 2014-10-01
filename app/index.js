@@ -416,7 +416,7 @@ KeystoneGenerator.prototype.templates = function templates() {
 		this.directory('templates/default-' + this.viewEngine + '/mixins', 'templates/mixins');
 		this.directory('templates/default-' + this.viewEngine + '/views/errors', 'templates/views/errors');
 		
-		this.copy('templates/default-' + this.viewEngine + '/views/index.' + this.viewEngine, 'templates/views/index.' + this.viewEngine);
+		this.template('templates/default-' + this.viewEngine + '/views/index.' + this.viewEngine, 'templates/views/index.' + this.viewEngine);
 		
 		if (this.includeBlog) {
 			this.copy('templates/default-' + this.viewEngine + '/views/blog.' + this.viewEngine, 'templates/views/blog.' + this.viewEngine);
