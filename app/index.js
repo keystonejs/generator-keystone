@@ -271,11 +271,11 @@ KeystoneGenerator.prototype.project = function project() {
 	this.copy('gitignore', '.gitignore');
 	this.copy('Procfile');
 	
-	if(this.taskRunner === 'grunt') {
+	if (this.taskRunner === 'grunt') {
 		this.copy('Gruntfile.js');
 	}
 	
-	if(this.taskRunner === 'gulp'){
+	if (this.taskRunner === 'gulp'){
 		this.copy('gulpfile.js');
 	}
 	
