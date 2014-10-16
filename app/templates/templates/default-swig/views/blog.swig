@@ -1,6 +1,6 @@
 {% extends "../layouts/default.swig" %}
 
-{% macro post(post) %}
+{% macro showPost(post) %}
 	<div class="post" data-ks-editable="editable(user, { list: 'Post', id: post.id })">
 		<h2>
 			<a href="/blog/post/{{ post.slug }}">{{ post.title }}</a>
@@ -64,7 +64,7 @@
 						{% endif %}
 						<div class="blog">
 							{% for post in data.posts.results %}
-								{{ post(post) }}
+								{{ showPost(post) }}
 							{% endfor %}
 						</div>
 						{% if data.posts.totalPages > 1 %}
@@ -81,11 +81,10 @@
 											<span class="glyphicon glyphicon-chevron-left"></span>
 										</a>
 									</li>
+                                                                {% endif %}
 									{% for p in data.posts.pages %}
-										{% set class = ( data.posts.currentPage == p ? "active" : "" ) %}
-										<li class="{{ class }}">
-											{% set page = ( p == "..." ? (i ? data.posts.totalPages : 1) : p ) %}
-											<a href="?page={{ page }}">{{ p }}</a>
+										<li class="{% if data.posts.currentPage == p %}active{% endif %}">
+											<a href="?page={% if p == "..." %}{% if i %}{{ data.posts.totalPages }}{% else %}1{% endif %}{% else %}{{ p }}{% endif %}">{{ p }}</a>
 										</li>
 									{% endfor %}
 								{% if data.posts.next %}
@@ -116,15 +115,13 @@
 			<div class="col-sm-4 col-md-3">
 				<h2>Categories</h2>
 				<div class="list-group" style="margin-top: 70px;">
-					{% set class = ( not data.category ? "active" : "" ) %}
-					<a href="/blog" class="{{ class }} list-group-item">All Categories</a>
+					<a href="/blog" class="{% if not data.category %}active{% endif %} list-group-item">All Categories</a>
 					{% for cat in data.categories %}
-						{% set class = ( data.category and data.category.id == cat.id ? "active" : "" ) %}
-						<a href="/blog/{{ cat.key }}" class="{{ class }} list-group-item">{{ cat.name }}</a>
+						<a href="/blog/{{ cat.key }}" class="{% if data.category and data.category.id == cat.id %}active{% endif %} list-group-item">{{ cat.name }}</a>
 					{% endfor %}
 				</div>
 			</div>
-			{% endif }
+			{% endif %}
 		</div>
 	</div>
 {% endblock %}
