@@ -451,6 +451,16 @@ KeystoneGenerator.prototype.updates = function routes() {
 
 KeystoneGenerator.prototype.files = function files() {
 	
-	this.directory('public');
+	this.directory('public/fonts');
+	this.directory('public/images');
+	this.directory('public/js');
+	this.copy('public/favicon.ico');
+
+	if (this.preprocessor === 'less') {
+		this.directory('public/styles');
+	}
+	else {
+		this.directory('public/stylesSass', 'public/styles');
+	}
 	
 };
