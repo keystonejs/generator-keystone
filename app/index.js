@@ -110,6 +110,10 @@ KeystoneGenerator.prototype.prompts = function prompts() {
 				message: 'Enter a password for the first Admin user:',
 				default: 'admin'
 			}, {
+				name: 'preprocessor',
+				message: 'What preprocessor would you like to use?' + (('[less | sass]').grey),
+				default: 'less'
+			}, {
 				name: 'taskRunner',
 				message: 'Would you like to include gulp or grunt? ' + (('[gulp | grunt]').grey),
 			}, {
@@ -154,6 +158,9 @@ KeystoneGenerator.prototype.prompts = function prompts() {
 		// Clean the userModel name
 		this.userModel = utils.camelcase(this.userModel, false);
 		this.userModelPath = utils.keyToPath(this.userModel, true);
+
+		// Clean the preprocessor
+		this.preprocessor = (this.preprocessor || '').toLowerCase().trim();
 		
 		// Clean the taskRunner selection
 		this.taskRunner = (this.taskRunner || '').toLowerCase().trim();
