@@ -12,7 +12,9 @@
     "swig": "~1.4.1", <% } else if (viewEngine === 'nunjucks') { %>
     "consolidate": "^0.10.0", 
     "nunjucks": "^1.0.5", <% } %>
-    "dotenv": "0.4.0"
+    <% if (preprocessor === 'sass') { %>
+    "node-sass": "^0.9.3", <% } %>
+    "dotenv": "0.4.0" 
   },<% if (taskRunner === 'grunt') { %>
   "devDependencies": {
     "grunt": "~0.4.4",
