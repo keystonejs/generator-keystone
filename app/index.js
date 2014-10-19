@@ -154,13 +154,17 @@ KeystoneGenerator.prototype.prompts = function prompts() {
 		} else {
 			this.viewEngine = 'jade';
 		}
+
+		// Clean the preprocessor
+		if (_.contains(['sass', 's'], this.preprocessor.toLowerCase().trim())) {
+			this.preprocessor = 'sass';
+		} else {
+			this.preprocessor = 'less';
+		}
 		
 		// Clean the userModel name
 		this.userModel = utils.camelcase(this.userModel, false);
 		this.userModelPath = utils.keyToPath(this.userModel, true);
-
-		// Clean the preprocessor
-		this.preprocessor = (this.preprocessor || '').toLowerCase().trim();
 		
 		// Clean the taskRunner selection
 		this.taskRunner = (this.taskRunner || '').toLowerCase().trim();
@@ -456,11 +460,10 @@ KeystoneGenerator.prototype.files = function files() {
 	this.directory('public/js');
 	this.copy('public/favicon.ico');
 
-	if (this.preprocessor === 'less') {
-		this.directory('public/styles');
-	}
-	else {
-		this.directory('public/stylesSass', 'public/styles');
+	if (this.preprocessor === 'sass') {
+		this.directory('public/styles-sass', 'public/styles');
+	} else {
+		this.directory('public/styles-less', 'public/styles');
 	}
 	
 };
