@@ -83,6 +83,10 @@ KeystoneGenerator.prototype.prompts = function prompts() {
 				message: 'Would you like to use Jade, Swig, Nunjucks or Handlebars for templates? ' + (('[jade | swig | nunjucks | hbs]').grey),
 				default: 'jade'
 			}, {
+				name: 'preprocessor',
+				message: 'Would you like to use LESS or SASS for stylesheets?' + (('[less | sass]').grey),
+				default: 'less'
+			}, {
 				type: 'confirm',
 				name: 'includeBlog',
 				message: 'Would you like to include a Blog?',
@@ -109,10 +113,6 @@ KeystoneGenerator.prototype.prompts = function prompts() {
 				name: 'adminPassword',
 				message: 'Enter a password for the first Admin user:',
 				default: 'admin'
-			}, {
-				name: 'preprocessor',
-				message: 'What preprocessor would you like to use?' + (('[less | sass]').grey),
-				default: 'less'
 			}, {
 				name: 'taskRunner',
 				message: 'Would you like to include gulp or grunt? ' + (('[gulp | grunt]').grey),
