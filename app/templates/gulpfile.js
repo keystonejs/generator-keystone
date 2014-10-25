@@ -7,9 +7,7 @@ var gulp = require('gulp'),
  * Create variables for our project paths so we can change in one place
  */
 var paths = {
-	'src':['./models/**/*.js','./routes/**/*.js', 'keystone.js', 'package.json'],
-	// enable for tests
-	//'tests':['./test/*.js', './test/**/*.js']
+	'src':['./models/**/*.js','./routes/**/*.js', 'keystone.js', 'package.json']
 };
 
 
