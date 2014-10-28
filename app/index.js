@@ -294,8 +294,7 @@ KeystoneGenerator.prototype.project = function project() {
 
 KeystoneGenerator.prototype.models = function models() {
 	
-	var modelFiles = [],
-		modelIndex = '';
+	var modelFiles = [];
 	
 	if (this.includeBlog) {
 		modelFiles.push('Post');
@@ -312,17 +311,11 @@ KeystoneGenerator.prototype.models = function models() {
 	
 	this.mkdir('models');
 	
-	this.template('models/_User.js', 'models/'+this.userModel+'.js');
+	this.template('models/_User.js', 'models/' + this.userModel + '.js');
 	
 	modelFiles.forEach(function(i) {
 		this.template('models/' + i + '.js');
-		modelIndex += 'require(\'./' + i + '\');\n';
 	}, this);
-	
-	// we're now using keystone.import() for loading models, so an index.js
-	// file is no longer required. leaving for reference.
-	
-	// this.write('models/index.js', modelIndex);
 	
 };
 
