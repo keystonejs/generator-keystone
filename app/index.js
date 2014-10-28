@@ -8,10 +8,6 @@ var util = require('util'),
 
 var KeystoneGenerator = module.exports = function KeystoneGenerator(args, options, config) {
 	
-	// Initialise default values
-	this.cloudinaryURL = false;
-	this.mandrillAPI = false;
-	
 	// Apply the Base Generator
 	yeoman.generators.Base.apply(this, arguments);
 	
@@ -21,6 +17,7 @@ var KeystoneGenerator = module.exports = function KeystoneGenerator(args, option
 	// This callback is fired when the generator has completed,
 	// and includes instructions on what to do next.
 	var done = _.bind(function done() {
+		var cmd = (this.newDirectory ? '"cd ' + _.slugify(this.projectName) + '" then ' : '') + '"node keystone"';
 		console.log(
 			'\n------------------------------------------------' +
 			'\n' +
@@ -42,7 +39,7 @@ var KeystoneGenerator = module.exports = function KeystoneGenerator(args, option
 				'\nbefore sending your site live.'
 				: '') +
 
-			'\n\nTo start your new website, run "node keystone".' +
+			'\n\nTo start your new website, run ' + cmd + '.' +
 			'\n');
 		
 	}, this);
@@ -118,6 +115,11 @@ KeystoneGenerator.prototype.prompts = function prompts() {
 				message: 'Would you like to include gulp or grunt? ' + (('[gulp | grunt]').grey),
 			}, {
 				type: 'confirm',
+				name: 'newDirectory',
+				message: 'Would you like to create a new directory for your project?',
+				default: true
+			}, {
+				type: 'confirm',
 				name: 'includeEmail',
 				message: '------------------------------------------------' +
 					'\n    KeystoneJS integrates with Mandrill (from Mailchimp) for email sending.' +
@@ -168,6 +170,11 @@ KeystoneGenerator.prototype.prompts = function prompts() {
 		
 		// Clean the taskRunner selection
 		this.taskRunner = (this.taskRunner || '').toLowerCase().trim();
+
+		// Create the directory if required
+		if (this.newDirectory) {
+			this.destinationRoot(_.slugify(this.projectName));
+		}
 		
 		// Additional prompts may be required, based on selections
 		if (this.includeBlog || this.includeGallery || this.includeEmail) {
