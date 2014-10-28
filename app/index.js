@@ -8,6 +8,10 @@ var util = require('util'),
 
 var KeystoneGenerator = module.exports = function KeystoneGenerator(args, options, config) {
 	
+	// Initialise default values
+	this.cloudinaryURL = false;
+	this.mandrillAPI = false;
+	
 	// Apply the Base Generator
 	yeoman.generators.Base.apply(this, arguments);
 	
