@@ -10,9 +10,9 @@
 		<title>{{ title|default(projectName) }}</title>
 		<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
 
-		{# Customise the stylesheet for your site by editing /public/styles/site.less
-		   All .less files will be automatically compiled and minified in production. #}
-		<link href="/styles/site.min.css" rel="stylesheet">
+		{# Customise the stylesheet for your site by editing /public/styles/site.<% if (preprocessor === 'less') { %>less
+		//- All .less files will be automatically compiled and minified in production.<% } else { %>sass<% } %> #}
+		<link href="/styles/site<% if (preprocessor === 'less') { %>.min<% } %>.css" rel="stylesheet">
 
 		{# This file provides the default styling for the KeystoneJS Content Editor #}
 		{%- if user and user.canAccessKeystone -%}

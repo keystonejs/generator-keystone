@@ -23,10 +23,10 @@ keystone.init({
 	'name': '<%= projectName %>',
 	'brand': '<%= projectName %>',
 
-	<% if (preprocessor === 'less') { %>
-	'less': 'public',
-	<% } else { %>
+	<% if (preprocessor === 'sass') { %>
 	'sass': 'public',
+	<% } else { %>
+	'less': 'public',
 	<% } %>
 	'static': 'public',
 	'favicon': 'public/favicon.ico',
