@@ -8,7 +8,9 @@
     "keystone",
     "express",
     "cms",
-    "mongoose"
+    "mongoose",
+    "mongodb",
+    "mongo"
   ],
   "homepage": "https://github.com/JedWatson/generator-keystone",
   "bugs": "https://github.com/JedWatson/generator-keystone/issues",
@@ -25,13 +27,13 @@
     "test": "mocha"
   },
   "dependencies": {
-    "yeoman-generator": "~0.17.6",
+    "colors": "~1.0.3",
     "keystone-utils": "~0.1.12",
     "lodash": "~2.4.1",
-    "colors": "^0.6.2"
+    "yeoman-generator": "~0.17.7"
   },
   "devDependencies": {
-    "mocha": "~1.21.4"
+    "mocha": "~2.0.1"
   },
   "peerDependencies": {
     "yo": ">=1.0.0"
