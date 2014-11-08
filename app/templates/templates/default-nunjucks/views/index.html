@@ -26,7 +26,7 @@
 			{% endif %}
 			<hr>
 			<p>
-				Remember to <a href="https://github.com/JedWatson/keystone" target="_blank">Star KeystoneJS on GitHub</a> and
+				Remember to <a href="https://github.com/keystonejs/keystone" target="_blank">Star KeystoneJS on GitHub</a> and
 				<a href="https://twitter.com/keystonejs" target="_blank">follow @keystonejs</a> on twitter for updates.
 			</p>
 		</div>

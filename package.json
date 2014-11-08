@@ -12,8 +12,8 @@
     "mongodb",
     "mongo"
   ],
-  "homepage": "https://github.com/JedWatson/generator-keystone",
-  "bugs": "https://github.com/JedWatson/generator-keystone/issues",
+  "homepage": "https://github.com/keystonejs/generator-keystone",
+  "bugs": "https://github.com/keystonejs/generator-keystone/issues",
   "author": {
     "name": "Jed Watson",
     "url": "https://github.com/JedWatson"
@@ -21,7 +21,7 @@
   "main": "app/index.js",
   "repository": {
     "type": "git",
-    "url": "git://github.com/JedWatson/generator-keystone.git"
+    "url": "git://github.com/keystonejs/generator-keystone.git"
   },
   "scripts": {
     "test": "mocha"
