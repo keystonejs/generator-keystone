@@ -16,7 +16,7 @@ Enquiry.add({
 	email: { type: Types.Email, required: true },
 	phone: { type: String },
 	enquiryType: { type: Types.Select, options: [
-		{ value: 'message', label: "Just leaving a message" },
+		{ value: 'message', leabel: "Just leaving a message" },
 		{ value: 'question', label: "I've got a question" },
 		{ value: 'other', label: "Something else..." }
 	] },
@@ -37,7 +37,7 @@ Enquiry.schema.post('save', function() {
 
 Enquiry.schema.methods.sendNotificationEmail = function(callback) {
 	
-	var enqiury = this;
+	var enquiry = this;
 	
 	keystone.list('<%= userModel %>').model.find().where('isAdmin', true).exec(function(err, admins) {
 		
@@ -50,7 +50,7 @@ Enquiry.schema.methods.sendNotificationEmail = function(callback) {
 				email: 'contact@<%= _.slugify(projectName) %>.com'
 			},
 			subject: 'New Enquiry for <%= projectName %>',
-			enquiry: enqiury
+			enquiry: enquiry
 		}, callback);
 		
 	});
