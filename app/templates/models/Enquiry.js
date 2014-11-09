@@ -37,6 +37,10 @@ Enquiry.schema.post('save', function() {
 
 Enquiry.schema.methods.sendNotificationEmail = function(callback) {
 	
+	if ('function' !== typeof callback) {
+		callback = function() {};
+	}
+	
 	var enquiry = this;
 	
 	keystone.list('<%= userModel %>').model.find().where('isAdmin', true).exec(function(err, admins) {
