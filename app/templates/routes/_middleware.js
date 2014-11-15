@@ -18,7 +18,10 @@
 	
 	The included layout depends on the navLinks array to generate
 	the navigation in the header, you may wish to change this array
-	or replace it with your own templates / logic.<% } %>
+	or replace it with your own templates / logic.
+
+	To allow the display of a navLink only for keystone administrator,
+	please add keystoneadmin:true <% } %>
 */
 
 exports.initLocals = function(req, res, next) {
