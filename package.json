@@ -1,6 +1,6 @@
 {
   "name": "generator-keystone",
-  "version": "0.2.9",
+  "version": "0.2.10",
   "description": "A KeystoneJS Project Generator for Yeoman",
   "keywords": [
     "yeoman-generator",
@@ -10,7 +10,10 @@
     "cms",
     "mongoose",
     "mongodb",
-    "mongo"
+    "mongo",
+    "website",
+    "site",
+    "blog"
   ],
   "homepage": "https://github.com/keystonejs/generator-keystone",
   "bugs": "https://github.com/keystonejs/generator-keystone/issues",
