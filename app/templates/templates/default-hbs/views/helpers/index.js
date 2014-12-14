@@ -2,6 +2,9 @@ var moment = require('moment');
 var _ = require('underscore');
 var hbs = require('handlebars');
 var keystone = require('keystone');
+var cloudinary = require('cloudinary');
+var dotenv = require('dotenv');
+
 
 // Declare Constants
 var CLOUDINARY_HOST = 'http://res.cloudinary.com';
@@ -174,20 +177,18 @@ module.exports = function() {
 	};
 	
 	// ### CloudinaryUrl Helper
-	// To support the limit src url strings used by KeystoneJS default theme
-	// the jade version has access to the ._.limit() call, but HBS doesn't so
-	// some work has to be done to generate these src urls.  This helper is built
-	// to work with the default theme, most likely this helper will need expanded
-	// with additional kwargs to give the proper images
-	// `this` will contain the scoped context vars for images:[]
+	// Direct support of the cloudinary.url method from Handlebars (see
+	// cloudinary package documentation for more details).
 	//
-	// *Usage example:*
-	// `{{cloudinaryUrl heroImage width='640' height='640'}}`
-	// `{{#each images}} {{cloudinaryUrl width='640' height='640'}} {{/each}}`
+	// *Usage examples:*
+	// `{{{cloudinaryUrl image width=640 height=480 crop='fill' gravity='north'}}}`
+	// `{{#each images}} {{cloudinaryUrl width=640 height=480}} {{/each}}`
 	//
 	// Returns an src-string for a cloudinary image
 	
 	_helpers.cloudinaryUrl = function(context, options) {
+		dotenv.load();
+
 		// if we dont pass in a context and just kwargs
 		// then `this` refers to our default scope block and kwargs
 		// are stored in context.hash
@@ -201,26 +202,13 @@ module.exports = function() {
 		// safe guard to ensure context is never null
 		context = context === null ? undefined : context;
 		
-		// If no image is set don't try to process it 
-		// (e.g. no hero image)
-		if (context === undefined || !context.url)
+		if ((context) && (context.public_id)) {
+			var imageName = context.public_id.concat('.',context.format);
+			return cloudinary.url(imageName, options.hash);
+		}
+		else {
 			return null;
-		
-		var publicId = context.public_id,
-			width = ((options.width) ? options.width : '300'),
-			height = ((options.height) ? options.height : '300');
-		
-		// use a regex to strip out the cloudinary username
-		var cloudKeyRegex = /res.cloudinary.com\/(.*)\/image/;
-		var cloudKey = context.url.match(cloudKeyRegex);
-		var src = cloudinaryUrlLimit({
-			publicId: publicId,
-			cloudinaryUser: cloudKey[1],
-			width: width,
-			height: height
-		});
-		
-		return src;
+		}		
 	};
 	
 	// ### Content Url Helpers
