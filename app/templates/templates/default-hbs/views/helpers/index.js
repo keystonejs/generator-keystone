@@ -3,7 +3,6 @@ var _ = require('underscore');
 var hbs = require('handlebars');
 var keystone = require('keystone');
 var cloudinary = require('cloudinary');
-var dotenv = require('dotenv');
 
 
 // Declare Constants
@@ -187,7 +186,6 @@ module.exports = function() {
 	// Returns an src-string for a cloudinary image
 	
 	_helpers.cloudinaryUrl = function(context, options) {
-		dotenv.load();
 
 		// if we dont pass in a context and just kwargs
 		// then `this` refers to our default scope block and kwargs
