@@ -20,7 +20,7 @@ gulp.task('lint', function(){
 });
 
 // gulp watcher for lint
-gulp.task('watchLint', function () {
+gulp.task('watch:lint', function () {
 	gulp.src(paths.src)
 		.pipe(watch())
 		.pipe(jshint())
