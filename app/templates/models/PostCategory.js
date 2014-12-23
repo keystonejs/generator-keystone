@@ -1,5 +1,4 @@
-var keystone = require('keystone'),
-	Types = keystone.Field.Types;
+var keystone = require('keystone');
 
 /**
  * PostCategory Model
