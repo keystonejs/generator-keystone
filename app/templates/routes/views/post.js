@@ -1,5 +1,4 @@
-var keystone = require('keystone'),
-	async = require('async');
+var keystone = require('keystone');
 
 exports = module.exports = function(req, res) {
 	
