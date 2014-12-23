@@ -27,7 +27,7 @@ Enquiry.add({
 Enquiry.schema.pre('save', function(next) {
 	this.wasNew = this.isNew;
 	next();
-})
+});
 
 Enquiry.schema.post('save', function() {
 	if (this.wasNew) {
@@ -59,7 +59,7 @@ Enquiry.schema.methods.sendNotificationEmail = function(callback) {
 		
 	});
 	
-}
+};
 <% } %>
 Enquiry.defaultSort = '-createdAt';
 Enquiry.defaultColumns = 'name, email, enquiryType, createdAt';
