@@ -26,7 +26,7 @@ var <%= userModel %> = new keystone.List('<%= userModel %>');
  * Relationships
  */
 
-<%= userModel %>.relationship({ ref: 'Post', path: 'author' });
+<%= userModel %>.relationship({ ref: 'Post', path: 'posts', refPath: 'author' });
 
 <% } %>
 /**
