@@ -25,7 +25,7 @@ var admins = [
 	{ email: 'user@keystonejs.com', password: 'admin', name: { first: 'Admin', last: 'User' } }
 ];
 
-function createAdmin(admin, done) {
+function createAdmin(admin) {
 	
 	var newAdmin = new User.model(admin);
 	
@@ -37,7 +37,6 @@ function createAdmin(admin, done) {
 		} else {
 			console.log("Added admin " + admin.email + " to the database.");
 		}
-		done(err);
 	});
 	
 }
