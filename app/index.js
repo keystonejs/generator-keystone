@@ -295,6 +295,7 @@ KeystoneGenerator.prototype.project = function project() {
 	
 	if (this.taskRunner === 'grunt') {
 		this.copy('Gruntfile.js');
+		this.directory('grunt', 'grunt');
 	}
 	
 	if (this.taskRunner === 'gulp'){
