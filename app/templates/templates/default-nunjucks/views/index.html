@@ -15,7 +15,7 @@
 			<hr>
 			{% if user and user.canAccessKeystone %}
 				<p>
-					<a href="/keystone/signin" class="btn btn-lg btn-primary">Open the Admin UI</a>
+					<a href="/keystone" class="btn btn-lg btn-primary">Open the Admin UI</a>
 				</p>
 			{% else %}
 				<p>We have created a default Admin user for you with the email <strong><%= adminLogin %></strong> and the password <strong><%= adminPassword %></strong>.</p>
