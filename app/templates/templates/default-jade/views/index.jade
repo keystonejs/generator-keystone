@@ -12,7 +12,7 @@ block content
 		hr
 		if user && user.canAccessKeystone
 			p
-				a(href='/keystone/signin').btn.btn-lg.btn-primary Open the Admin UI
+				a(href='/keystone').btn.btn-lg.btn-primary Open the Admin UI
 		else
 			p We have created a default Admin user for you with the email <strong><%= adminLogin %></strong> and the password <strong><%= adminPassword %></strong>.
 			p
