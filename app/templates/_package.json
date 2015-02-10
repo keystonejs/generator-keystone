@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "dependencies": {
-    "keystone": "~0.2.40",
+    "keystone": "~0.3.0",
     "async": "~0.9.0",
     "underscore": "~1.7.0",<% if (viewEngine === 'hbs') { %>
     "moment": "~2.8.1",
