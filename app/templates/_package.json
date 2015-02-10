@@ -1,5 +1,5 @@
 {
-  "name": "<%= _.slugify(projectName) %>",
+  "name": "<%= utils.slug(projectName) %>",
   "version": "0.0.0",
   "private": true,
   "dependencies": {

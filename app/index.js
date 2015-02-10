@@ -8,6 +8,9 @@ var util = require('util'),
 
 var KeystoneGenerator = module.exports = function KeystoneGenerator(args, options, config) {
 	
+	// Set utils for use in templates
+	this.utils = utils;
+	
 	// Initialise default values
 	this.cloudinaryURL = false;
 	this.mandrillAPI = false;
@@ -21,7 +24,7 @@ var KeystoneGenerator = module.exports = function KeystoneGenerator(args, option
 	// This callback is fired when the generator has completed,
 	// and includes instructions on what to do next.
 	var done = _.bind(function done() {
-		var cmd = (this.newDirectory ? '"cd ' + _.slugify(this.projectName) + '" then ' : '') + '"node keystone"';
+		var cmd = (this.newDirectory ? '"cd ' + utils.slug(this.projectName) + '" then ' : '') + '"node keystone"';
 		console.log(
 			'\n------------------------------------------------' +
 			'\n' +
@@ -177,7 +180,7 @@ KeystoneGenerator.prototype.prompts = function prompts() {
 
 		// Create the directory if required
 		if (this.newDirectory) {
-			this.destinationRoot(_.slugify(this.projectName));
+			this.destinationRoot(utils.slug(this.projectName));
 		}
 		
 		// Additional prompts may be required, based on selections

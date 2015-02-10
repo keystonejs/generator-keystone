@@ -51,7 +51,7 @@ Enquiry.schema.methods.sendNotificationEmail = function(callback) {
 			to: admins,
 			from: {
 				name: '<%= projectName %>',
-				email: 'contact@<%= _.slugify(projectName) %>.com'
+				email: 'contact@<%= utils.slug(projectName) %>.com'
 			},
 			subject: 'New Enquiry for <%= projectName %>',
 			enquiry: enquiry
