@@ -56,7 +56,7 @@ For a production/shared environment you may wish to re-run the `npm` command wit
 sudo npm install -g generator-keystone
 ````
 
-For more information, see the ["What, no sudo?"](http://foohack.com/2010/08/intro-to-npm/#what_no_sudo) of the Intro to npm by Isaac Schulueter.
+For more information, see the ["What, no sudo?"](http://foohack.com/2010/08/intro-to-npm/#what_no_sudo) of the Intro to npm by Isaac Schlueter.
 
 ### What do you mean it couldn't find my Database?
 
