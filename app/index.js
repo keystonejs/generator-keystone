@@ -84,7 +84,7 @@ KeystoneGenerator.prototype.prompts = function prompts() {
 				default: 'My Site'
 			}, {
 				name: 'viewEngine',
-				message: 'Would you like to use Jade, Swig, Nunjucks or Handlebars for templates? ' + (('[jade | swig | nunjucks | hbs]').grey),
+				message: 'Would you like to use Jade, Swig, Nunjucks or Handlebars for templates? ' + (('[jade | swig | nunjucks | hbs | react]').grey),
 				default: 'jade'
 			}, {
 				name: 'preprocessor',
@@ -160,6 +160,8 @@ KeystoneGenerator.prototype.prompts = function prompts() {
 			this.viewEngine = 'swig';
 		} else if (_.contains(['nunjucks', 'nun', 'n'], this.viewEngine.toLowerCase().trim())) {
 			this.viewEngine = 'nunjucks';
+		} else if (_.contains(['react', 'reactjs', 'r'], this.viewEngine.toLowerCase().trim())) { 
+			this.viewEngine = 'react';
 		} else {
 			this.viewEngine = 'jade';
 		}
@@ -394,6 +396,17 @@ KeystoneGenerator.prototype.templates = function templates() {
 			}
 		}
 		
+	} else if (this.viewEngine === 'react') {
+		
+		this.mkdir('templates');
+		this.mkdir('templates/components');
+
+		// need a layout.jsx which is shell
+		//this.copy('templates/default-react/components/layout.jsx', 'templates/default-react/components/layout.jsx');
+		this.directory('templates/default-react/components', 'templates/components');
+		// then index.jsx should contain the jumbotron component
+		// fill out remaining apps/sections
+
 	} else if (this.viewEngine === 'nunjucks') {
 		
 		// Copy Nunjucks Templates
