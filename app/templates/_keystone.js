@@ -3,9 +3,10 @@
 require('dotenv').load();
 
 // Require keystone
-var keystone = require('keystone');<% if (viewEngine == 'hbs') { %>
-var handlebars = require('express-handlebars');<% } else if (viewEngine == 'swig') { %>
-var swig = require('swig');<% } else if (viewEngine == 'nunjucks') { %>
+var keystone = require('keystone')<% if (viewEngine == 'hbs') { %>;
+var handlebars = require('express-handlebars')<% } else if (viewEngine == 'swig') { %>;
+var swig = require('swig')<% } else if (viewEngine == 'react') { %>;
+var react = require('express-react-views')<% } else if (viewEngine == 'nunjucks') { %>;
 var cons = require('consolidate');
 var nunjucks = require('nunjucks');<% } else if (viewEngine == 'twig') { %>
 var Twig = require('twig');<% } %>
@@ -32,9 +33,12 @@ keystone.init({
 	'views': ['templates', 'templates/views'],<% if (viewEngine === 'nunjucks') { %>
 	'view engine': 'html',
 	'custom engine': cons.nunjucks,
-<% } else { %>
-	'view engine': '<%= viewEngine %>',
-<% } %><% if (viewEngine === 'hbs') { %>
+	<% } if (viewEngine === 'react') { %>
+	'views': 'templates/components/views',
+	'view engine': 'jsx',
+	'custom engine': react.createEngine(),
+	<% } %>
+  <% if (viewEngine === 'hbs') { %>
 	'custom engine': handlebars.create({
 		layoutsDir: 'templates/views/layouts',
 		partialsDir: 'templates/views/partials',
