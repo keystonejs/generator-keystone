@@ -298,8 +298,8 @@ module.exports = function() {
 
 	//  ### Flash Message Helper
 	//  KeystoneJS supports a message interface for information/errors to be passed from server
-	//  to the front-end client and rendered in a html-block.  FlashMessage mirrors the Jade-Mixing
-	//  for creating the message.  But Part of the logic is in the default.layout.  Decision was to
+	//  to the front-end client and rendered in a html-block.  FlashMessage mirrors the Jade Mixin
+	//  for creating the message.  But part of the logic is in the default.layout.  Decision was to
 	//  surface more of the interface in the client html rather than abstracting behind a helper.
 	//
 	//  @messages:[]
