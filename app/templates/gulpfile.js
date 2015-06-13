@@ -1,7 +1,7 @@
-var gulp = require('gulp'),
-	jshint = require('gulp-jshint'),
-	jshintReporter = require('jshint-stylish'),
-	watch = require('gulp-watch');
+var gulp = require('gulp');
+var jshint = require('gulp-jshint');
+var jshintReporter = require('jshint-stylish');
+var watch = require('gulp-watch');
 
 /*
  * Create variables for our project paths so we can change in one place

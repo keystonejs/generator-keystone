@@ -3,11 +3,11 @@
 require('dotenv').load();
 
 // Require keystone
-var keystone = require('keystone')<% if (viewEngine == 'hbs') { %>,
-	handlebars = require('express-handlebars')<% } else if (viewEngine == 'swig') { %>,
-	swig = require('swig')<% } else if (viewEngine == 'nunjucks') { %>,
-	cons = require('consolidate'),
-	nunjucks = require('nunjucks')<% } %>;
+var keystone = require('keystone');<% if (viewEngine == 'hbs') { %>
+var handlebars = require('express-handlebars');<% } else if (viewEngine == 'swig') { %>
+var swig = require('swig');<% } else if (viewEngine == 'nunjucks') { %>
+var cons = require('consolidate');
+var nunjucks = require('nunjucks');<% } %>
 <% if (viewEngine == 'swig') { %>
 // Disable swig's bulit-in template caching, express handles it
 swig.setDefaults({ cache: false });
