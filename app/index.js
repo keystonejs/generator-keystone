@@ -1,9 +1,9 @@
-var util = require('util'),
-	path = require('path'),
-	_ = require('lodash'),
-	utils = require('keystone-utils'),
-	colors = require('colors'),
-	yeoman = require('yeoman-generator');
+var util = require('util');
+var path = require('path');
+var _ = require('lodash');
+var utils = require('keystone-utils');
+var colors = require('colors');
+var yeoman = require('yeoman-generator');
 
 
 var KeystoneGenerator = module.exports = function KeystoneGenerator(args, options, config) {
