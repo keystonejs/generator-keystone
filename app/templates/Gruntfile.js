@@ -16,7 +16,15 @@ module.exports = function(grunt) {
 		config: {
 			src: './grunt/*.js'
 		},
-		pkg: grunt.file.readJSON('package.json')
+		pkg: grunt.file.readJSON('package.json'),
+		nodemon: {
+			serve: {
+				script: 'keystone.js',
+				options: {
+					ignore: ['node_modules/**']
+				}
+			}
+		}
 	};
 
 	var configs = require('load-grunt-configs')(grunt, options);
