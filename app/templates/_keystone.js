@@ -70,10 +70,11 @@ keystone.set('locals', {
 // Load your project's Routes
 <% } %>
 keystone.set('routes', require('./routes'));
+<% if (includeEmail) { %>
 <% if (includeGuideComments) { %>
 // Setup common locals for your emails. The following are required by Keystone's
 // default email templates, you may remove them if you're using your own.
-<% } %><% if (includeEmail) { %>
+<% } %>
 keystone.set('email locals', {
 	logo_src: '/images/logo-email.gif',
 	logo_width: 194,
