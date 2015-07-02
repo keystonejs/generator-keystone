@@ -47,8 +47,7 @@ keystone.init({
 	'auto update': true,
 	'session': true,
 	'auth': true,
-	'user model': '<%= userModel %>',
-	'cookie secret': process.env.COOKIE_SECRET
+	'user model': '<%= userModel %>'
 
 });
 <% if (includeGuideComments) { %>
