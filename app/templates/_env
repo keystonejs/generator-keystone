@@ -1,2 +1,3 @@
+COOKIE_SECRET=<%= cookieSecret %>
 <% if (cloudinaryURL) { %>CLOUDINARY_URL=<%= cloudinaryURL %>
 <% } if (mandrillAPI) { %>MANDRILL_API_KEY=<%= mandrillAPI %><% } %>
