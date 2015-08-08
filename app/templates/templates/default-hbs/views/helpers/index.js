@@ -333,6 +333,21 @@ module.exports = function() {
 		}
 		return new hbs.SafeString(output);
 	};
+
+
+	//  ### underscoreMethod call + format helper
+	//	Calls to the passed in underscore method of the object (Keystone Model)
+	//	and returns the result of format() 
+	//
+	//  @obj: The Keystone Model on which to call the underscore method
+	//	@undescoremethod: string - name of underscore method to call
+	//
+	//  *Usage example:*
+	//  `{{underscoreFormat enquiry 'enquiryType'}}
+	
+	_helpers.underscoreFormat = function (obj, underscoreMethod) {
+		return obj._[underscoreMethod].format();
+	}
 	
 	return _helpers;
 };
