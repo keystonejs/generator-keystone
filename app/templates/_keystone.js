@@ -22,8 +22,10 @@ keystone.init({
 	'brand': '<%= projectName %>',
 	<% if (preprocessor === 'sass') { %>
 	'sass': 'public',
-	<% } else { %>
+	<% } else if (preprocessor === 'less') { %>
 	'less': 'public',
+	<% } else { %>
+	'stylus': 'public',
 	<% } %>'static': 'public',
 	'favicon': 'public/favicon.ico',
 	'views': 'templates/views',<% if (viewEngine === 'nunjucks') { %>
