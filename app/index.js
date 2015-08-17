@@ -88,7 +88,7 @@ KeystoneGenerator.prototype.prompts = function prompts() {
 				default: 'jade'
 			}, {
 				name: 'preprocessor',
-				message: 'Would you like to use LESS or SASS for stylesheets? ' + (('[less | sass | stylus]').grey),
+				message: 'Which CSS pre-processor would you like? ' + (('[less | sass | stylus]').grey),
 				default: 'less'
 			}, {
 				type: 'confirm',
