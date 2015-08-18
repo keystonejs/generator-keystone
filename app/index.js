@@ -88,7 +88,7 @@ KeystoneGenerator.prototype.prompts = function prompts() {
 				default: 'jade'
 			}, {
 				name: 'preprocessor',
-				message: 'Would you like to use LESS or SASS for stylesheets? ' + (('[less | sass]').grey),
+				message: 'Which CSS pre-processor would you like? ' + (('[less | sass | stylus]').grey),
 				default: 'less'
 			}, {
 				type: 'confirm',
@@ -164,10 +164,12 @@ KeystoneGenerator.prototype.prompts = function prompts() {
 		}
 
 		// Clean the preprocessor
-		if (_.contains(['sass', 's'], this.preprocessor.toLowerCase().trim())) {
+		if (_.contains(['sass', 'sa'], this.preprocessor.toLowerCase().trim())) {
 			this.preprocessor = 'sass';
-		} else {
+		} else if (_.contains(['less', 'le'], this.preprocessor.toLowerCase().trim())) {
 			this.preprocessor = 'less';
+		} else {
+			this.preprocessor = 'stylus';
 		}
 
 		// Clean the userModel name
@@ -469,8 +471,9 @@ KeystoneGenerator.prototype.files = function files() {
 
 	if (this.preprocessor === 'sass') {
 		this.directory('public/styles-sass', 'public/styles');
-	} else {
+	} else if (this.preprocessor === 'less') {
 		this.directory('public/styles-less', 'public/styles');
+	} else {
+		this.directory('public/styles-stylus', 'public/styles');
 	}
-
 };
