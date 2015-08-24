@@ -22,8 +22,8 @@
 		{# HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries
 		   Safely remove this block if you are not targeting IE8 #}
 		<!--[if lt IE 9]>
-			<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-			<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+			<script src="//cdn.jsdelivr.net/html5shiv/3.7.3/html5shiv.js"></script>
+			<script src="//cdn.jsdelivr.net/respond/1.4.2/respond.min.js"></script>
 		<![endif]-->
 
 		{# Include template-specific stylesheets by extending the css block #}
@@ -102,14 +102,14 @@
 
 		{# JAVASCRIPT #}
 
-		{# jQuery 1.11.1 is included by default, and required by both Bootstrap
+		{# jQuery 1.11.3 is included by default, and required by both Bootstrap
 			and the KeystoneJS Content Editor. If you are not targeting IE8,
-			you can upgrade to 2.1.3 (also bundled) for better performance. #}
-		<script src="/js/jquery/jquery-1.11.2.min.js"></script>
+			you can upgrade to 2.1.4 (also bundled) for better performance. #}
+		<script src="/js/jquery/jquery-1.11.3.min.js"></script>
 
 		{# Customise which Bootstrap javascript files are served by including
-			them specifically here, instead of bootstrap-3.3.4.min.js #}
-		<script src="/js/bootstrap/bootstrap-3.3.4.min.js"></script>
+			them specifically here, instead of bootstrap-3.3.5.min.js #}
+		<script src="/js/bootstrap/bootstrap-3.3.5.min.js"></script>
 
 		{# The KeystoneJS Content Editor provides support for ks-editable data attributes,
 			which generate links to edit content for users who can access Keystone #}
