@@ -8,7 +8,7 @@ var handlebars = require('express-handlebars');<% } else if (viewEngine == 'swig
 var swig = require('swig');<% } else if (viewEngine == 'nunjucks') { %>
 var cons = require('consolidate');
 var nunjucks = require('nunjucks');<% } %>
-<% if (viewEngine == 'swig') { %>
+<% if (viewEngine === 'swig') { %>
 // Disable swig's bulit-in template caching, express handles it
 swig.setDefaults({ cache: false });
 <% } if (includeGuideComments) { %>
