@@ -35,7 +35,10 @@
     "gulp": "^3.7.0",
     "gulp-jshint": "^1.9.0",
     "jshint-stylish": "^0.1.3",
-    "gulp-watch": "^0.6.5"
+    "gulp-shell": "^0.4.3",
+    "gulp-watch": "^0.6.5"<% if (preprocessor === 'sass') { %>,
+    "gulp-sass": "^2.0.4"
+    <% } %>
   },<% } %>
   "engines": {
     "node": ">=0.10.22",

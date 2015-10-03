@@ -303,7 +303,7 @@ KeystoneGenerator.prototype.project = function project() {
 	}
 
 	if (this.taskRunner === 'gulp'){
-		this.copy('gulpfile.js');
+		this.copy('_gulpfile.js', 'gulpfile.js');
 	}
 
 };
