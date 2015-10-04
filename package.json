@@ -1,6 +1,6 @@
 {
   "name": "generator-keystone",
-  "version": "0.3.8",
+  "version": "0.3.9",
   "description": "A KeystoneJS Project Generator for Yeoman",
   "keywords": [
     "yeoman-generator",
