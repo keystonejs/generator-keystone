@@ -28,7 +28,8 @@
     "grunt-node-inspector": "^0.1.5",
     "time-grunt": "^0.3.1",
     "grunt-concurrent": "^0.5.0",
-    "grunt-nodemon": "^0.2.1",
+    "grunt-nodemon": "^0.2.1", <% if (preprocessor === 'sass') { %>
+    "grunt-sass": "^1.0.0", <% } %>
     "open": "0.0.5"
   },<% } else if (taskRunner === 'gulp') { %>
   "devDependencies": {
