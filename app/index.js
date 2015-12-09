@@ -3,6 +3,7 @@ var path = require('path');
 var _ = require('lodash');
 var utils = require('keystone-utils');
 var colors = require('colors');
+var crypto = require('crypto');
 var yeoman = require('yeoman-generator');
 
 
@@ -279,9 +280,7 @@ KeystoneGenerator.prototype.guideComments = function() {
 
 KeystoneGenerator.prototype.keys = function keys() {
 
-	var cookieSecretChars = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXTZabcdefghiklmnopqrstuvwxyz!@#$%^&*()-=_+[]{}|;:",./<>?`~';
-
-	this.cookieSecret = utils.randomString(64, cookieSecretChars);
+	this.cookieSecret = crypto.randomBytes(64).toString('hex');
 
 };
 
