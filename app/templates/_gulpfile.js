@@ -27,10 +27,7 @@ gulp.task('lint', function(){
 
 // gulp watcher for lint
 gulp.task('watch:lint', function () {
-	gulp.src(paths.src)
-		.pipe(watch())
-		.pipe(jshint())
-		.pipe(jshint.reporter(jshintReporter));
+	gulp.watch(paths.src, ['lint']);
 });
 
 <% if (preprocessor === 'sass') { %>
