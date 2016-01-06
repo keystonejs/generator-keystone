@@ -14,7 +14,8 @@
     "consolidate": "^0.10.0",
     "nunjucks": "^1.0.5", <% } if (preprocessor === 'sass') { %>
     "node-sass": "^3.3.2",
-    "node-sass-middleware": "^0.9.7", <% } %>
+    "node-sass-middleware": "^0.9.7", <% } else if (preprocessor === 'stylus') { %>
+    "stylus": "^0.53.0", <% } %>
     "dotenv": "^1.1.0"
   },<% if (taskRunner === 'grunt') { %>
   "devDependencies": {
