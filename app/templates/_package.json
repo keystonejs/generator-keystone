@@ -25,7 +25,7 @@
     "jshint-stylish": "^2.0.1",
     "load-grunt-tasks": "^0.4.0",
     "load-grunt-configs": "^0.4.1",
-    "grunt-node-inspector": "^0.1.5",
+    "grunt-node-inspector": "^0.4.1",
     "time-grunt": "^0.3.1",
     "grunt-concurrent": "^0.5.0",
     "grunt-nodemon": "^0.2.1", <% if (preprocessor === 'sass') { %>
