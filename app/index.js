@@ -24,8 +24,8 @@ var KeystoneGenerator = module.exports = function KeystoneGenerator (args, optio
 
 	// This callback is fired when the generator has completed,
 	// and includes instructions on what to do next.
-	var done = _.bind(function done () {
-		var cmd = (this.newDirectory ? '"cd ' + utils.slug(this.projectName) + '" then ' : '') + '"node keystone"';
+	var done = _.bind(function done() {
+	var cmd = (this.newDirectory ? '"cd ' + utils.slug(this.projectName) + '" then ' : '') + '"' + 'npm start' + '"';
 		console.log(
 			'\n------------------------------------------------'
 			+ '\n'
@@ -116,7 +116,7 @@ KeystoneGenerator.prototype.prompts = function prompts () {
 				default: 'user@keystonejs.com',
 			}, {
 				name: 'adminPassword',
-				message: 'Enter a password for the first Admin user:' 
+				message: 'Enter a password for the first Admin user:'
 					+ '\n Please use a temporary password as it will be saved in plain text and change it after the first login.',
 				default: 'admin',
 			}, {
