@@ -106,4 +106,4 @@ For other platforms, see the [MongoDB installation guides](http://docs.mongodb.o
 
 ## License
 
-[MIT License](http://en.wikipedia.org/wiki/MIT_License)
+[MIT License](http://en.wikipedia.org/wiki/MIT_License). Copyright (c) 2016 Jed Watson.
