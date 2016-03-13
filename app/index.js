@@ -193,7 +193,7 @@ KeystoneGenerator.prototype.prompts = function prompts() {
 					name: 'mandrillAPI',
 					message: '------------------------------------------------' +
 						'\n    Please enter your Mandrill API Key (optional).' +
-						'\n    See http://keystonejs.com/guide/config/#mandrill for more info.' +
+						'\n    See http://keystonejs.com/docs/configuration/#services-mandrill for more info.' +
 						'\n    ' +
 						'\n    You can skip this for now (we\'ll include a test key instead)' +
 						'\n    ' +
