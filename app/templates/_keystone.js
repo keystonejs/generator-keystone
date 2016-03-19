@@ -10,7 +10,7 @@ var cons = require('consolidate');
 var nunjucks = require('nunjucks');<% } %>
 <% if (viewEngine === 'swig') { %>
 // Disable swig's bulit-in template caching, express handles it
-swig.setDefaults({ cache: false });
+swig.setDefaults({ cache: process.env.NODE_ENV === 'development' ? false : 'memory' });
 <% } if (includeGuideComments) { %>
 // Initialise Keystone with your project's configuration.
 // See http://keystonejs.com/guide/config for available options
