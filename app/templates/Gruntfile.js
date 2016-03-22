@@ -1,7 +1,7 @@
-'use strict()';
+'use strict';
 
-var config= {
-	port: 3000
+var config = {
+	port: 3000,
 };
 
 module.exports = function(grunt) {
@@ -14,38 +14,38 @@ module.exports = function(grunt) {
 
 	var options = {
 		config: {
-			src: './grunt/*.js'
+			src: './grunt/*.js',
 		},
 		pkg: grunt.file.readJSON('package.json'),
 		nodemon: {
 			serve: {
 				script: 'keystone.js',
 				options: {
-					ignore: ['node_modules/**']
-				}
-			}
-		}
+					ignore: ['node_modules/**'],
+				},
+			},
+		},
 	};
 
 	var configs = require('load-grunt-configs')(grunt, options);
-	
+
 	// Project configuration.
 	grunt.initConfig(configs);
 
 	// load jshint
 	grunt.registerTask('lint', [
-		'jshint'
+		'jshint',
 	]);
 
 	grunt.registerTask('dev', [
 		'sass',
-		'watch'
+		'watch',
 	]);
 
 	// default option to connect server
 	grunt.registerTask('serve', [
 		'jshint',
-		'concurrent:dev'
+		'concurrent:dev',
 	]);
 
 	grunt.registerTask('server', function () {

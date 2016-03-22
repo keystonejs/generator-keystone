@@ -39,7 +39,7 @@ keystone.init({
 		partialsDir: 'templates/views/partials',
 		defaultLayout: 'default',
 		helpers: new require('./templates/views/helpers')(),
-		extname: '.hbs'
+		extname: '.hbs',
 	}).engine,
 	<% } else if ( viewEngine === 'swig' ) { %>
 	'custom engine': swig.renderFile,
@@ -49,7 +49,7 @@ keystone.init({
 	'auto update': true,
 	'session': true,
 	'auth': true,
-	'user model': '<%= userModel %>'
+	'user model': '<%= userModel %>',
 
 });
 <% if (includeGuideComments) { %>
@@ -65,7 +65,7 @@ keystone.set('locals', {
 	_: require('underscore'),
 	env: keystone.get('env'),
 	utils: keystone.utils,
-	editable: keystone.content.editable
+	editable: keystone.content.editable,
 });
 <% if (includeGuideComments) { %>
 // Load your project's Routes
@@ -86,9 +86,9 @@ keystone.set('email locals', {
 		buttons: {
 			color: '#fff',
 			background_color: '#2697de',
-			border_color: '#1a7cb7'
-		}
-	}
+			border_color: '#1a7cb7',
+		},
+	},
 });
 <% if (includeGuideComments) { %>
 // Setup replacement rules for emails, to automate the handling of differences
@@ -99,10 +99,10 @@ keystone.set('email locals', {
 <% } %>
 keystone.set('email rules', [{
 	find: '/images/',
-	replace: (keystone.get('env') == 'production') ? 'http://www.your-server.com/images/' : 'http://localhost:3000/images/'
+	replace: (keystone.get('env') == 'production') ? 'http://www.your-server.com/images/' : 'http://localhost:3000/images/',
 }, {
 	find: '/keystone/',
-	replace: (keystone.get('env') == 'production') ? 'http://www.your-server.com/keystone/' : 'http://localhost:3000/keystone/'
+	replace: (keystone.get('env') == 'production') ? 'http://www.your-server.com/keystone/' : 'http://localhost:3000/keystone/',
 }]);
 <% if (includeGuideComments) { %>
 // Load your project's email test routes
@@ -115,7 +115,7 @@ keystone.set('nav', {
 	<% if (includeBlog) { %>'posts': ['posts', 'post-categories'],
 	<% } if (includeGallery) { %>'galleries': 'galleries',
 	<% } if (includeEnquiries) { %>'enquiries': 'enquiries',
-	<% } %>'<%= userModelPath %>': '<%= userModelPath %>'
+	<% } %>'<%= userModelPath %>': '<%= userModelPath %>',
 });
 <% if (includeGuideComments) { %>
 // Start Keystone to connect to your database and initialise the web server
