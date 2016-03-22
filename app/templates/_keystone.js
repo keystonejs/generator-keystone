@@ -91,20 +91,6 @@ keystone.set('email locals', {
 	},
 });
 <% if (includeGuideComments) { %>
-// Setup replacement rules for emails, to automate the handling of differences
-// between development a production.
-
-// Be sure to update this rule to include your site's actual domain, and add
-// other rules your email templates require.
-<% } %>
-keystone.set('email rules', [{
-	find: '/images/',
-	replace: (keystone.get('env') == 'production') ? 'http://www.your-server.com/images/' : 'http://localhost:3000/images/',
-}, {
-	find: '/keystone/',
-	replace: (keystone.get('env') == 'production') ? 'http://www.your-server.com/keystone/' : 'http://localhost:3000/keystone/',
-}]);
-<% if (includeGuideComments) { %>
 // Load your project's email test routes
 <% } %>
 keystone.set('email tests', require('./routes/emails'));
