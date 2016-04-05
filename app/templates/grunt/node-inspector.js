@@ -4,4 +4,4 @@ module.exports = {
 			'web-host': 'localhost'
 		}
 	}
-}
+};

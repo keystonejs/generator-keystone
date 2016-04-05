@@ -7,7 +7,7 @@ var crypto = require('crypto');
 var yeoman = require('yeoman-generator');
 
 
-var KeystoneGenerator = module.exports = function KeystoneGenerator(args, options, config) {
+var KeystoneGenerator = module.exports = function KeystoneGenerator (args, options, config) {
 
 	// Set utils for use in templates
 	this.utils = utils;
@@ -24,7 +24,7 @@ var KeystoneGenerator = module.exports = function KeystoneGenerator(args, option
 
 	// This callback is fired when the generator has completed,
 	// and includes instructions on what to do next.
-	var done = _.bind(function done() {
+	var done = _.bind(function done () {
 		var cmd = (this.newDirectory ? '"cd ' + utils.slug(this.projectName) + '" then ' : '') + '"node keystone"';
 		console.log(
 			'\n------------------------------------------------' +
@@ -72,7 +72,7 @@ var KeystoneGenerator = module.exports = function KeystoneGenerator(args, option
 // Extends the Base Generator
 util.inherits(KeystoneGenerator, yeoman.generators.Base);
 
-KeystoneGenerator.prototype.prompts = function prompts() {
+KeystoneGenerator.prototype.prompts = function prompts () {
 
 	var cb = this.async();
 
@@ -140,9 +140,9 @@ KeystoneGenerator.prototype.prompts = function prompts() {
 
 	};
 
-	this.prompt(prompts.project, function(props) {
+	this.prompt(prompts.project, function (props) {
 
-		_.each(props, function(val, key) {
+		_.each(props, function (val, key) {
 			this[key] = val;
 		}, this);
 
@@ -232,9 +232,9 @@ KeystoneGenerator.prototype.prompts = function prompts() {
 			return cb();
 		}
 
-		this.prompt(prompts.config, function(props) {
+		this.prompt(prompts.config, function (props) {
 
-			_.each(props, function(val, key) {
+			_.each(props, function (val, key) {
 				this[key] = val;
 			}, this);
 
@@ -256,7 +256,7 @@ KeystoneGenerator.prototype.prompts = function prompts() {
 
 };
 
-KeystoneGenerator.prototype.guideComments = function() {
+KeystoneGenerator.prototype.guideComments = function () {
 
 	var cb = this.async();
 
@@ -269,7 +269,7 @@ KeystoneGenerator.prototype.guideComments = function() {
 				'\n    your project? If you\'re new to Keystone, these may be helpful.',
 			default: true
 		}
-	], function(props) {
+	], function (props) {
 
 		this.includeGuideComments = props.includeGuideComments;
 		cb();
@@ -278,13 +278,13 @@ KeystoneGenerator.prototype.guideComments = function() {
 
 };
 
-KeystoneGenerator.prototype.keys = function keys() {
+KeystoneGenerator.prototype.keys = function keys () {
 
 	this.cookieSecret = crypto.randomBytes(64).toString('hex');
 
 };
 
-KeystoneGenerator.prototype.project = function project() {
+KeystoneGenerator.prototype.project = function project () {
 
 	this.template('_package.json', 'package.json');
 	this.template('_env', '.env');
@@ -301,13 +301,13 @@ KeystoneGenerator.prototype.project = function project() {
 		this.directory('grunt', 'grunt');
 	}
 
-	if (this.taskRunner === 'gulp'){
+	if (this.taskRunner === 'gulp') {
 		this.copy('_gulpfile.js', 'gulpfile.js');
 	}
 
 };
 
-KeystoneGenerator.prototype.models = function models() {
+KeystoneGenerator.prototype.models = function models () {
 
 	var modelFiles = [];
 
@@ -328,13 +328,13 @@ KeystoneGenerator.prototype.models = function models() {
 
 	this.template('models/_User.js', 'models/' + this.userModel + '.js');
 
-	modelFiles.forEach(function(i) {
+	modelFiles.forEach(function (i) {
 		this.template('models/' + i + '.js');
 	}, this);
 
 };
 
-KeystoneGenerator.prototype.routes = function routes() {
+KeystoneGenerator.prototype.routes = function routes () {
 
 	this.mkdir('routes');
 	this.mkdir('routes/views');
@@ -363,7 +363,7 @@ KeystoneGenerator.prototype.routes = function routes() {
 
 };
 
-KeystoneGenerator.prototype.templates = function templates() {
+KeystoneGenerator.prototype.templates = function templates () {
 
 	if (this.viewEngine === 'hbs') {
 
@@ -455,13 +455,13 @@ KeystoneGenerator.prototype.templates = function templates() {
 
 };
 
-KeystoneGenerator.prototype.updates = function routes() {
+KeystoneGenerator.prototype.updates = function routes () {
 
 	this.directory('updates');
 
 };
 
-KeystoneGenerator.prototype.files = function files() {
+KeystoneGenerator.prototype.files = function files () {
 
 	this.directory('public/fonts');
 	this.directory('public/images');
