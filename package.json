@@ -31,12 +31,12 @@
   },
   "dependencies": {
     "colors": "^1.1.2",
-    "keystone-utils": "^0.3.0",
-    "lodash": "^3.10.1",
+    "keystone-utils": "^0.3.4",
+    "lodash": "^4.8.2",
     "yeoman-generator": "^0.17.7"
   },
   "devDependencies": {
-    "mocha": "^2.3.3"
+    "mocha": "^2.4.5"
   },
   "engines": {
     "node": ">=0.10.0",
