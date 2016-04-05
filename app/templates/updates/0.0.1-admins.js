@@ -9,7 +9,7 @@
 
 exports.create = {
 	<%= userModel %>: [
-		{ 'name.first': 'Admin', 'name.last': 'User', email: '<%= adminLogin %>', password: '<%= adminPassword %>', isAdmin: true },
+		{ 'name.first': 'Admin', 'name.last': 'User', 'email': '<%= adminLogin %>', 'password': '<%= adminPassword %>', 'isAdmin': true },
 	],
 };
 
@@ -25,24 +25,24 @@ var admins = [
 	{ email: 'user@keystonejs.com', password: 'admin', name: { first: 'Admin', last: 'User' } }
 ];
 
-function createAdmin(admin, done) {
+function createAdmin (admin, done) {
 
 	var newAdmin = new User.model(admin);
 
 	newAdmin.isAdmin = true;
-	newAdmin.save(function(err) {
+	newAdmin.save(function (err) {
 		if (err) {
-			console.error("Error adding admin " + admin.email + " to the database:");
+			console.error('Error adding admin ' + admin.email + ' to the database:');
 			console.error(err);
 		} else {
-			console.log("Added admin " + admin.email + " to the database.");
+			console.log('Added admin ' + admin.email + ' to the database.');
 		}
 		done(err);
 	});
 
 }
 
-exports = module.exports = function(done) {
+exports = module.exports = function (done) {
 	async.forEach(admins, createAdmin, done);
 };
 

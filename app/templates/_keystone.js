@@ -20,20 +20,20 @@ keystone.init({
 
 	'name': '<%= projectName %>',
 	'brand': '<%= projectName %>',
-	<% if (preprocessor === 'sass') { %>
+<% if (preprocessor === 'sass') { %>
 	'sass': 'public',
-	<% } else if (preprocessor === 'less') { %>
+<% } else if (preprocessor === 'less') { %>
 	'less': 'public',
-	<% } else { %>
+<% } else { %>
 	'stylus': 'public',
 	<% } %>'static': 'public',
 	'favicon': 'public/favicon.ico',
 	'views': 'templates/views',<% if (viewEngine === 'nunjucks') { %>
 	'view engine': 'html',
 	'custom engine': cons.nunjucks,
-	<% } else { %>
+<% } else { %>
 	'view engine': '<%= viewEngine %>',
-	<% } %><% if (viewEngine === 'hbs') { %>
+<% } %><% if (viewEngine === 'hbs') { %>
 	'custom engine': handlebars.create({
 		layoutsDir: 'templates/views/layouts',
 		partialsDir: 'templates/views/partials',
@@ -41,11 +41,11 @@ keystone.init({
 		helpers: new require('./templates/views/helpers')(),
 		extname: '.hbs',
 	}).engine,
-	<% } else if ( viewEngine === 'swig' ) { %>
+<% } else if ( viewEngine === 'swig' ) { %>
 	'custom engine': swig.renderFile,
-	<% } %><% if (includeEmail) { %>
+<% } %><% if (includeEmail) { %>
 	'emails': 'templates/emails',
-	<% } %>
+<% } %>
 	'auto update': true,
 	'session': true,
 	'auth': true,
@@ -98,10 +98,10 @@ keystone.set('email tests', require('./routes/emails'));
 // Configure the navigation bar in Keystone's Admin UI
 <% } %>
 keystone.set('nav', {
-	<% if (includeBlog) { %>'posts': ['posts', 'post-categories'],
-	<% } if (includeGallery) { %>'galleries': 'galleries',
-	<% } if (includeEnquiries) { %>'enquiries': 'enquiries',
-	<% } %>'<%= userModelPath %>': '<%= userModelPath %>',
+	<% if (includeBlog) { %>posts: ['posts', 'post-categories'],
+	<% } if (includeGallery) { %>galleries: 'galleries',
+	<% } if (includeEnquiries) { %>enquiries: 'enquiries',
+	<% } %><%= userModelPath %>: '<%= userModelPath %>',
 });
 <% if (includeGuideComments) { %>
 // Start Keystone to connect to your database and initialise the web server
