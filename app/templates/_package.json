@@ -22,8 +22,6 @@
     "grunt": "^0.4.4",
     "grunt-express-server": "^0.4.17",
     "grunt-contrib-watch": "^0.6.1",
-    "grunt-contrib-jshint": "^0.7.1",
-    "jshint-stylish": "^2.0.1",
     "load-grunt-tasks": "^0.4.0",
     "load-grunt-configs": "^0.4.1",
     "grunt-node-inspector": "^0.4.1",
@@ -35,8 +33,6 @@
   },<% } else if (taskRunner === 'gulp') { %>
   "devDependencies": {
     "gulp": "^3.7.0",
-    "gulp-jshint": "^1.9.0",
-    "jshint-stylish": "^0.1.3",
     "gulp-shell": "^0.5.0",
     "gulp-watch": "^4.3.5"<% if (preprocessor === 'sass') { %>,
     "gulp-sass": "^2.0.4"

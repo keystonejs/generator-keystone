@@ -287,7 +287,6 @@ KeystoneGenerator.prototype.project = function project () {
 
 	this.template('_package.json', 'package.json');
 	this.template('_env', '.env');
-	this.template('_jshintrc', '.jshintrc');
 
 	this.template('_keystone.js', 'keystone.js');
 

@@ -1,6 +1,4 @@
 var gulp = require('gulp');
-var jshint = require('gulp-jshint');
-var jshintReporter = require('jshint-stylish');
 var watch = require('gulp-watch');
 var shell = require('gulp-shell')
 <% if (preprocessor === 'sass') { %>
@@ -26,18 +24,6 @@ var paths = {
 	}
 <% } %>
 };
-
-// gulp lint
-gulp.task('lint', function(){
-	gulp.src(paths.src)
-		.pipe(jshint())
-		.pipe(jshint.reporter(jshintReporter));
-});
-
-// gulp watcher for lint
-gulp.task('watch:lint', function () {
-	gulp.watch(paths.src, ['lint']);
-});
 
 <% if (preprocessor === 'sass') { %>
 gulp.task('watch:sass', function () {
