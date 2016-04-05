@@ -142,32 +142,31 @@ KeystoneGenerator.prototype.prompts = function prompts () {
 
 	this.prompt(prompts.project, function (props) {
 
-		_.each(props, function (val, key) {
-			this[key] = val;
-		}, this);
+		_.assign(this, props);
 
 		// Keep an unescaped version of the project name
 		this._projectName = this.projectName;
 		// ... then escape it for use in strings (most cases)
 		this.projectName = utils.escapeString(this.projectName);
+		// Escape other inputs
 		this.adminLogin = utils.escapeString(this.adminLogin);
 		this.adminPassword = utils.escapeString(this.adminPassword);
 
 		// Clean the viewEngine selection
-		if (_.contains(['handlebars', 'hbs', 'h'], this.viewEngine.toLowerCase().trim())) {
+		if (_.includes(['handlebars', 'hbs', 'h'], this.viewEngine.toLowerCase().trim())) {
 			this.viewEngine = 'hbs';
-		} else if (_.contains(['swig', 's'], this.viewEngine.toLowerCase().trim())) {
+		} else if (_.includes(['swig', 's'], this.viewEngine.toLowerCase().trim())) {
 			this.viewEngine = 'swig';
-		} else if (_.contains(['nunjucks', 'nun', 'n'], this.viewEngine.toLowerCase().trim())) {
+		} else if (_.includes(['nunjucks', 'nun', 'n'], this.viewEngine.toLowerCase().trim())) {
 			this.viewEngine = 'nunjucks';
 		} else {
 			this.viewEngine = 'jade';
 		}
 
 		// Clean the preprocessor
-		if (_.contains(['sass', 'sa'], this.preprocessor.toLowerCase().trim())) {
+		if (_.includes(['sass', 'sa'], this.preprocessor.toLowerCase().trim())) {
 			this.preprocessor = 'sass';
-		} else if (_.contains(['less', 'le'], this.preprocessor.toLowerCase().trim())) {
+		} else if (_.includes(['less', 'le'], this.preprocessor.toLowerCase().trim())) {
 			this.preprocessor = 'less';
 		} else {
 			this.preprocessor = 'stylus';
