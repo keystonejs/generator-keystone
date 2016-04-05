@@ -2,27 +2,27 @@ module.exports = {
 	js: {
 		files: [
 			'model/**/*.js',
-			'routes/**/*.js'
+			'routes/**/*.js',
 		],
-		tasks: ['jshint:all']
+		tasks: ['jshint:all'],
 	},
 	express: {
 		files: [
 			'keystone.js',
-			'public/js/lib/**/*.{js,json}'
+			'public/js/lib/**/*.{js,json}',
 		],
-		tasks: ['jshint:server', 'concurrent:dev']
+		tasks: ['jshint:server', 'concurrent:dev'],
 	},
 	sass: {
 		files: ['public/styles/**/*.scss'],
-		tasks: ['sass']
+		tasks: ['sass'],
 	},
 	livereload: {
 		files: [
 			'public/styles/**/*.css',
 		],
 		options: {
-			livereload: true
-		}
-	}
+			livereload: true,
+		},
+	},
 };

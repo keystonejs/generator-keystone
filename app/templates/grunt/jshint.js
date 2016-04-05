@@ -3,13 +3,14 @@ module.exports = {
 		globals: {
 			reporter: require('jshint-stylish'),
 			jshintrc: true,
-			force: true
+			force: true,
 		},
 	},
-	all: ['routes/**/*.js',
-				 'models/**/*.js'
+	all: [
+		'routes/**/*.js',
+		'models/**/*.js',
 	],
 	server: [
-		'./keystone.js'
-	]
+		'./keystone.js',
+	],
 };

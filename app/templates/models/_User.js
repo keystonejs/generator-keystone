@@ -5,7 +5,6 @@ var Types = keystone.Field.Types;
  * <%= userModel %> Model
  * ==========
  */
-
 var <%= userModel %> = new keystone.List('<%= userModel %>');
 
 <%= userModel %>.add({
@@ -17,7 +16,7 @@ var <%= userModel %> = new keystone.List('<%= userModel %>');
 });
 
 // Provide access to Keystone
-<%= userModel %>.schema.virtual('canAccessKeystone').get(function() {
+<%= userModel %>.schema.virtual('canAccessKeystone').get(function () {
 	return this.isAdmin;
 });
 
@@ -25,13 +24,11 @@ var <%= userModel %> = new keystone.List('<%= userModel %>');
 /**
  * Relationships
  */
-
 <%= userModel %>.relationship({ ref: 'Post', path: 'posts', refPath: 'author' });
 
 <% } %>
 /**
  * Registration
  */
-
 <%= userModel %>.defaultColumns = 'name, email, isAdmin';
 <%= userModel %>.register();

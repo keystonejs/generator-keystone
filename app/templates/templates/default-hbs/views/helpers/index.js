@@ -4,16 +4,10 @@ var hbs = require('handlebars');
 var keystone = require('keystone');
 var cloudinary = require('cloudinary');
 
-
-// Declare Constants
-var CLOUDINARY_HOST = 'http://res.cloudinary.com';
-
 // Collection of templates to interpolate
 var linkTemplate = _.template('<a href="<%= url %>"><%= text %></a>');
 var scriptTemplate = _.template('<script src="<%= src %>"></script>');
 var cssLinkTemplate = _.template('<link href="<%= href %>" rel="stylesheet">');
-var cloudinaryUrlLimit = _.template(CLOUDINARY_HOST + '/<%= cloudinaryUser %>/image/upload/c_limit,f_auto,h_<%= height %>,w_<%= width %>/<%= publicId %>.jpg');
-
 
 module.exports = function () {
 
@@ -27,7 +21,7 @@ module.exports = function () {
 	// standard hbs equality check, pass in two values from template
 	// {{#ifeq keyToCheck data.myKey}} [requires an else blockin template regardless]
 	_helpers.ifeq = function (a, b, options) {
-		if (a == b) {
+		if (a == b) { // eslint-disable-line eqeqeq
 			return options.fn(this);
 		} else {
 			return options.inverse(this);
@@ -68,9 +62,9 @@ module.exports = function () {
 		// ensure that context is undefined, not null, as that can cause errors
 		context = context === null ? undefined : context;
 
-		var f = options.hash.format || 'MMM Do, YYYY',
-			timeago = options.hash.timeago,
-			date;
+		var f = options.hash.format || 'MMM Do, YYYY';
+		var timeago = options.hash.timeago;
+		var date;
 
 		// if context is undefined and given to moment then current timestamp is given
 		// nice if you just want the current year to define in a tmpl
@@ -95,11 +89,11 @@ module.exports = function () {
 	// output. 'Filed Undder <a href="blog/tech">tech</a>, <a href="blog/js">js</a>'
 
 	_helpers.categoryList = function (categories, options) {
-		var autolink = _.isString(options.hash.autolink) && options.hash.autolink === 'false' ? false : true,
-			separator = _.isString(options.hash.separator) ? options.hash.separator : ', ',
-			prefix = _.isString(options.hash.prefix) ? options.hash.prefix : '',
-			suffix = _.isString(options.hash.suffix) ? options.hash.suffix : '',
-			output = '';
+		var autolink = _.isString(options.hash.autolink) && options.hash.autolink === 'false' ? false : true;
+		var separator = _.isString(options.hash.separator) ? options.hash.separator : ', ';
+		var prefix = _.isString(options.hash.prefix) ? options.hash.prefix : '';
+		var suffix = _.isString(options.hash.suffix) ? options.hash.suffix : '';
+		var output = '';
 
 		function createTagList (tags) {
 			var tagNames = _.pluck(tags, 'name');
@@ -108,7 +102,7 @@ module.exports = function () {
 				return _.map(tags, function (tag) {
 					return linkTemplate({
 						url: ('/blog/' + tag.key),
-						text: _.escape(tag.name)
+						text: _.escape(tag.name),
 					});
 				}).join(separator);
 			}
@@ -121,24 +115,6 @@ module.exports = function () {
 		return new hbs.SafeString(output);
 	};
 
-	/* To Implement [Ghost Helpers](http://docs.ghost.org/themes/#helpers)
-	 * The [source](https://github.com/TryGhost/Ghost/blob/master/core/server/helpers/index.js)
-	 *
-	 * * `Foreach` Extended Helper
-	 * * `Asset` Helper
-	 * * `Content` Helper
-	 * * `Excerpt` Helper
-	 * * `Has` Helper
-	 * * `Encode` Helper
-	 * * Pagination
-	 * * BodyClass
-	 * * PostClass
-	 * * meta_title
-	 * * meta_description
-	 * * ghost_[footer/header]
-	 *
-	 */
-
 	/**
 	 * KeystoneJS specific helpers
 	 * ===========================
@@ -149,7 +125,7 @@ module.exports = function () {
 		var output = '';
 		if (typeof (user) !== 'undefined' && user.isAdmin) {
 			output = cssLinkTemplate({
-				href: '/keystone/styles/content/editor.min.css'
+				href: '/keystone/styles/content/editor.min.css',
 			});
 		}
 		return new hbs.SafeString(output);
@@ -160,7 +136,7 @@ module.exports = function () {
 		var output = '';
 		if (typeof (user) !== 'undefined' && user.isAdmin) {
 			output = scriptTemplate({
-				src: '/keystone/js/content/editor.js'
+				src: '/keystone/js/content/editor.js',
 			});
 		}
 		return new hbs.SafeString(output);
@@ -169,8 +145,8 @@ module.exports = function () {
 	// Used to generate the link for the admin edit post button
 	_helpers.adminEditableUrl = function (user, options) {
 		var rtn = keystone.app.locals.editable(user, {
-			'list': 'Post',
-			'id': options
+			list: 'Post',
+			id: options,
 		});
 		return rtn;
 	};
@@ -257,11 +233,11 @@ module.exports = function () {
 		// '...' will be added by keystone if the pages exceed 10
 		_.each(pages, function (page, ctr) {
 			// create ref to page, so that '...' is displayed as text even though int value is required
-			var pageText = page,
+			var pageText = page;
 			// create boolean flag state if currentPage
-				isActivePage = ((page === currentPage) ? true : false),
+			var isActivePage = ((page === currentPage) ? true : false);
 			// need an active class indicator
-				liClass = ((isActivePage) ? ' class="active"' : '');
+			var liClass = ((isActivePage) ? ' class="active"' : '');
 
 			// if '...' is sent from keystone then we need to override the url
 			if (page === '...') {
@@ -272,28 +248,28 @@ module.exports = function () {
 			// get the pageUrl using the integer value
 			var pageUrl = _helpers.pageUrl(page);
 			// wrapup the html
-			html += '<li' + liClass + '>' + linkTemplate({ url:pageUrl, text:pageText }) + '</li>\n';
+			html += '<li' + liClass + '>' + linkTemplate({ url: pageUrl, text: pageText }) + '</li>\n';
 		});
 		return html;
 	};
 
-        // special helper to ensure that we always have a valid page url set even if
-        // the link is disabled, will default to page 1
-        		_helpers.paginationPreviousUrl = function (previousPage, totalPages) {
-            		if (previousPage === false) {
-                		previousPage = 1;
-            }
-            		return _helpers.pageUrl(previousPage);
-        };
+	// special helper to ensure that we always have a valid page url set even if
+	// the link is disabled, will default to page 1
+	_helpers.paginationPreviousUrl = function (previousPage, totalPages) {
+		if (previousPage === false) {
+			previousPage = 1;
+		}
+		return _helpers.pageUrl(previousPage);
+	};
 
-        // special helper to ensure that we always have a valid next page url set
-        // even if the link is disabled, will default to totalPages
-        		_helpers.paginationNextUrl = function (nextPage, totalPages) {
-            		if (nextPage === false) {
-                		nextPage = totalPages;
-            }
-            		return _helpers.pageUrl(nextPage);
-        };
+	// special helper to ensure that we always have a valid next page url set
+	// even if the link is disabled, will default to totalPages
+	_helpers.paginationNextUrl = function (nextPage, totalPages) {
+		if (nextPage === false) {
+			nextPage = totalPages;
+		}
+		return _helpers.pageUrl(nextPage);
+	};
 
 
 	//  ### Flash Message Helper

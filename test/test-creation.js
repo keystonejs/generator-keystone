@@ -26,9 +26,9 @@ describe('keystone generator', function () {
 			'.editorconfig',
 		];
 
-		helpers.mockPrompt(this.app, {
-			'someOption': true,
-		});
+		// helpers.mockPrompt(this.app, {
+		// 	'someOption': true,
+		// });
 		this.app.options['skip-install'] = true;
 		this.app.run({}, function () {
 			helpers.assertFiles(expected);
