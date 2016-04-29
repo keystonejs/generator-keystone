@@ -461,16 +461,19 @@ KeystoneGenerator.prototype.updates = function routes () {
 
 KeystoneGenerator.prototype.files = function files () {
 
-	this.directory('public/fonts');
 	this.directory('public/images');
 	this.directory('public/js');
 	this.copy('public/favicon.ico');
 
 	if (this.preprocessor === 'sass') {
+		this.directory('public/fonts', 'public/fonts/bootstrap');
 		this.directory('public/styles-sass', 'public/styles');
+
 	} else if (this.preprocessor === 'less') {
+		this.directory('public/fonts');
 		this.directory('public/styles-less', 'public/styles');
 	} else {
+		this.directory('public/fonts');
 		this.directory('public/styles-stylus', 'public/styles');
 	}
 };
