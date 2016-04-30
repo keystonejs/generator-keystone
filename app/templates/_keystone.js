@@ -94,7 +94,15 @@ keystone.set('email locals', {
 // Load your project's email test routes
 <% } %>
 keystone.set('email tests', require('./routes/emails'));
-<% } %><% if (includeGuideComments) { %>
+<% } %>
+<% if (viewEngine === 'hbs') { %>
+<% if (includeGuideComments) { %>
+// Switch Keystone Email defaults to handlebars
+<% } %>
+keystone.Email.defaults.templateExt = 'hbs';
+keystone.Email.defaults.templateEngine = require('handlebars');
+<% } %>
+<% if (includeGuideComments) { %>
 // Configure the navigation bar in Keystone's Admin UI
 <% } %>
 keystone.set('nav', {
