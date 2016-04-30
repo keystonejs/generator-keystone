@@ -6,10 +6,17 @@ module.exports = {
 		],
 		tasks: ['concurrent:dev'],
 	},
+	<% if (preprocessor === 'sass') { %>
 	sass: {
 		files: ['public/styles/**/*.scss'],
 		tasks: ['sass'],
 	},
+	<% } %><% if (preprocessor === 'less') { %>
+	less: {
+		files: ['public/styles/**/*.less'],
+		tasks: ['less'],
+	},
+	<% } %>
 	livereload: {
 		files: [
 			'public/styles/**/*.css',

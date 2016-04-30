@@ -294,13 +294,33 @@ KeystoneGenerator.prototype.project = function project () {
 	this.copy('gitignore', '.gitignore');
 	this.copy('Procfile');
 
-	if (this.taskRunner === 'grunt') {
-		this.copy('Gruntfile.js');
-		this.directory('grunt', 'grunt');
-	}
+};
 
-	if (this.taskRunner === 'gulp') {
+KeystoneGenerator.prototype.tasks = function tasks () {
+
+	if (this.taskRunner === 'grunt') {
+
+		var gruntFiles = ['concurrent', 'express', 'node-inspector', 'nodemon'];
+
+		this.template('_Gruntfile.js', 'Gruntfile.js');
+
+		this.mkdir('grunt');
+		gruntFiles.forEach(function (i) {
+			this.copy('grunt/' + i + '.js');
+		}, this);
+
+		if (this.preprocessor === 'sass') {
+			this.template('grunt/_sass.js', 'grunt/sass.js');
+		} else if (this.preprocessor === 'less') {
+			this.template('grunt/_less.js', 'grunt/less.js');
+		}
+
+		this.template('grunt/_watch.js', 'grunt/watch.js');
+
+	} else if (this.taskRunner === 'gulp') {
+
 		this.copy('_gulpfile.js', 'gulpfile.js');
+
 	}
 
 };
@@ -468,7 +488,6 @@ KeystoneGenerator.prototype.files = function files () {
 	if (this.preprocessor === 'sass') {
 		this.directory('public/fonts', 'public/fonts/bootstrap');
 		this.directory('public/styles-sass', 'public/styles');
-
 	} else if (this.preprocessor === 'less') {
 		this.directory('public/fonts');
 		this.directory('public/styles-less', 'public/styles');
@@ -476,4 +495,5 @@ KeystoneGenerator.prototype.files = function files () {
 		this.directory('public/fonts');
 		this.directory('public/styles-stylus', 'public/styles');
 	}
+
 };
