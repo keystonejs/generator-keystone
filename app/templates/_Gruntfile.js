@@ -32,6 +32,7 @@ module.exports = function (grunt) {
 	grunt.registerTask('dev', [
 		<% if (preprocessor === 'sass') { %>'sass',
 		<% } else if (preprocessor === 'less') { %>'less',<% } %>
+		<% } else if (preprocessor === 'stylus') { %>'stylus',<% } %>
 		'watch',
 	]);
 
