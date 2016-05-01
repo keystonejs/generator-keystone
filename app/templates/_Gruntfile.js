@@ -28,8 +28,11 @@ module.exports = function (grunt) {
 	// Project configuration.
 	grunt.initConfig(configs);
 
+
 	grunt.registerTask('dev', [
-		'sass',
+		<% if (preprocessor === 'sass') { %>'sass',
+		<% } else if (preprocessor === 'less') { %>'less',<% } %>
+		<% } else if (preprocessor === 'stylus') { %>'stylus',<% } %>
 		'watch',
 	]);
 
