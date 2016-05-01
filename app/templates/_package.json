@@ -29,7 +29,8 @@
     "grunt-concurrent": "^0.5.0",
     "grunt-nodemon": "^0.2.1", <% if (preprocessor === 'sass') { %>
     "grunt-sass": "^1.0.0", <% } else if (preprocessor === 'less' ) { %>
-    "grunt-contrib-less": "^1.3.0", <% } %>
+    "grunt-contrib-less": "^1.3.0", <% } else if (preprocessor ==== 'stylus') { %>
+    "grunt-contrib-stylus": "^1.2.0", <% } %>
     "open": "0.0.5"
   },<% } else if (taskRunner === 'gulp') { %>
   "devDependencies": {

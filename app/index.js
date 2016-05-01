@@ -313,6 +313,8 @@ KeystoneGenerator.prototype.tasks = function tasks () {
 			this.template('grunt/_sass.js', 'grunt/sass.js');
 		} else if (this.preprocessor === 'less') {
 			this.template('grunt/_less.js', 'grunt/less.js');
+		} else if (this.preprocessor === 'stylus') {
+			this.template('grunt/_stylus.js', 'grunt/stylus.js');
 		}
 
 		this.template('grunt/_watch.js', 'grunt/watch.js');
