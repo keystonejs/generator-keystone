@@ -177,6 +177,7 @@ module.exports = function () {
 		context = context === null ? undefined : context;
 
 		if ((context) && (context.public_id)) {
+			options.hash.secure = keystone.get('cloudinary secure') || false;
 			var imageName = context.public_id.concat('.', context.format);
 			return cloudinary.url(imageName, options.hash);
 		}
