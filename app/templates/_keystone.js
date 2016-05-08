@@ -7,7 +7,8 @@ var keystone = require('keystone');<% if (viewEngine == 'hbs') { %>
 var handlebars = require('express-handlebars');<% } else if (viewEngine == 'swig') { %>
 var swig = require('swig');<% } else if (viewEngine == 'nunjucks') { %>
 var cons = require('consolidate');
-var nunjucks = require('nunjucks');<% } %>
+var nunjucks = require('nunjucks');<% } else if (viewEngine == 'twig') { %>
+var Twig = require('twig');<% } %>
 <% if (viewEngine === 'swig') { %>
 // Disable swig's bulit-in template caching, express handles it
 swig.setDefaults({ cache: process.env.NODE_ENV === 'development' ? false : 'memory' });
@@ -43,6 +44,9 @@ keystone.init({
 	}).engine,
 <% } else if ( viewEngine === 'swig' ) { %>
 	'custom engine': swig.renderFile,
+<% } else if (viewEngine == 'twig') { %>
+	'twig options':{ method: 'fs' },
+	'custom engine':Twig.render,
 <% } %><% if (includeEmail) { %>
 	'emails': 'templates/emails',
 <% } %>

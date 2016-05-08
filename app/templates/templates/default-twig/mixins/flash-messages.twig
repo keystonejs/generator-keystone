@@ -1,0 +1,33 @@
+{% macro renderMessages(messages) %}
+	{% if messages %}
+		<div id="flash-messages" class="container">
+			{% for type,messages in messages %}
+				{% for message in messages %}
+					{{ renderMessage(message, type) }}
+				{% endfor %}
+			{% endfor %}
+		</div>
+	{% endif %}
+{% endmacro %}
+
+{% macro renderMessage(message, type) %}
+	<div class="alert alert-{{ type }}">
+		{% if utils.isObject(message) %}
+			{% if message.title %}
+				<h4>{{ message.title }}</h4>
+			{% endif %}
+			{% if message.detail %}
+				<p>{{ message.detail }}</p>
+			{% endif %}
+			{% if message.list %}
+				<ul>
+					{% for item in message.list %}
+						<li>{{ item }}</li>
+					{% endfor %}
+				</ul>
+			{% endif %}
+		{% else %}
+			{{ message }}
+		{% endif %}
+	</div>
+{% endmacro %}
