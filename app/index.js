@@ -117,7 +117,7 @@ KeystoneGenerator.prototype.prompts = function prompts () {
 			}, {
 				name: 'adminPassword',
 				message: 'Enter a password for the first Admin user:' 
-					+ '\n Please use a temporary admin password at first login as it will be visible in plain text.',
+					+ '\n Please use a temporary password as it will be saved in plain text and change it after the first login.',
 				default: 'admin',
 			}, {
 				name: 'taskRunner',
