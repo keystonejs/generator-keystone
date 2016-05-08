@@ -1,9 +1,9 @@
 {% macro renderMessages(messages) %}
 	{% if messages %}
 		<div id="flash-messages" class="container">
-			{% for type,messages in messages %}
-				{% for message in messages %}
-					{{ renderMessage(message, type) }}
+			{% for messageType,messagesArray in messages %}
+				{% for message in messagesArray %}
+					{{ renderMessage(message, messageType) }}
 				{% endfor %}
 			{% endfor %}
 		</div>
