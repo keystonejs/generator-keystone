@@ -85,7 +85,7 @@ KeystoneGenerator.prototype.prompts = function prompts () {
 				default: 'My Site',
 			}, {
 				name: 'viewEngine',
-				message: 'Would you like to use Jade, Swig, Nunjucks or Handlebars for templates? ' + (('[jade | swig | nunjucks | hbs]').grey),
+				message: 'Would you like to use Jade, Swig, Nunjucks, Twig or Handlebars for templates? ' + (('[jade | swig | nunjucks | twig | hbs]').grey),
 				default: 'jade',
 			}, {
 				name: 'preprocessor',
