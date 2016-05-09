@@ -47,17 +47,22 @@ Enquiry.schema.methods.sendNotificationEmail = function(callback) {
 
 		if (err) return callback(err);
 
-		new keystone.Email('enquiry-notification').send({
-			to: admins,
-			from: {
-				name: '<%= projectName %>',
-				email: 'contact@<%= utils.slug(projectName) %>.com',
-			},
-			subject: 'New Enquiry for <%= projectName %>',
-			enquiry: enquiry,
-		}, callback);
-
-	});
+    new keystone.Email({
+        <% if (viewEngine === 'hbs') { %>
+          templateExt: 'hbs',
+          templateEngine: require('express-handlebars'),
+        <% } %>
+        templateName: 'enquiry-notification'
+      }).send({
+        to: admins,
+        from: {
+          name: '<%= projectName %>',
+          email: 'contact@<%= utils.slug(projectName) %>.com'
+        },
+        subject: 'New Enquiry for <%= projectName %>',
+        enquiry: enquiry
+      }, callback);
+    });
 
 };
 <% } %>
