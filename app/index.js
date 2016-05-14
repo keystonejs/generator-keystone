@@ -85,7 +85,7 @@ KeystoneGenerator.prototype.prompts = function prompts () {
 				default: 'My Site',
 			}, {
 				name: 'viewEngine',
-				message: 'Would you like to use Jade, Swig, Nunjucks, Twig or Handlebars for templates? ' + (('[jade | swig | nunjucks | twig | hbs]').grey),
+				message: 'Would you like to use Jade, Twig, Nunjucks, or Handlebars for templates? ' + (('[jade | twig | nunjucks | hbs]').grey),
 				default: 'jade',
 			}, {
 				name: 'preprocessor',
@@ -154,11 +154,14 @@ KeystoneGenerator.prototype.prompts = function prompts () {
 		this.adminPassword = utils.escapeString(this.adminPassword);
 
 		// Clean the viewEngine selection
-		if (_.includes(['handlebars', 'hbs', 'h'], this.viewEngine.toLowerCase().trim())) {
+		
+		var engine = this.viewEngine.toLowerCase().trim();
+		
+		if (_.includes(['handlebars', 'hbs', 'h'], engine)) {
 			this.viewEngine = 'hbs';
-		} else if (_.includes(['swig', 's'], this.viewEngine.toLowerCase().trim())) {
-			this.viewEngine = 'swig';
-		} else if (_.includes(['nunjucks', 'nun', 'n'], this.viewEngine.toLowerCase().trim())) {
+		} else if (_.includes(['twig', 't'], engine)) {
+			this.viewEngine = 'twig';
+		} else if (_.includes(['nunjucks', 'nun', 'n'], engine)) {
 			this.viewEngine = 'nunjucks';
 		} else {
 			this.viewEngine = 'jade';
