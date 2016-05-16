@@ -11,7 +11,7 @@
     "express-handlebars": "^3.0.0",
     "handlebars": "^4.0.5",<% } else if (viewEngine === 'swig') { %>
     "swig": "^1.4.1", <% } else if (viewEngine === 'nunjucks') { %>
-    "consolidate": "^0.10.0",
+    "consolidate": "^0.14.1",
     "nunjucks": "^1.0.5", <% } else if (viewEngine === 'twig') { %>
 	"twig":"^0.8.9",
 	<% } if (preprocessor === 'sass') { %>
