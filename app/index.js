@@ -303,7 +303,7 @@ KeystoneGenerator.prototype.tasks = function tasks () {
 
 		var gruntFiles = ['concurrent', 'express', 'node-inspector', 'nodemon'];
 
-		this.template('_gruntfile.js', 'gruntfile.js');
+		this.template('_Gruntfile.js', 'Gruntfile.js');
 
 		this.mkdir('grunt');
 		gruntFiles.forEach(function (i) {
