@@ -28,16 +28,18 @@ module.exports = function (grunt) {
 	// Project configuration.
 	grunt.initConfig(configs);
 
-
-	grunt.registerTask('dev', [
-		<% if (preprocessor === 'sass') { %>'sass',
-		<% } else if (preprocessor === 'less') { %>'less',
-		<% } else if (preprocessor === 'stylus') { %>'stylus',<% } %>
-		'watch',
-	]);
+	var preprocessorTask;
+	<% if (preprocessor === 'sass') { %>
+		preprocessorTask = 'sass';
+	<% } else if (preprocessor === 'less') { %>
+		preprocessorTask = 'less';
+	<% } else if (preprocessor === 'stylus') { %>
+		preprocessorTask = 'stylus';
+	<% } %>
+	grunt.registerTask('dev', [preprocessor, 'watch']);
 
 	// default option to connect server
-	grunt.registerTask('serve', [
+	grunt.registerTask('default', [
 		'concurrent:dev',
 	]);
 
