@@ -1,7 +1,7 @@
 module.exports = {
 	custom: {
 		options: {
-			'web-host': 'localhost'
-		}
-	}
-}
+			'web-host': 'localhost',
+		},
+	},
+};

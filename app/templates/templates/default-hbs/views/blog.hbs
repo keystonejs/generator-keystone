@@ -12,8 +12,9 @@
 					<p class="lead text-muted">{{{categoryList categories prefix="Posted in "}}}
 							{{#if author.name.first}}by {{author.name.first}}{{/if}}
 					</p>
-					<p>{{{content.extended}}}</p>
-					<p class="read-more"><a href="{{postUrl slug}}">Read more...</a></p>
+					{{#if image}}<img src="{{{cloudinaryUrl image width=160 height=160 crop='fit' }}}" class="img pull-right">{{/if}}
+					<p>{{{content.brief}}}</p>
+					{{#if content.extended}}<p class="read-more"><a href="{{postUrl slug}}">Read more...</a></p>{{/if}}
 				</div>
 				{{/each}}
 			</div>

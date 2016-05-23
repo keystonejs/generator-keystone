@@ -69,7 +69,16 @@ To connect to a server **other** than `localhost`, add a `MONGO_URI` setting to 
 ````
 MONGO_URI=mongodb://your-server/database-name
 ````
+### What do you mean 'yo: command not found'?
 
+When running 'yo keystone', you'll run into this problem if you don't have [Yeoman](http://yeoman.io/) installed. Yeoman is a generator ecosystem.
+
+```
+One Line Install
+npm install -g yo
+```
+
+For more information, see the [Yeoman Getting Started Page](http://yeoman.io/learning/index.html).
 
 ## Dependencies
 
@@ -106,4 +115,4 @@ For other platforms, see the [MongoDB installation guides](http://docs.mongodb.o
 
 ## License
 
-[MIT License](http://en.wikipedia.org/wiki/MIT_License)
+[MIT License](http://en.wikipedia.org/wiki/MIT_License). Copyright (c) 2016 Jed Watson.
