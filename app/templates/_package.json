@@ -9,11 +9,12 @@
     "moment": "^2.10.6",
     "cloudinary": "^1.2.4",
     "express-handlebars": "^3.0.0",
-    "handlebars": "^4.0.5",<% } else if (viewEngine === 'swig') { %>
+    "handlebars": "^4.0.5",<% } else if (viewEngine === 'react') { %>
+    "express-react-views": "~0.7.1",<% } else if (viewEngine === 'swig') { %>
     "swig": "^1.4.1", <% } else if (viewEngine === 'nunjucks') { %>
     "consolidate": "^0.14.1",
     "nunjucks": "^1.0.5", <% } else if (viewEngine === 'twig') { %>
-	"twig":"^0.8.9",
+	  "twig":"^0.8.9",
 	<% } if (preprocessor === 'sass') { %>
     "node-sass": "^3.3.2",
     "node-sass-middleware": "^0.9.7", <% } else if (preprocessor === 'stylus') { %>
