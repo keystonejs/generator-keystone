@@ -122,6 +122,7 @@ KeystoneGenerator.prototype.prompts = function prompts () {
 			}, {
 				name: 'taskRunner',
 				message: 'Would you like to include gulp or grunt? ' + (('[gulp | grunt | none]').grey),
+                default: 'none',
 			}, {
 				type: 'confirm',
 				name: 'newDirectory',
