@@ -25,7 +25,7 @@ var KeystoneGenerator = module.exports = function KeystoneGenerator (args, optio
   // This callback is fired when the generator has completed,
   // and includes instructions on what to do next.
   var done = _.bind(function done() {
-    var cmd = (this.newDirectory ? '"cd ' + utils.slug(this.projectName) + '" then ' : '') + '"' + 'node keystone' + '"';
+    var cmd = (this.newDirectory ? '"cd ' + utils.slug(this.projectName) + '" then ' : '') + '"' + 'node keystone ' + '"';
     console.log(
       '\n------------------------------------------------'
       + '\n'
