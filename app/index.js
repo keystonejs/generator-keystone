@@ -25,7 +25,7 @@ var KeystoneGenerator = module.exports = function KeystoneGenerator (args, optio
 	// This callback is fired when the generator has completed,
 	// and includes instructions on what to do next.
 	var done = _.bind(function done() {
-		var cmd = (this.newDirectory ? '"cd ' + utils.slug(this.projectName) + '" then ' : '') + '"' + 'npm start' + '"';
+		var cmd = (this.newDirectory ? '"cd ' + utils.slug(this.projectName) + '" then ' : '') + '"' + 'node keystone' + '"';
 		console.log(
 			'\n------------------------------------------------'
 			+ '\n'
@@ -122,7 +122,7 @@ KeystoneGenerator.prototype.prompts = function prompts () {
 			}, {
 				name: 'taskRunner',
 				message: 'Would you like to include gulp or grunt? ' + (('[gulp | grunt | none]').grey),
-                default: 'none',
+								default: 'none',
 			}, {
 				type: 'confirm',
 				name: 'newDirectory',
@@ -132,8 +132,8 @@ KeystoneGenerator.prototype.prompts = function prompts () {
 				type: 'confirm',
 				name: 'includeEmail',
 				message: '------------------------------------------------'
-					+ '\n    KeystoneJS integrates with Mandrill (from Mailchimp) for email sending.'
-					+ '\n    Would you like to include Email configuration in your project?',
+					+ '\n		KeystoneJS integrates with Mandrill (from Mailchimp) for email sending.'
+					+ '\n		Would you like to include Email configuration in your project?',
 				default: true,
 			},
 		],
@@ -193,12 +193,12 @@ KeystoneGenerator.prototype.prompts = function prompts () {
 				prompts.config.push({
 					name: 'mandrillAPI',
 					message: '------------------------------------------------'
-						+ '\n    Please enter your Mandrill API Key (optional).'
-						+ '\n    See http://keystonejs.com/docs/configuration/#services-mandrill for more info.'
-						+ '\n    '
-						+ '\n    You can skip this for now (we\'ll include a test key instead)'
-						+ '\n    '
-						+ '\n    Your Mandrill API Key:',
+						+ '\n		Please enter your Mandrill API Key (optional).'
+						+ '\n		See http://keystonejs.com/docs/configuration/#services-mandrill for more info.'
+						+ '\n		'
+						+ '\n		You can skip this for now (we\'ll include a test key instead)'
+						+ '\n		'
+						+ '\n		Your Mandrill API Key:',
 				});
 			}
 
@@ -215,14 +215,14 @@ KeystoneGenerator.prototype.prompts = function prompts () {
 				prompts.config.push({
 					name: 'cloudinaryURL',
 					message: '------------------------------------------------'
-						+ '\n    KeystoneJS integrates with Cloudinary for image upload, resizing and'
-						+ '\n    hosting. See http://keystonejs.com/docs/configuration/#services-cloudinary for more info.'
-						+ '\n    '
-						+ '\n    CloudinaryImage fields are used by the ' + blog_gallery + '.'
-						+ '\n    '
-						+ '\n    You can skip this for now (we\'ll include demo account details)'
-						+ '\n    '
-						+ '\n    Please enter your Cloudinary URL:',
+						+ '\n		KeystoneJS integrates with Cloudinary for image upload, resizing and'
+						+ '\n		hosting. See http://keystonejs.com/docs/configuration/#services-cloudinary for more info.'
+						+ '\n		'
+						+ '\n		CloudinaryImage fields are used by the ' + blog_gallery + '.'
+						+ '\n		'
+						+ '\n		You can skip this for now (we\'ll include demo account details)'
+						+ '\n		'
+						+ '\n		Please enter your Cloudinary URL:',
 				});
 
 			}
@@ -266,8 +266,8 @@ KeystoneGenerator.prototype.guideComments = function () {
 			type: 'confirm',
 			name: 'includeGuideComments',
 			message: '------------------------------------------------'
-				+ '\n    Finally, would you like to include extra code comments in'
-				+ '\n    your project? If you\'re new to Keystone, these may be helpful.',
+				+ '\n		Finally, would you like to include extra code comments in'
+				+ '\n		your project? If you\'re new to Keystone, these may be helpful.',
 			default: true,
 		},
 	], function (props) {
