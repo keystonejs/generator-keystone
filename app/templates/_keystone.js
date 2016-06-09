@@ -29,7 +29,7 @@ keystone.init({
 	'stylus': 'public',
 	<% } %>'static': 'public',
 	'favicon': 'public/favicon.ico',
-	'views': 'templates/views',<% if (viewEngine === 'nunjucks') { %>
+	'views': ['templates', 'templates/views'],<% if (viewEngine === 'nunjucks') { %>
 	'view engine': 'html',
 	'custom engine': cons.nunjucks,
 <% } else { %>
@@ -66,7 +66,7 @@ keystone.import('models');
 // for each request) should be added to ./routes/middleware.js
 <% } %>
 keystone.set('locals', {
-	_: require('underscore'),
+	_: require('lodash'),
 	env: keystone.get('env'),
 	utils: keystone.utils,
 	editable: keystone.content.editable,

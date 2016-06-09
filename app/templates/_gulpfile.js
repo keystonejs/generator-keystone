@@ -54,7 +54,6 @@ gulp.task('watch', [
 <% } else if (preprocessor === 'stylus') { %>
   'watch:stylus',
 <% } %>
-  'watch:lint'
 ]);
 
 gulp.task('default', ['watch', 'runKeystone']);
