@@ -12,7 +12,7 @@
 			{% for gallery in galleries %}
 				<h2>{{ gallery.name }}
 					{% if gallery.publishedDate %}
-						<span class="pull-right text-muted">{{ gallery._.publishedDate.format("Do MMM YYYY") }}</span>
+						<span class="pull-right text-muted">{{ gallery.publishedDate|date("d M Y") }}</span>
 					{% endif %}
 				</h2>
 

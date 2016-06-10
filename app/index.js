@@ -159,6 +159,8 @@ KeystoneGenerator.prototype.prompts = function prompts () {
 			this.viewEngine = 'hbs';
 		} else if (_.includes(['swig', 's'], this.viewEngine.toLowerCase().trim())) {
 			this.viewEngine = 'swig';
+		} else if (_.includes(['twig', 't'], this.viewEngine.toLowerCase().trim())) {
+			this.viewEngine = 'twig';
 		} else if (_.includes(['nunjucks', 'nun', 'n'], this.viewEngine.toLowerCase().trim())) {
 			this.viewEngine = 'nunjucks';
 		} else {

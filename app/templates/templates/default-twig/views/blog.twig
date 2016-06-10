@@ -14,7 +14,7 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-sm-8 col-md-9">
-				{% if filters.category and not data.category %}
+				{% if (filters.category) and (data.category == false) %}
 					<h3 class="text-muted">Invalid Category.</h3>
 				{% else %}
 					{% if data.posts.results.length %}
@@ -44,7 +44,7 @@
 											<br>in
 											{% for cat in post.categories %}
 												<a href="/blog/{{ cat.key }}">{{ cat.name }}</a>
-												{% if loop.index < post.categories.length - 1 %}, {% endif %}
+												{% if not loop.last %}, {% endif %}
 											{% endfor %}
 										{% endif %}
 										{% if post.author %}
@@ -80,7 +80,7 @@
                                                                 {% endif %}
 									{% for p in data.posts.pages %}
 										<li class="{% if data.posts.currentPage == p %}active{% endif %}">
-											<a href="?page={% if p == "..." %}{% if i %}{{ data.posts.totalPages }}{% else %}1{% endif %}{% else %}{{ p }}{% endif %}">{{ p }}</a>
+											<a href="?page={% if p == '...' %}{% if i %}{{ data.posts.totalPages }}{% else %}1{% endif %}{% else %}{{ p }}{% endif %}">{{ p }}</a>
 										</li>
 									{% endfor %}
 								{% if data.posts.next %}
