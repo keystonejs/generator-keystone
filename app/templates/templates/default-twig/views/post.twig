@@ -16,13 +16,13 @@
 							<h1>{{ data.post.title }}</h1>
 							<h5>Posted</h5>
 							{% if data.post.publishedDate %}
-								on {{ data.post._.publishedDate.format("MMMM Do, YYYY") }}
+								on {{ data.post.publishedDate|date("M d, Y") }}
 							{% endif %}
 							{% if data.post.categories and data.post.categories.length %}
 								in
 								{% for cat in data.post.categories %}
 									<a href="/blog/{{ cat.key }}">{{ cat.name }}</a>
-									{% if loop.index < data.post.categories.length - 1 %}, {% endif %}
+									{% if not loop.last %}, {% endif %}
 								{% endfor %}
 							{% endif %}
 							{% if data.post.author %}

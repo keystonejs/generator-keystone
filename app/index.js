@@ -25,7 +25,7 @@ var KeystoneGenerator = module.exports = function KeystoneGenerator (args, optio
 	// This callback is fired when the generator has completed,
 	// and includes instructions on what to do next.
 	var done = _.bind(function done() {
-		var cmd = (this.newDirectory ? '"cd ' + utils.slug(this.projectName) + '" then ' : '') + '"' + 'npm start' + '"';
+		var cmd = (this.newDirectory ? '"cd ' + utils.slug(this.projectName) + '" then ' : '') + '"' + 'node keystone' + '"';
 		console.log(
 			'\n------------------------------------------------'
 			+ '\n'
@@ -159,6 +159,8 @@ KeystoneGenerator.prototype.prompts = function prompts () {
 			this.viewEngine = 'hbs';
 		} else if (_.includes(['swig', 's'], this.viewEngine.toLowerCase().trim())) {
 			this.viewEngine = 'swig';
+		} else if (_.includes(['twig', 't'], this.viewEngine.toLowerCase().trim())) {
+			this.viewEngine = 'twig';
 		} else if (_.includes(['nunjucks', 'nun', 'n'], this.viewEngine.toLowerCase().trim())) {
 			this.viewEngine = 'nunjucks';
 		} else {

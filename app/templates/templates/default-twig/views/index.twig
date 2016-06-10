@@ -13,7 +13,7 @@
 			</p>
 			<p>Visit the <a href="http://keystonejs.com/guide" target="_blank">Getting Started</a> guide to learn how to customise it.</p>
 			<hr>
-			{% if user and user.canAccessKeystone %}
+			{% if (user is defined) and (user.canAccessKeystone) %}
 				<p>
 					<a href="/keystone" class="btn btn-lg btn-primary">Open the Admin UI</a>
 				</p>
