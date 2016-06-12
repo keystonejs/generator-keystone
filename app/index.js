@@ -85,7 +85,7 @@ KeystoneGenerator.prototype.prompts = function prompts () {
 				default: 'My Site',
 			}, {
 				name: 'viewEngine',
-				message: 'Would you like to use Jade, Swig, Nunjucks, Twig or Handlebars for templates? ' + (('[jade | swig | nunjucks | twig | hbs]').grey),
+				message: 'Would you like to use Jade, Nunjucks, Twig or Handlebars for templates? ' + (('[jade | nunjucks | twig | hbs]').grey),
 				default: 'jade',
 			}, {
 				name: 'preprocessor',
@@ -157,8 +157,6 @@ KeystoneGenerator.prototype.prompts = function prompts () {
 		// Clean the viewEngine selection
 		if (_.includes(['handlebars', 'hbs', 'h'], this.viewEngine.toLowerCase().trim())) {
 			this.viewEngine = 'hbs';
-		} else if (_.includes(['swig', 's'], this.viewEngine.toLowerCase().trim())) {
-			this.viewEngine = 'swig';
 		} else if (_.includes(['twig', 't'], this.viewEngine.toLowerCase().trim())) {
 			this.viewEngine = 'twig';
 		} else if (_.includes(['nunjucks', 'nun', 'n'], this.viewEngine.toLowerCase().trim())) {
@@ -449,7 +447,7 @@ KeystoneGenerator.prototype.templates = function templates () {
 
 	} else {
 
-		// Copy Jade/Swig Templates
+		// Copy Jade/Twig Templates
 
 		this.mkdir('templates');
 		this.mkdir('templates/views');
