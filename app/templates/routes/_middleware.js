@@ -7,7 +7,7 @@
  * you have more middleware you may want to group it as separate
  * modules in your project's /lib directory.
  */
-<% } %>var _ = require('underscore');
+<% } %>var _ = require('lodash');
 
 
 /**
@@ -39,7 +39,7 @@ exports.flashMessages = function (req, res, next) {
 		warning: req.flash('warning'),
 		error: req.flash('error'),
 	};
-	res.locals.messages = _.any(flashMessages, function (msgs) { return msgs.length; }) ? flashMessages : false;
+	res.locals.messages = _.some(flashMessages, function (msgs) { return msgs.length; }) ? flashMessages : false;
 	next();
 };
 

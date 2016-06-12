@@ -25,7 +25,7 @@ var KeystoneGenerator = module.exports = function KeystoneGenerator (args, optio
 	// This callback is fired when the generator has completed,
 	// and includes instructions on what to do next.
 	var done = _.bind(function done () {
-		var cmd = (this.newDirectory ? '"cd ' + utils.slug(this.projectName) + '" then ' : '') + '"' + 'npm start' + '"';
+		var cmd = (this.newDirectory ? '"cd ' + utils.slug(this.projectName) + '" then ' : '') + '"' + 'node keystone' + '"';
 		console.log(
 			'\n------------------------------------------------'
 			+ '\n'
@@ -85,7 +85,7 @@ KeystoneGenerator.prototype.prompts = function prompts () {
 				default: 'My Site',
 			}, {
 				name: 'viewEngine',
-				message: 'Would you like to use Jade, Swig, Nunjucks, Twig or Handlebars for templates? ' + (('[jade | swig | nunjucks | twig | hbs]').grey),
+				message: 'Would you like to use Jade, Nunjucks, Twig or Handlebars for templates? ' + (('[jade | nunjucks | twig | hbs]').grey),
 				default: 'jade',
 			}, {
 				name: 'preprocessor',
@@ -122,6 +122,7 @@ KeystoneGenerator.prototype.prompts = function prompts () {
 			}, {
 				name: 'taskRunner',
 				message: 'Would you like to include gulp or grunt? ' + (('[gulp | grunt | none]').grey),
+				default: 'none',
 			}, {
 				type: 'confirm',
 				name: 'newDirectory',
@@ -156,8 +157,8 @@ KeystoneGenerator.prototype.prompts = function prompts () {
 		// Clean the viewEngine selection
 		if (_.includes(['handlebars', 'hbs', 'h'], this.viewEngine.toLowerCase().trim())) {
 			this.viewEngine = 'hbs';
-		} else if (_.includes(['swig', 's'], this.viewEngine.toLowerCase().trim())) {
-			this.viewEngine = 'swig';
+		} else if (_.includes(['twig', 't'], this.viewEngine.toLowerCase().trim())) {
+			this.viewEngine = 'twig';
 		} else if (_.includes(['nunjucks', 'nun', 'n'], this.viewEngine.toLowerCase().trim())) {
 			this.viewEngine = 'nunjucks';
 		} else {
@@ -446,7 +447,7 @@ KeystoneGenerator.prototype.templates = function templates () {
 
 	} else {
 
-		// Copy Jade/Swig Templates
+		// Copy Jade/Twig Templates
 
 		this.mkdir('templates');
 		this.mkdir('templates/views');
