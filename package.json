@@ -33,15 +33,15 @@
   },
   "dependencies": {
     "colors": "^1.1.2",
-    "keystone-utils": "^0.3.4",
-    "lodash": "^4.8.2",
+    "keystone-utils": "^0.4.0",
+    "lodash": "^4.13.1",
     "yeoman-generator": "^0.17.7"
   },
   "devDependencies": {
-    "eslint": "^2.7.0",
-    "eslint-config-keystone": "^2.1.0",
-    "eslint-plugin-react": "^4.2.3",
-    "mocha": "^2.4.5"
+    "eslint": "^2.12.0",
+    "eslint-config-keystone": "^2.3.1",
+    "eslint-plugin-react": "^5.1.1",
+    "mocha": "^2.5.3"
   },
   "engines": {
     "node": ">=0.10.0",
