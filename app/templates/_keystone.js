@@ -14,7 +14,6 @@ var Twig = require('twig');<% } %>
 // and documentation.
 <% } %>
 keystone.init({
-
 	'name': '<%= projectName %>',
 	'brand': '<%= projectName %>',
 <% if (preprocessor === 'sass') { %>
@@ -39,8 +38,8 @@ keystone.init({
 		extname: '.hbs',
 	}).engine,
 <% } else if (viewEngine == 'twig') { %>
-	'twig options':{ method: 'fs' },
-	'custom engine':Twig.render,
+	'twig options': { method: 'fs' },
+	'custom engine': Twig.render,
 <% } %><% if (includeEmail) { %>
 	'emails': 'templates/emails',
 <% } %>
@@ -48,7 +47,6 @@ keystone.init({
 	'session': true,
 	'auth': true,
 	'user model': '<%= userModel %>',
-
 });
 <% if (includeGuideComments) { %>
 // Load your project's Models
