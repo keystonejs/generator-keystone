@@ -44,7 +44,7 @@
     <% } %>
   },<% } %>
   "scripts": {
-    "start": "<%= taskRunner !== 'none' ? taskRunner : 'node keystone.js' %>"
+    "start": "node keystone.js"
   },
   "main": "keystone.js"
 }
