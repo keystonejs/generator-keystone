@@ -22,7 +22,7 @@ keystone.init({
 	'less': 'public',
 <% } else { %>
 	'stylus': 'public',
-	<% } %>'static': 'public',
+<% } %>	'static': 'public',
 	'favicon': 'public/favicon.ico',
 	'views': ['templates', 'templates/views'],<% if (viewEngine === 'nunjucks') { %>
 	'view engine': 'html',
