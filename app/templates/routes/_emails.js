@@ -14,10 +14,9 @@
 <% } %>var keystone = require('keystone');
 
 module.exports = {
-	<% if (includeEnquiries) { %>
+<% if (includeEnquiries) { %>
 	/** New Enquiry Notifications */
-
-	'enquiry-notification': function(req, res, callback) {
+	'enquiry-notification': function (req, res, callback) {
 		<% if (includeGuideComments) { %>
 		// To test enquiry notifications we create a dummy enquiry that
 		// is not saved to the database, but passed to the template.
@@ -37,6 +36,6 @@ module.exports = {
 			enquiry: newEnquiry,
 			enquiry_url: '/keystone/enquiries/',
 		});
-	}
-	<% } %>
+	},
+<% } %>
 };

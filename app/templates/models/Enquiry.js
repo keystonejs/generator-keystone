@@ -24,46 +24,38 @@ Enquiry.add({
 	createdAt: { type: Date, default: Date.now },
 });
 <% if (includeEmail) { %>
-Enquiry.schema.pre('save', function(next) {
+Enquiry.schema.pre('save', function (next) {
 	this.wasNew = this.isNew;
 	next();
 });
 
-Enquiry.schema.post('save', function() {
+Enquiry.schema.post('save', function () {
 	if (this.wasNew) {
 		this.sendNotificationEmail();
 	}
 });
 
-Enquiry.schema.methods.sendNotificationEmail = function(callback) {
-
-	if ('function' !== typeof callback) {
-		callback = function() {};
+Enquiry.schema.methods.sendNotificationEmail = function (callback) {
+	if (typeof callback !== 'function') {
+		callback = function () {};
 	}
-
 	var enquiry = this;
-
-	keystone.list('<%= userModel %>').model.find().where('isAdmin', true).exec(function(err, admins) {
-
+	keystone.list('<%= userModel %>').model.find().where('isAdmin', true).exec(function (err, admins) {
 		if (err) return callback(err);
-
-    new keystone.Email({
-        <% if (viewEngine === 'hbs') { %>
-          templateExt: 'hbs',
-          templateEngine: require('express-handlebars'),
-        <% } %>
-        templateName: 'enquiry-notification'
-      }).send({
-        to: admins,
-        from: {
-          name: '<%= projectName %>',
-          email: 'contact@<%= utils.slug(projectName) %>.com'
-        },
-        subject: 'New Enquiry for <%= projectName %>',
-        enquiry: enquiry
-      }, callback);
-    });
-
+		new keystone.Email({
+			<% if (viewEngine === 'hbs') { %>templateExt: 'hbs',
+			templateEngine: require('express-handlebars'),
+			<% } %>templateName: 'enquiry-notification',
+			}).send({
+				to: admins,
+				from: {
+					name: '<%= projectName %>',
+					email: 'contact@<%= utils.slug(projectName) %>.com',
+				},
+				subject: 'New Enquiry for <%= projectName %>',
+				enquiry: enquiry,
+			}, callback);
+		});
 };
 <% } %>
 Enquiry.defaultSort = '-createdAt';
