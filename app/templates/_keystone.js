@@ -1,6 +1,6 @@
 // Simulate config options from your production environment by
 // customising the .env file in your project's root folder.
-require('dotenv').load();
+require('dotenv').config();
 
 // Require keystone
 var keystone = require('keystone');<% if (viewEngine == 'hbs') { %>
