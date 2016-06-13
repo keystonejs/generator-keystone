@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "dependencies": {
-    "keystone": "^0.3.16",
+    "keystone": "^0.3.19",
     "async": "^1.5.0",
     "lodash": "^4.13.1",<% if (viewEngine === 'hbs') { %>
     "moment": "^2.10.6",
@@ -12,7 +12,7 @@
     "handlebars": "^4.0.5",<% } else if (viewEngine === 'nunjucks') { %>
     "consolidate": "^0.14.1",
     "nunjucks": "^1.0.5", <% } else if (viewEngine === 'twig') { %>
-    "twig":"^0.8.9",<% } if (preprocessor === 'sass') { %>
+    "twig":"^0.9.5",<% } if (preprocessor === 'sass') { %>
     "node-sass": "^3.3.2",
     "node-sass-middleware": "^0.9.7", <% } else if (preprocessor === 'stylus') { %>
     "stylus": "^0.53.0", <% } %>
