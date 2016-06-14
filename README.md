@@ -6,7 +6,7 @@ A [Yeoman](http://yeoman.io) generator for [KeystoneJS](http://keystonejs.com), 
 
 ## Getting Started
 
-First up, you'll need Node.js >= 0.10.x and MongoDB >= 2.4.x installed. If you don't have them, follow the **Dependencies** instructions below.
+First up, you'll need Node.js >= 0.12 and MongoDB >= 3.0 installed. If you don't have them, follow the **Dependencies** instructions below.
 
 Then, install the Keystone generator:
 
