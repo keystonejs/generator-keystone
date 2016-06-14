@@ -46,16 +46,16 @@ Enquiry.schema.methods.sendNotificationEmail = function (callback) {
 			<% if (viewEngine === 'hbs') { %>templateExt: 'hbs',
 			templateEngine: require('express-handlebars'),
 			<% } %>templateName: 'enquiry-notification',
-			}).send({
-				to: admins,
-				from: {
-					name: '<%= projectName %>',
-					email: 'contact@<%= utils.slug(projectName) %>.com',
-				},
-				subject: 'New Enquiry for <%= projectName %>',
-				enquiry: enquiry,
-			}, callback);
-		});
+		}).send({
+			to: admins,
+			from: {
+				name: '<%= projectName %>',
+				email: 'contact@<%= utils.slug(projectName) %>.com',
+			},
+			subject: 'New Enquiry for <%= projectName %>',
+			enquiry: enquiry,
+		}, callback);
+	});
 };
 <% } %>
 Enquiry.defaultSort = '-createdAt';

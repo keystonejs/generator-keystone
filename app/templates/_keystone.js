@@ -84,8 +84,7 @@ keystone.init({
 <% if (includeGuideComments) { %>
 // Load your project's email test routes
 <% } %>keystone.set('email tests', require('./routes/emails'));
-<% } %>
-<% if (viewEngine === 'hbs') { %>
+<% } %><% if (viewEngine === 'hbs') { %>
 <% if (includeGuideComments) { %>
 // Switch Keystone Email defaults to handlebars
 <% } %>keystone.Email.defaults.templateExt = 'hbs';
