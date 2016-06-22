@@ -24,7 +24,7 @@ keystone.init({
 	'stylus': 'public',
 <% } %>	'static': 'public',
 	'favicon': 'public/favicon.ico',
-	'views': ['templates', 'templates/views'],<% if (viewEngine === 'nunjucks') { %>
+	'views': 'templates/views',<% if (viewEngine === 'nunjucks') { %>
 	'view engine': 'html',
 	'custom engine': cons.nunjucks,
 <% } else { %>
