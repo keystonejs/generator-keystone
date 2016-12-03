@@ -16,7 +16,8 @@
     "node-sass": "^3.13.0",
     "node-sass-middleware": "^0.10.0", <% } else if (preprocessor === 'stylus') { %>
     "stylus": "^0.54.5", <% } %>
-    "dotenv": "^2.0.0"
+    "dotenv": "^2.0.0",
+    "underscore": "^1.8.3"
   },
   "devDependencies": {
     "eslint": "^3.11.1",
