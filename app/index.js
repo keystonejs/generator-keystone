@@ -85,8 +85,8 @@ KeystoneGenerator.prototype.prompts = function prompts () {
 				default: 'My Site',
 			}, {
 				name: 'viewEngine',
-				message: 'Would you like to use Jade, Nunjucks, Twig or Handlebars for templates? ' + (('[jade | nunjucks | twig | hbs]').grey),
-				default: 'jade',
+				message: 'Would you like to use Pug, Nunjucks, Twig or Handlebars for templates? ' + (('[pug | nunjucks | twig | hbs]').grey),
+				default: 'pug',
 			}, {
 				name: 'preprocessor',
 				message: 'Which CSS pre-processor would you like? ' + (('[less | sass | stylus]').grey),
@@ -162,7 +162,7 @@ KeystoneGenerator.prototype.prompts = function prompts () {
 		} else if (_.includes(['nunjucks', 'nun', 'n'], this.viewEngine.toLowerCase().trim())) {
 			this.viewEngine = 'nunjucks';
 		} else {
-			this.viewEngine = 'jade';
+			this.viewEngine = 'pug';
 		}
 
 		// Clean the preprocessor
@@ -449,7 +449,7 @@ KeystoneGenerator.prototype.templates = function templates () {
 
 	} else {
 
-		// Copy Jade/Twig Templates
+		// Copy Pug/Twig Templates
 
 		this.mkdir('templates');
 		this.mkdir('templates/views');

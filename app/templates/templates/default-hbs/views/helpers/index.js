@@ -36,7 +36,7 @@ module.exports = function () {
 	 */
 
 	// ### Date Helper
-	// A port of the Ghost Date formatter similar to the keystonejs - jade interface
+	// A port of the Ghost Date formatter similar to the keystonejs - pug interface
 	//
 	//
 	// *Usage example:*
@@ -275,7 +275,7 @@ module.exports = function () {
 
 	//  ### Flash Message Helper
 	//  KeystoneJS supports a message interface for information/errors to be passed from server
-	//  to the front-end client and rendered in a html-block.  FlashMessage mirrors the Jade Mixin
+	//  to the front-end client and rendered in a html-block.  FlashMessage mirrors the Pug Mixin
 	//  for creating the message.  But part of the logic is in the default.layout.  Decision was to
 	//  surface more of the interface in the client html rather than abstracting behind a helper.
 	//
