@@ -3,7 +3,7 @@
 require('dotenv').config();
 
 // Require keystone
-var keystone = require('keystone');<% if (viewEngine == 'hbs') { %>
+var keystone = require('keystone');<% if (viewEngine == '.hbs') { %>
 var handlebars = require('express-handlebars');<% } else if (viewEngine == 'nunjucks') { %>
 var cons = require('consolidate');
 var nunjucks = require('nunjucks');<% } else if (viewEngine == 'twig') { %>
@@ -81,14 +81,6 @@ keystone.init({
 		},
 	},
 });
-<% if (includeGuideComments) { %>
-// Load your project's email test routes
-<% } %>keystone.set('email tests', require('./routes/emails'));
-<% } %><% if (viewEngine === 'hbs') { %>
-<% if (includeGuideComments) { %>
-// Switch Keystone Email defaults to handlebars
-<% } %>keystone.Email.defaults.templateExt = 'hbs';
-keystone.Email.defaults.templateEngine = require('handlebars');
 <% } %>
 <% if (includeGuideComments) { %>
 // Configure the navigation bar in Keystone's Admin UI
