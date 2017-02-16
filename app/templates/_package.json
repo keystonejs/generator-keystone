@@ -28,6 +28,7 @@
   },
   "scripts": {
     "lint": "eslint .",
-    "start": "node keystone.js"
+    "start": "node keystone.js"<% if (preprocessor === 'stylus') { %>,
+    "compile": "stylus -w public/styles/site.styl -o public/styles/site.css"<% } %>
   }
 }
