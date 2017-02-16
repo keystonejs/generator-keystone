@@ -31,6 +31,12 @@ The generator will ask you a few questions about which features to include, then
 * [Cloudinary](https://cloudinary.com/users/register/free) - Image serving and management in the cloud
 * [Mandrill](https://mandrill.com/signup/) - Transactional email service by [Mailchimp](http://mailchimp.com)
 
+### Node 0.12 Notes
+
+Both KeystoneJS 4.0 and the generator are compatible with Node 0.12, however we'll be bumping this requirement to Node v6+ in the next version.
+
+Please note that the bundled version of ESLint is only compatible with Node 4+ so if you use this generator with 0.12, make sure you downgrade or remove that dependency.
+
 ### What next?
 
 When you've got your new project, check out the [KeystoneJS Documentation](http://keystonejs.com/docs) to learn more about how to get started with KeystoneJS.
