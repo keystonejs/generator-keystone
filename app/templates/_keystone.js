@@ -3,7 +3,7 @@
 require('dotenv').config();
 
 // Require keystone
-var keystone = require('keystone');<% if (viewEngine == '.hbs') { %>
+var keystone = require('keystone');<% if (viewEngine == 'hbs') { %>
 var handlebars = require('express-handlebars');<% } else if (viewEngine == 'nunjucks') { %>
 var cons = require('consolidate');
 var nunjucks = require('nunjucks');<% } else if (viewEngine == 'twig') { %>
@@ -27,6 +27,8 @@ keystone.init({
 	'views': 'templates/views',<% if (viewEngine === 'nunjucks') { %>
 	'view engine': 'html',
 	'custom engine': cons.nunjucks,
+<% } else if (viewEngine === 'hbs') { %>
+	'view engine': '.hbs',
 <% } else { %>
 	'view engine': '<%= viewEngine %>',
 <% } %><% if (viewEngine === 'hbs') { %>
