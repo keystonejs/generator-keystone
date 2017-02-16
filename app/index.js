@@ -120,10 +120,6 @@ KeystoneGenerator.prototype.prompts = function prompts () {
 					+ '\n Please use a temporary password as it will be saved in plain text and change it after the first login.',
 				default: 'admin',
 			}, {
-				name: 'taskRunner',
-				message: 'Would you like to include gulp or grunt? ' + (('[gulp | grunt | none]').grey),
-				default: 'none',
-			}, {
 				type: 'confirm',
 				name: 'newDirectory',
 				message: 'Would you like to create a new directory for your project?',
@@ -177,9 +173,6 @@ KeystoneGenerator.prototype.prompts = function prompts () {
 		// Clean the userModel name
 		this.userModel = utils.camelcase(this.userModel, false);
 		this.userModelPath = utils.keyToPath(this.userModel, true);
-
-		// Clean the taskRunner selection
-		this.taskRunner = (this.taskRunner || '').toLowerCase().trim();
 
 		// Create the directory if required
 		if (this.newDirectory) {
@@ -297,37 +290,6 @@ KeystoneGenerator.prototype.project = function project () {
 	this.copy('editorconfig', '.editorconfig');
 	this.copy('gitignore', '.gitignore');
 	this.copy('Procfile');
-
-};
-
-KeystoneGenerator.prototype.tasks = function tasks () {
-
-	if (this.taskRunner === 'grunt') {
-
-		var gruntFiles = ['concurrent', 'express', 'node-inspector', 'nodemon'];
-
-		this.template('_Gruntfile.js', 'Gruntfile.js');
-
-		this.mkdir('grunt');
-		gruntFiles.forEach(function (i) {
-			this.copy('grunt/' + i + '.js');
-		}, this);
-
-		if (this.preprocessor === 'sass') {
-			this.template('grunt/_sass.js', 'grunt/sass.js');
-		} else if (this.preprocessor === 'less') {
-			this.template('grunt/_less.js', 'grunt/less.js');
-		} else if (this.preprocessor === 'stylus') {
-			this.template('grunt/_stylus.js', 'grunt/stylus.js');
-		}
-
-		this.template('grunt/_watch.js', 'grunt/watch.js');
-
-	} else if (this.taskRunner === 'gulp') {
-
-		this.copy('_gulpfile.js', 'gulpfile.js');
-
-	}
 
 };
 
@@ -501,5 +463,4 @@ KeystoneGenerator.prototype.files = function files () {
 		this.directory('public/fonts');
 		this.directory('public/styles-stylus', 'public/styles');
 	}
-
 };
