@@ -1,5 +1,5 @@
 var moment = require('moment');
-var _ = require('underscore');
+var _ = require('lodash');
 var hbs = require('handlebars');
 var keystone = require('keystone');
 var cloudinary = require('cloudinary');
