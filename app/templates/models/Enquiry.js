@@ -37,8 +37,8 @@ Enquiry.schema.post('save', function () {
 
 Enquiry.schema.methods.sendNotificationEmail = function (callback) {
 	if (typeof callback !== 'function') {
-		callback = function (e) {
-			if (e) {
+		callback = function (err) {
+			if (err) {
 				console.error('There was an error sending the notification email:', e);
 			}
 		};
