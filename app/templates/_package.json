@@ -15,7 +15,7 @@
     "pug": "2.0.0-beta11", <% } else if (viewEngine === 'twig') { %>
     "twig":"0.10.3",<% } if (preprocessor === 'sass') { %>
     "node-sass": "4.5.0",
-    "node-sass-middleware": "0.11.1", <% } else if (preprocessor === 'stylus') { %>
+    "node-sass-middleware": "0.11.0", <% } else if (preprocessor === 'stylus') { %>
     "stylus": "0.54.5", <% } %>
     "dotenv": "4.0.0", <% if (includeEmail) { %>
     "keystone-email": "1.0.5", <% } %>
@@ -24,30 +24,11 @@
   "devDependencies": {
     "eslint": "3.15.0",
     "eslint-config-keystone": "3.0.0",
-    "eslint-plugin-react": "^5.1.1"<% if (taskRunner === 'grunt') { %>,
-    "grunt": "^0.4.4",
-    "grunt-express-server": "^0.4.17",
-    "grunt-contrib-watch": "^0.6.1",
-    "load-grunt-tasks": "^0.4.0",
-    "load-grunt-configs": "^0.4.1",
-    "grunt-node-inspector": "^0.4.1",
-    "time-grunt": "^0.3.1",
-    "grunt-concurrent": "^0.5.0",
-    "grunt-nodemon": "^0.2.1", <% if (preprocessor === 'sass') { %>
-    "grunt-sass": "^1.0.0", <% } else if (preprocessor === 'less' ) { %>
-    "grunt-contrib-less": "^1.3.0", <% } else if (preprocessor === 'stylus') { %>
-    "grunt-contrib-stylus": "^1.2.0", <% } %>
-    "open": "0.0.5"<% } else if (taskRunner === 'gulp') { %>,
-    "gulp": "^3.7.0",
-    "gulp-shell": "^0.5.0",
-    "gulp-watch": "^4.3.5"<% if (preprocessor === 'sass') { %>,
-    "gulp-sass": "^2.0.4"
-    <% } else if (preprocessor === 'stylus') { %>,
-    "gulp-stylus": "^2.1.0"
-    <% } %><% } %>
+    "eslint-plugin-react": "^5.1.1"
   },
   "scripts": {
     "lint": "eslint .",
-    "start": "node keystone.js"
+    "start": "node keystone.js"<% if (preprocessor === 'stylus') { %>,
+    "compile": "stylus -w public/styles/site.styl -o public/styles/site.css"<% } %>
   }
 }
