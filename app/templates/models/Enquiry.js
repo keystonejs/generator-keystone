@@ -46,7 +46,10 @@ Enquiry.schema.methods.sendNotificationEmail = function (callback) {
 	var enquiry = this;
 	keystone.list('<%= userModel %>').model.find().where('isAdmin', true).exec(function (err, admins) {
 		if (err) return callback(err);
-		new keystone.Email('enquiry-notification').send({
+		new keystone.Email({
+			templateName: 'enquiry-notification',
+			transport: 'mailgun',
+		}).send({
 			to: admins,
 			from: {
 				name: '<%= projectName %>',
