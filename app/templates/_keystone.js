@@ -96,7 +96,7 @@ keystone.Email.defaults.templateEngine = require('handlebars');
 	<% if (includeBlog) { %>posts: ['posts', 'post-categories'],
 	<% } if (includeGallery) { %>galleries: 'galleries',
 	<% } if (includeEnquiries) { %>enquiries: 'enquiries',
-	<% } %><%= userModelPath %>: '<%= userModelPath %>',
+	<% } if (userModelPath.includes('-')) { %>'<%= userModelPath %>'<% } else { %><%= userModelPath %><% } %>: '<%= userModelPath %>',
 });
 <% if (includeGuideComments) { %>
 // Start Keystone to connect to your database and initialise the web server
