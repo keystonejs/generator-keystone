@@ -128,8 +128,9 @@ KeystoneGenerator.prototype.prompts = function prompts () {
 				type: 'confirm',
 				name: 'includeEmail',
 				message: '------------------------------------------------'
-					+ '\n    KeystoneJS integrates with Mandrill (from Mailchimp) for email sending.'
-					+ '\n    Would you like to include Email configuration in your project?',
+					+ '\n    Would you like to include Email configuration in your project?'
+					+ '\n    We will set you up with an email template for enquiries as well'
+					+ '\n    as optional mailgun integration',
 				default: true,
 			},
 		],
@@ -184,14 +185,17 @@ KeystoneGenerator.prototype.prompts = function prompts () {
 
 			if (this.includeEmail) {
 				prompts.config.push({
-					name: 'mandrillAPI',
+					name: 'mailgunAPI',
 					message: '------------------------------------------------'
-						+ '\n    Please enter your Mandrill API Key (optional).'
-						+ '\n    See http://keystonejs.com/docs/configuration/#services-mandrill for more info.'
-						+ '\n    '
-						+ '\n    You can skip this for now (we\'ll include a test key instead)'
-						+ '\n    '
-						+ '\n    Your Mandrill API Key:',
+						+ '\n    If you want to set up mailgun now, you can provide'
+						+ '\n    your mailgun credentials, otherwise, you will'
+						+ '\n    want to add these to your .env later.'
+						+ '\n    mailgun API key:',
+				});
+				prompts.config.push({
+					name: 'mailgunDomain',
+					message: '------------------------------------------------'
+					+ '\n    mailgun domain:',
 				});
 			}
 

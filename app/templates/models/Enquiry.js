@@ -37,15 +37,18 @@ Enquiry.schema.post('save', function () {
 
 Enquiry.schema.methods.sendNotificationEmail = function (callback) {
 	if (typeof callback !== 'function') {
-		callback = function () {};
+		callback = function (err) {
+			if (err) {
+				console.error('There was an error sending the notification email:', err);
+			}
+		};
 	}
 	var enquiry = this;
 	keystone.list('<%= userModel %>').model.find().where('isAdmin', true).exec(function (err, admins) {
 		if (err) return callback(err);
 		new keystone.Email({
-			<% if (viewEngine === 'hbs') { %>templateExt: 'hbs',
-			templateEngine: require('express-handlebars'),
-			<% } %>templateName: 'enquiry-notification',
+			templateName: 'enquiry-notification',
+			transport: 'mailgun',
 		}).send({
 			to: admins,
 			from: {

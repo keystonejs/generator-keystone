@@ -27,6 +27,8 @@ keystone.init({
 	'views': 'templates/views',<% if (viewEngine === 'nunjucks') { %>
 	'view engine': 'html',
 	'custom engine': cons.nunjucks,
+<% } else if (viewEngine === 'hbs') { %>
+	'view engine': '.hbs',
 <% } else { %>
 	'view engine': '<%= viewEngine %>',
 <% } %><% if (viewEngine === 'hbs') { %>
@@ -63,33 +65,8 @@ keystone.init({
 });
 <% if (includeGuideComments) { %>
 // Load your project's Routes
-<% } %>keystone.set('routes', require('./routes'));<% if (includeEmail) { %>
-<% if (includeGuideComments) { %>
-// Setup common locals for your emails. The following are required by Keystone's
-// default email templates, you may remove them if you're using your own.
-<% } %>keystone.set('email locals', {
-	logo_src: '/images/logo-email.gif',
-	logo_width: 194,
-	logo_height: 76,
-	theme: {
-		email_bg: '#f9f9f9',
-		link_color: '#2697de',
-		buttons: {
-			color: '#fff',
-			background_color: '#2697de',
-			border_color: '#1a7cb7',
-		},
-	},
-});
-<% if (includeGuideComments) { %>
-// Load your project's email test routes
-<% } %>keystone.set('email tests', require('./routes/emails'));
-<% } %><% if (viewEngine === 'hbs') { %>
-<% if (includeGuideComments) { %>
-// Switch Keystone Email defaults to handlebars
-<% } %>keystone.Email.defaults.templateExt = 'hbs';
-keystone.Email.defaults.templateEngine = require('handlebars');
-<% } %>
+<% } %>keystone.set('routes', require('./routes'));
+
 <% if (includeGuideComments) { %>
 // Configure the navigation bar in Keystone's Admin UI
 <% } %>keystone.set('nav', {
