@@ -96,7 +96,7 @@ module.exports = function () {
 		var output = '';
 
 		function createTagList (tags) {
-			var tagNames = _.pluck(tags, 'name');
+			var tagNames = _.map(tags, 'name');
 
 			if (autolink) {
 				return _.map(tags, function (tag) {
