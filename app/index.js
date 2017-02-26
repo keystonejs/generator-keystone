@@ -14,7 +14,8 @@ var KeystoneGenerator = module.exports = function KeystoneGenerator (args, optio
 
 	// Initialise default values
 	this.cloudinaryURL = false;
-	this.mandrillAPI = false;
+	this.mailgunAPI = false;
+	this.mailgunDomain = false;
 
 	// Apply the Base Generator
 	yeoman.generators.Base.apply(this, arguments);
@@ -33,11 +34,11 @@ var KeystoneGenerator = module.exports = function KeystoneGenerator (args, optio
 			+ '\n'
 			+ '\nFor help getting started, visit http://keystonejs.com/guide'
 
-			+ ((this.usingTestMandrillAPI)
+			+ ((this.mailgunNotConfigured)
 				? '\n'
-				+ '\nWe\'ve included a test Mandrill API Key, which will simulate email'
-				+ '\nsending but not actually send emails. Please replace it with your own'
-				+ '\nwhen you are ready.'
+				+ '\nWe\'ve included the setup for email in your project. When you'
+				+ 'want to get this working, just create a mailgun account and put'
+				+ 'your mailgun details into the .env file.'
 				: '')
 
 			+ ((this.usingDemoCloudinaryAccount)
@@ -236,9 +237,8 @@ KeystoneGenerator.prototype.prompts = function prompts () {
 				this[key] = val;
 			}, this);
 
-			if (this.includeEmail && !this.mandrillAPI) {
-				this.usingTestMandrillAPI = true;
-				this.mandrillAPI = 'NY8RRKyv1Bure9bdP8-TOQ';
+			if (this.includeEmail && !(this.mailgunAPI && this.mailgunDomain)) {
+				this.mailgunNotConfigured = true;
 			}
 
 			if (!this.cloudinaryURL && (this.includeBlog || this.includeGallery)) {
