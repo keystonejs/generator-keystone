@@ -43,6 +43,12 @@ Enquiry.schema.methods.sendNotificationEmail = function (callback) {
 			}
 		};
 	}
+
+	if (!process.env.MAILGUN_API_KEY || !process.env.MAILGUN_DOMAIN) {
+		console.log('Unable to send email - no mailgun credentials provided');
+		return callback(new Error('could not find mailgun credentials'));
+	}
+
 	var enquiry = this;
 	keystone.list('<%= userModel %>').model.find().where('isAdmin', true).exec(function (err, admins) {
 		if (err) return callback(err);
