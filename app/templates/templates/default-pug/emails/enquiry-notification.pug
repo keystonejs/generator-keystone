@@ -1,7 +1,7 @@
 html
 	head
 	body
-		h1 Hi %recipient%,
+		h1 Hi %recipient.firstName%,
 		p.text-larger An enquiry was just submitted to #{brand}:
 		if enquiry.name.full || enquiry.email
 			p.text-larger From
