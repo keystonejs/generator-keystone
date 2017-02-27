@@ -50,6 +50,8 @@ Enquiry.schema.methods.sendNotificationEmail = function (callback) {
 	}
 
 	var enquiry = this;
+	var brand = keystone.get('brand');
+
 	keystone.list('<%= userModel %>').model.find().where('isAdmin', true).exec(function (err, admins) {
 		if (err) return callback(err);
 		new keystone.Email({
@@ -63,6 +65,7 @@ Enquiry.schema.methods.sendNotificationEmail = function (callback) {
 			},
 			subject: 'New Enquiry for <%= projectName %>',
 			enquiry: enquiry,
+			brand: brand,
 		}, callback);
 	});
 };
