@@ -65,7 +65,8 @@ Enquiry.schema.methods.sendNotificationEmail = function (callback) {
 			},
 			subject: 'New Enquiry for <%= projectName %>',
 			enquiry: enquiry,
-			brand: brand,
+			brand: brand,<% if (viewEngine === 'hbs') { %>
+			layout: false,<% } %>
 		}, callback);
 	});
 };
