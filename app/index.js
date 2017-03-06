@@ -12,6 +12,7 @@ var KeystoneGenerator = module.exports = function KeystoneGenerator (args, optio
 	// Set utils for use in templates
 	this.utils = utils;
 	this.auto = args.includes('auto');
+	this.skipInstall = args.includes('skipInstall');
 
 	// Initialise default values
 	this.cloudinaryURL = false;
@@ -60,7 +61,7 @@ var KeystoneGenerator = module.exports = function KeystoneGenerator (args, optio
 		this.installDependencies({
 			bower: false,
 			skipMessage: true,
-			skipInstall: options['skip-install'],
+			skipInstall: options['skip-install'] || this.skipInstall,
 			callback: done,
 		});
 
