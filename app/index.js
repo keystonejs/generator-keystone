@@ -11,6 +11,7 @@ var KeystoneGenerator = module.exports = function KeystoneGenerator (args, optio
 
 	// Set utils for use in templates
 	this.utils = utils;
+	this.auto = args.includes('auto');
 
 	// Initialise default values
 	this.cloudinaryURL = false;
@@ -76,6 +77,28 @@ util.inherits(KeystoneGenerator, yeoman.generators.Base);
 KeystoneGenerator.prototype.prompts = function prompts () {
 
 	var cb = this.async();
+
+	if (this.auto) {
+		this._projectName = 'Keystone Starter';
+		this.projectName = 'keystone-starter';
+		this.adminLogin = 'user@keystonejs.com';
+		this.adminPassword = 'admin';
+		this.viewEngine = 'pug';
+		this.preprocessor = 'sass';
+		this.userModel = 'User';
+		this.userModelPath = utils.keyToPath(this.userModel, true);
+		this.destinationRoot(utils.slug(this.projectName));
+		this.includeEmail = true;
+		this.includeBlog = true;
+		this.includeGallery = true;
+		this.mailgunNotConfigured = true;
+		this.usingDemoCloudinaryAccount = true;
+		this.cloudinaryURL = 'cloudinary://333779167276662:_8jbSi9FB3sWYrfimcl8VKh34rI@keystone-demo';
+		this.includeGuideComments = true;
+		this.includeEnquiries = true;
+		this.newDirectory = true;
+		return cb();
+	}
 
 	var prompts = {
 
@@ -257,6 +280,10 @@ KeystoneGenerator.prototype.prompts = function prompts () {
 KeystoneGenerator.prototype.guideComments = function () {
 
 	var cb = this.async();
+	if (this.auto) {
+		return cb();
+	}
+
 
 	this.prompt([
 		{
