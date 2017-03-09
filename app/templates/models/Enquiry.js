@@ -43,7 +43,15 @@ Enquiry.schema.methods.sendNotificationEmail = function (callback) {
 			}
 		};
 	}
+
+	if (!process.env.MAILGUN_API_KEY || !process.env.MAILGUN_DOMAIN) {
+		console.log('Unable to send email - no mailgun credentials provided');
+		return callback(new Error('could not find mailgun credentials'));
+	}
+
 	var enquiry = this;
+	var brand = keystone.get('brand');
+
 	keystone.list('<%= userModel %>').model.find().where('isAdmin', true).exec(function (err, admins) {
 		if (err) return callback(err);
 		new keystone.Email({
@@ -57,6 +65,8 @@ Enquiry.schema.methods.sendNotificationEmail = function (callback) {
 			},
 			subject: 'New Enquiry for <%= projectName %>',
 			enquiry: enquiry,
+			brand: brand,<% if (viewEngine === 'hbs') { %>
+			layout: false,<% } %>
 		}, callback);
 	});
 };

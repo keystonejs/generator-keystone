@@ -1,0 +1,27 @@
+<h1>Hi %recipient.firstName%</h1>
+<p class="text-larger">An enquiry was just submitted to {{ brand }}:</p>
+{% if enquiry.email %}
+	<p class="text-larger">From
+	{% if enquiry.name.full %}
+		<strong>{{ enquiry.name.full }}</strong>
+	{% endif %}
+
+	{% if enquiry.email %}
+		(<a href="mailto:{{enquiry.email}}">{{ enquiry.email }}</a>)
+	{% endif %}
+	</p>
+
+	{% if enquiry.phone %}
+		<p class="text-larger">Phone: {{ enquiry.phone }}</p>
+	{% endif %}
+
+	{% if enquiry.enquiryType %}
+		<p class="text-larger">{{ enquiry._.enquiryType.format() }}</p>
+	{% endif %}
+
+	{% if enquiry.message %}
+		{{ enquiry.message.html | safe }}
+	{% endif %}
+
+	<p class="text-muted">Sent {{ enquiry._.createdAt.format() }}</p>
+{% endif %}

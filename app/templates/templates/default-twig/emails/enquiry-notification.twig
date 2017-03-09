@@ -1,9 +1,5 @@
-{# TODO:
-   Pug email templates inherit a default base that's included with Keystone,
-   the Twig templates need this to be ported across and bundled directly. #}
-
 {% block contents %}
-	<h1>Hi {{ first_name }}</h1>,
+	<h1>Hi %recipient.firstName%,</h1>
 	<p class="text-larger">An enquiry was just submitted to {{ brand }}:</p>
 	{% if enquiry.name.full or enquiry.email %}
 		<p class="text-larger">From
@@ -25,5 +21,4 @@
 		{{ enquiry.message.html | striptags }}
 	{% endif %}
 	<p class="text-muted">Sent {{ enquiry._.createdAt.format() }}</p>
-	<p><a href="/keystone/enquiries/{{ enquiry.id }}">Open Keystone</a></p>
 {% endblock %}

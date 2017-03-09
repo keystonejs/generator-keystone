@@ -391,8 +391,8 @@ KeystoneGenerator.prototype.templates = function templates () {
 		this.mkdir('templates');
 		this.mkdir('templates/views');
 
-		this.directory('templates/default-' + this.viewEngine + '/layouts', 'templates/layouts');
-		this.directory('templates/default-' + this.viewEngine + '/mixins', 'templates/mixins');
+		this.directory('templates/default-' + this.viewEngine + '/views/layouts', 'templates/views/layouts');
+		this.directory('templates/default-' + this.viewEngine + '/views/mixins', 'templates/views/mixins');
 		this.directory('templates/default-' + this.viewEngine + '/views/errors', 'templates/views/errors');
 
 		this.template('templates/default-' + this.viewEngine + '/views/index.html', 'templates/views/index.html');
