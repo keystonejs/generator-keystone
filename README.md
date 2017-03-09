@@ -44,6 +44,12 @@ to generate a starter project with all default options selected. This is good fo
 * Replace default cloudinary credentials with your own cloudinary credentials
 * Set up email
 
+### Keystone Beta vs. Stable
+
+As of v5.0, the generator will install the latest Keystone 4.0 beta. The beta version is generally safe for production use; the only things blocking a final release are updated documentation, guides and minor cosmetic tweaks.
+
+If you'd prefer to use the old v0.3.x release of Keystone, simply downgrade the version of keystone in the `package.json` the generator creates and reinstall all dependencies.
+
 ### Node 0.12 Notes
 
 Both KeystoneJS 4.0 and the generator are compatible with Node 0.12, however we'll be bumping this requirement to Node v6+ in the next version.
