@@ -31,6 +31,19 @@ The generator will ask you a few questions about which features to include, then
 * [Cloudinary](https://cloudinary.com/users/register/free) - Image serving and management in the cloud
 * [Mailgun](https://app.mailgun.com/signup) - Easy email integration
 
+### I want the default keystone start project
+
+You can run
+
+```
+yo keystone auto
+```
+
+to generate a starter project with all default options selected. This is good for experimenting with keystone, but will require adjustment to use as an ongoing project, most importantly:
+
+* Replace default cloudinary credentials with your own cloudinary credentials
+* Set up email
+
 ### Node 0.12 Notes
 
 Both KeystoneJS 4.0 and the generator are compatible with Node 0.12, however we'll be bumping this requirement to Node v6+ in the next version.
