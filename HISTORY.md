@@ -1,6 +1,6 @@
 # Generator-Keystone
 
-## v0.5.0 / TBC
+## v0.5.0 / 2017-03-09
 
 * improved; keystone generator now uses keystone 4.
 * improved; moved jade view engine to pug
