@@ -5,7 +5,7 @@ var _ = require('lodash');
 var utils = require('keystone-utils');
 var crypto = require('crypto');
 var yeoman = require('yeoman-generator');
-
+require('./includesPolyfill');
 
 var KeystoneGenerator = module.exports = function KeystoneGenerator (args, options, config) {
 
