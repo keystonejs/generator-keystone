@@ -1,5 +1,10 @@
 # Generator-Keystone
 
+## v 0.5.1 / TBC
+
+* fixed; postcategory relationship to posts
+* fixed; add polyfill for for `includes` for older version of node
+
 ## v0.5.0 / 2017-03-09
 
 * improved; keystone generator now uses keystone 4.
