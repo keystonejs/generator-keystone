@@ -1,6 +1,6 @@
 # Generator-Keystone
 
-## v 0.5.1 / TBC
+## v0.5.1 / 2017-03-22
 
 * fixed; postcategory relationship to posts
 * fixed; add polyfill for for `includes` for older version of node

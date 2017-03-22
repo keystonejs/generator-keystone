@@ -30,3 +30,5 @@ node_modules
 
 # Ignore intellij/jetbrains project files
 .idea
+
+yarn.lock
