@@ -16,6 +16,7 @@ var KeystoneGenerator = module.exports = function KeystoneGenerator (args, optio
 
 	// Initialise default values
 	this.cloudinaryURL = false;
+	this.mailgunConfigured = false;
 	this.mailgunAPI = false;
 	this.mailgunDomain = false;
 
@@ -36,11 +37,11 @@ var KeystoneGenerator = module.exports = function KeystoneGenerator (args, optio
 			+ '\n'
 			+ '\nFor help getting started, visit http://keystonejs.com/guide'
 
-			+ ((this.mailgunNotConfigured)
+			+ ((this.includeEmail && !this.mailgunConfigured)
 				? '\n'
 				+ '\nWe\'ve included the setup for email in your project. When you'
-				+ 'want to get this working, just create a mailgun account and put'
-				+ 'your mailgun details into the .env file.'
+				+ '\nwant to get this working, just create a mailgun account and put'
+				+ '\nyour mailgun details into the .env file.'
 				: '')
 
 			+ ((this.usingDemoCloudinaryAccount)
@@ -92,7 +93,6 @@ KeystoneGenerator.prototype.prompts = function prompts () {
 		this.includeEmail = true;
 		this.includeBlog = true;
 		this.includeGallery = true;
-		this.mailgunNotConfigured = true;
 		this.usingDemoCloudinaryAccount = true;
 		this.cloudinaryURL = 'cloudinary://333779167276662:_8jbSi9FB3sWYrfimcl8VKh34rI@keystone-demo';
 		this.includeGuideComments = true;
@@ -261,8 +261,8 @@ KeystoneGenerator.prototype.prompts = function prompts () {
 				this[key] = val;
 			}, this);
 
-			if (this.includeEmail && !(this.mailgunAPI && this.mailgunDomain)) {
-				this.mailgunNotConfigured = true;
+			if (this.includeEmail && (this.mailgunAPI && this.mailgunDomain)) {
+				this.mailgunConfigured = true;
 			}
 
 			if (!this.cloudinaryURL && (this.includeBlog || this.includeGallery)) {
