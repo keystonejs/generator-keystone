@@ -257,9 +257,9 @@ KeystoneGenerator.prototype.prompts = function prompts () {
 
 		this.prompt(prompts.config, function (props) {
 
-			_.each(props, function (val, key) {
+			_.each(props, _.bind(function (val, key) {
 				this[key] = val;
-			}, this);
+			}, this));
 
 			if (this.includeEmail && (this.mailgunAPI && this.mailgunDomain)) {
 				this.mailgunConfigured = true;
