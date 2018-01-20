@@ -1,0 +1,16 @@
+{
+  "_projectName"                : process.env.PROJECT_NAME || "Keystone Starter",
+  "adminLogin"                  : process.env.ADMIN_MAIL || "user@keystonejs.com",
+  "adminPassword"               : process.env.ADMIN_PASS || "admin",
+  "viewEngine"                  : process.env.VIEW_ENGINE || "pug",
+  "preprocessor"                : process.env.PRE_PROCESSOR || "sass",
+  "userModel"                   : process.env.USERMODEL_NAME || "User",
+  "includeEmail"                : process.env.INCLUDE_EMAIL || true,
+  "includeBlog"                 : process.env.INCLUDE_BLOG || true,
+  "includeGallery"              : process.env.INCLUDE_GALLERY || true,
+  "usingDemoCloudinaryAccount"  : process.env.USING_DEMO_CLOUDINARY_ACCOUNT || true,
+  "cloudinaryURL"               : process.env.CLOUDINARY_URL || "cloudinary://333779167276662:_8jbSi9FB3sWYrfimcl8VKh34rI@keystone-demo",
+  "includeGuideComments"        : process.env.INCLUDE_GUIDE_COMMENTS || true,
+  "includeEnquiries"            : process.env.INCLUDE_ENQUIRIES || true,
+  "newDirectory"                : process.env.NEW_DIRECTORY || true
+}

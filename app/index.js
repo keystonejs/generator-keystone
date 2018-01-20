@@ -6,6 +6,7 @@ var utils = require('keystone-utils');
 var crypto = require('crypto');
 var yeoman = require('yeoman-generator');
 require('./includesPolyfill');
+var defaults = require('defaults.json');
 
 var KeystoneGenerator = module.exports = function KeystoneGenerator (args, options, config) {
 
@@ -81,23 +82,23 @@ KeystoneGenerator.prototype.prompts = function prompts () {
 	var cb = this.async();
 
 	if (this.auto) {
-		this._projectName = 'Keystone Starter';
-		this.projectName = 'keystone-starter';
-		this.adminLogin = 'user@keystonejs.com';
-		this.adminPassword = 'admin';
-		this.viewEngine = 'pug';
-		this.preprocessor = 'sass';
-		this.userModel = 'User';
+		this._projectName = defaults._projectName;
+		this.projectName = utils.escapeString(this.projectName);
+		this.adminLogin = defaults.adminLogin;
+		this.adminPassword = defaults.adminPassword;
+		this.viewEngine = defaults.viewEngine;
+		this.preprocessor = defaults.preprocessor;
+		this.userModel = defaults.userModel;
 		this.userModelPath = utils.keyToPath(this.userModel, true);
 		this.destinationRoot(utils.slug(this.projectName));
-		this.includeEmail = true;
-		this.includeBlog = true;
-		this.includeGallery = true;
-		this.usingDemoCloudinaryAccount = true;
-		this.cloudinaryURL = 'cloudinary://333779167276662:_8jbSi9FB3sWYrfimcl8VKh34rI@keystone-demo';
-		this.includeGuideComments = true;
-		this.includeEnquiries = true;
-		this.newDirectory = true;
+		this.includeEmail = defaults.includeEmail;
+		this.includeBlog = defaults.includeBlog;
+		this.includeGallery = defaults.includeGallery;
+		this.usingDemoCloudinaryAccount = defaults.usingDemoCloudinaryAccount;
+		this.cloudinaryURL = defaults.cloudinaryURL;
+		this.includeGuideComments = defaults.includeGuideComments;
+		this.includeEnquiries = defaults.includeEnquiries;
+		this.newDirectory = defaults.newDirectory;
 		return cb();
 	}
 
