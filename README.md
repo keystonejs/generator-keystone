@@ -8,21 +8,15 @@ A [Yeoman](http://yeoman.io) generator for [KeystoneJS](http://keystonejs.com), 
 
 First up, you'll need Node.js >= 0.12 and MongoDB >= 3.0 installed. If you don't have them, follow the **Dependencies** instructions below.
 
-Then, install the Keystone generator:
-
-````
-$ npm install -g generator-keystone
-````
-
-If you see errors, check the [problems](#err-please-try-running-this-command-again-as-rootadministrator) section below.
-
-With the generator installed, create an empty directory for your new KeystoneJS Project, and run `yo keystone` in it:
+Create an empty directory for your new KeystoneJS Project, then run the generator:
 
 ````
 $ mkdir myproject
 $ cd myproject
-$ yo keystone
+$ npx -p yo -p generator-keystone yo keystone
 ````
+
+_NOTE: If you see errors, check the [problems](#err-please-try-running-this-command-again-as-rootadministrator) section below._
 
 The generator will ask you a few questions about which features to include, then prompt you for Cloudinary and Mailgun account details.
 
