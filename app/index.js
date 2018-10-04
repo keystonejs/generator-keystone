@@ -35,7 +35,7 @@ var KeystoneGenerator = module.exports = function KeystoneGenerator (args, optio
 			+ '\n'
 			+ '\nYour KeystoneJS project is ready to go!'
 			+ '\n'
-			+ '\nFor help getting started, visit http://keystonejs.com/guide'
+			+ '\nFor help getting started, visit https://keystonejs.com/getting-started/'
 
 			+ ((this.includeEmail && !this.mailgunConfigured)
 				? '\n'
@@ -238,7 +238,7 @@ KeystoneGenerator.prototype.prompts = function prompts () {
 					name: 'cloudinaryURL',
 					message: '------------------------------------------------'
 						+ '\n    KeystoneJS integrates with Cloudinary for image upload, resizing and'
-						+ '\n    hosting. See http://keystonejs.com/docs/configuration/#services-cloudinary for more info.'
+						+ '\n    hosting. See https://keystonejs.com/api/field/cloudinaryimage for more info.'
 						+ '\n    '
 						+ '\n    CloudinaryImage fields are used by the ' + blog_gallery + '.'
 						+ '\n    '

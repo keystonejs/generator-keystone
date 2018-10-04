@@ -1,4 +1,4 @@
 <%= projectName %>
 =====================
 
-Powered by [KeystoneJS](http://keystonejs.com).
+Powered by [KeystoneJS](https://keystonejs.com).

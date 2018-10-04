@@ -10,7 +10,7 @@ var nunjucks = require('nunjucks');<% } else if (viewEngine == 'twig') { %>
 var Twig = require('twig');<% } %>
 <% if (includeGuideComments) { %>
 // Initialise Keystone with your project's configuration.
-// See http://keystonejs.com/guide/config for available options
+// See https://keystonejs.com/documentation/configuration/ for available options
 // and documentation.
 <% } %>
 keystone.init({
