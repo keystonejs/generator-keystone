@@ -1,5 +1,7 @@
 # Keystone Generator
 
+> ⚠️ NOTE This generator is for [keystone classic](https://github.com/keystonejs/keystone-classic), not the new version of keystone. To use the new version of keystone, use [create-keystone-app](https://www.npmjs.com/package/create-keystone-app)
+
 A [Yeoman](http://yeoman.io) generator for [KeystoneJS](https://keystonejs.com), the model-driven CMS for Node.js built on [Express](https://expressjs.com/), [Mongoose](https://mongoosejs.com/), and [MongoDB](https://mongodb.com/download).
 
 `yo keystone` will scaffold a new KeystoneJS project for you, and offer to set up blog, gallery, and enquiry (contact form) models + views.
