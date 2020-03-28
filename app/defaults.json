@@ -1,0 +1,16 @@
+{
+  "_projectName": "Keystone Starter",
+  "adminLogin": "user@keystonejs.com",
+  "adminPassword": "admin",
+  "viewEngine": "pug",
+  "preprocessor": "sass",
+  "userModel": "User",
+  "includeEmail": true,
+  "includeBlog": true,
+  "includeGallery": true,
+  "usingDemoCloudinaryAccount": true,
+  "cloudinaryURL": "cloudinary://333779167276662:_8jbSi9FB3sWYrfimcl8VKh34rI@keystone-demo",
+  "includeGuideComments": true,
+  "includeEnquiries": true,
+  "newDirectory": true
+}
