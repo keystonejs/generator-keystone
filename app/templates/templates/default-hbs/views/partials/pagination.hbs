@@ -1,12 +1,12 @@
 <ul class="pagination">
 	<li {{#unless data.posts.previous}}class="disabled"{{/unless}}>
-		<a href="{{paginationPreviousUrl data.posts.previous}}">
+		<a href="{{paginationPreviousUrl data.posts.previous filters.category}}">
 			<span class="glyphicon glyphicon-chevron-left"></span>
 		</a>
 	</li>
-	{{{paginationNavigation data.posts.pages data.posts.currentPage data.posts.totalPages}}}
+	{{{paginationNavigation data.posts.pages data.posts.currentPage data.posts.totalPages filters.category}}}
 	<li {{#unless data.posts.next}}class="disabled"{{/unless}}>
-		<a href="{{paginationNextUrl data.posts.next data.posts.totalPages}}">
+		<a href="{{paginationNextUrl data.posts.next data.posts.totalPages filters.category}}">
 			<span class="glyphicon glyphicon-chevron-right"></span>
 		</a>
 	</li>
