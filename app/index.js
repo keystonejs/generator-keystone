@@ -6,6 +6,7 @@ var utils = require('keystone-utils');
 var crypto = require('crypto');
 var yeoman = require('yeoman-generator');
 require('./includesPolyfill');
+var defaults = require('./defaults.json');
 
 var KeystoneGenerator = module.exports = function KeystoneGenerator (args, options, config) {
 
@@ -81,23 +82,23 @@ KeystoneGenerator.prototype.prompts = function prompts () {
 	var cb = this.async();
 
 	if (this.auto) {
-		this._projectName = 'Keystone Starter';
-		this.projectName = 'keystone-starter';
-		this.adminLogin = 'user@keystonejs.com';
-		this.adminPassword = 'admin';
-		this.viewEngine = 'pug';
-		this.preprocessor = 'sass';
-		this.userModel = 'User';
+		this._projectName = process.env.PROJECT_NAME || defaults._projectName;
+		this.projectName = utils.escapeString(this._projectName);
+		this.adminLogin = process.env.ADMIN_MAIL || defaults.adminLogin;
+		this.adminPassword = process.env.ADMIN_PASS || defaults.adminPassword;
+		this.viewEngine = process.env.VIEW_ENGINE || defaults.viewEngine;
+		this.preprocessor = process.env.PRE_PROCESSOR || defaults.preprocessor;
+		this.userModel = process.env.USERMODEL_NAME || defaults.userModel;
 		this.userModelPath = utils.keyToPath(this.userModel, true);
 		this.destinationRoot(utils.slug(this.projectName));
-		this.includeEmail = true;
-		this.includeBlog = true;
-		this.includeGallery = true;
-		this.usingDemoCloudinaryAccount = true;
-		this.cloudinaryURL = 'cloudinary://333779167276662:_8jbSi9FB3sWYrfimcl8VKh34rI@keystone-demo';
-		this.includeGuideComments = true;
-		this.includeEnquiries = true;
-		this.newDirectory = true;
+		this.includeEmail = process.env.INCLUDE_EMAIL || defaults.includeEmail;
+		this.includeBlog = process.env.INCLUDE_BLOG || defaults.includeBlog;
+		this.includeGallery = process.env.INCLUDE_GALLERY || defaults.includeGallery;
+		this.usingDemoCloudinaryAccount = process.env.USING_DEMO_CLOUDINARY_ACCOUNT || defaults.usingDemoCloudinaryAccount;
+		this.cloudinaryURL = process.env.CLOUDINARY_URL || defaults.cloudinaryURL;
+		this.includeGuideComments = process.env.INCLUDE_GUIDE_COMMENTS || defaults.includeGuideComments;
+		this.includeEnquiries = process.env.INCLUDE_ENQUIRIES || defaults.includeEnquiries;
+		this.newDirectory = process.env.NEW_DIRECTORY || defaults.newDirectory;
 		return cb();
 	}
 
