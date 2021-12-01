@@ -11,7 +11,7 @@
     "handlebars": "4.0.6",<% } else if (viewEngine === 'nunjucks') { %>
     "consolidate": "0.14.5",
     "nunjucks": "3.0.0", <% } else if (viewEngine === 'pug') { %>
-    "pug": "2.0.0-beta11", <% } else if (viewEngine === 'twig') { %>
+    "pug": "^2.0.0", <% } else if (viewEngine === 'twig') { %>
     "twig":"0.10.3",<% } if (preprocessor === 'sass') { %>
     "node-sass": "4.5.0",
     "node-sass-middleware": "0.11.0", <% } else if (preprocessor === 'stylus') { %>
